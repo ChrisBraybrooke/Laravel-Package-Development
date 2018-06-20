@@ -35,7 +35,7 @@ return [
       'media' => ChrisBraybrooke\ECommerce\Models\Media::class,
 
       //
-      'order' => ChrisBraybrooke\ECommerce\Models\Order::class,
+      'order' => App\Order::class,
 
       //
       'page' => ChrisBraybrooke\ECommerce\Models\Page::class,
@@ -83,7 +83,65 @@ return [
       'site_images' => ['Website Logo', 'Website Logo Inverse'],
 
       //
-      'aditional_cols' => [],
+      'aditional_cols' => [
+
+          'orders' => [
+              'Shipping Completed' => [
+                  'prop' => 'shipping_completed',
+                  'sortable' => true,
+                  'label' => 'Shipping Completed',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'small',
+                      'text' => 'Shipping Complete'
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Shipping Information].content.date',
+                      'value' => 'Done it lad!'
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+              'Specs Completed' => [
+                  'prop' => 'specs_completed',
+                  'sortable' => true,
+                  'label' => 'Specs Completed',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'small',
+                      'text' => 'Shipping Complete'
+                  ],
+                  'action' => [
+                      'type' => 'api'
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+          ]
+
+      ],
+  ],
+
+  'default_content' => [
+
+      'orders' => [
+          ['content_name' => 'Shipping Information', 'content' => ['paid' => '', 'cost' => '', 'date' => '', 'reference' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 2],
+          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
+      ]
   ],
 
 ];
