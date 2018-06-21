@@ -86,44 +86,69 @@ return [
       'aditional_cols' => [
 
           'orders' => [
-              'Shipping Completed' => [
+              'Shipping' => [
                   'prop' => 'shipping_completed',
                   'sortable' => true,
-                  'label' => 'Shipping Completed',
+                  'label' => 'Shipping',
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
-                      'size' => 'small',
+                      'size' => 'mini',
                       'text' => 'Shipping Complete'
                   ],
                   'action' => [
                       'type' => 'api',
                       'set' => 'content.data.$[content_name=Shipping Information].content.date',
-                      'value' => 'Done it lad!'
+                      'value' => now()->format('Y-m-d')
                   ],
                   'api' => [
                       'method' => 'put',
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Specs Completed' => [
+              'Specs' => [
                   'prop' => 'specs_completed',
                   'sortable' => true,
-                  'label' => 'Specs Completed',
+                  'label' => 'Specs',
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
-                      'size' => 'small',
+                      'size' => 'mini',
                       'text' => 'Shipping Complete'
                   ],
                   'action' => [
-                      'type' => 'api'
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Spec Completed].content.date',
+                      'value' => now()->format('Y-m-d')
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+              'Materials' => [
+                  'prop' => 'materials_ordered',
+                  'sortable' => true,
+                  'label' => 'Materials',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'mini',
+                      'text' => 'Materials Ordered'
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Materials Ordered].content.date',
+                      'value' => now()->format('Y-m-d')
                   ],
                   'api' => [
                       'method' => 'put',

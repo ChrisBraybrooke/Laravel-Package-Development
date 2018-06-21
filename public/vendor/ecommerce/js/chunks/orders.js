@@ -86,16 +86,9 @@ exports.default = {
         handleClick: function handleClick() {
             var action = this.col.action ? this.col.action : {};
             if (action.type === 'api' && this.col.api) {
-                var path = this.col.api.path;
-                path = this.replacer(path);
-
-                var set = this.fillIndexInDotSyntaxString(this.col.action.set, this.row);
-
-                set = this.dotToObjectPath(set, this.row);
-
-                set = this.col.action.value;
-
-                console.log(set);
+                var path = this.replacer(this.col.api.path);
+                var dots = this.fillIndexInDotSyntaxString(this.col.action.set, this.row);
+                this.setRowValue(this.row, dots, this.col.action.value);
 
                 _apiService2.default.persist(this.col.api.method, {
                     path: path,
@@ -162,6 +155,16 @@ exports.default = {
             return string.split('.').reduce(function (o, i) {
                 return o[i];
             }, object);
+        },
+
+
+        /**
+         * Set a dynamic row value.
+         *
+         * @return Mixed
+         */
+        setRowValue: function setRowValue(obj, is, value) {
+            if (typeof is == 'string') return this.setRowValue(obj, is.split('.'), value);else if (is.length == 1 && value !== undefined) return obj[is[0]] = value;else if (is.length == 0) return obj;else return this.setRowValue(obj[is[0]], is.slice(1), value);
         }
     }
 };
@@ -1891,7 +1894,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -10474,7 +10477,7 @@ var render = function() {
                                                 type: "date",
                                                 placeholder: "Pick a date",
                                                 format: "dd/MM/yyyy",
-                                                "value-format": "dd-mm-yyyy",
+                                                "value-format": "yyyy-MM-dd",
                                                 "picker-options":
                                                   _vm.deliveryDateOptions
                                               },
