@@ -158,6 +158,26 @@ return [
           ]
 
       ],
+
+      'col_colours' => [
+          'orders' => [
+              [
+                  'if' => 'content.data.$[content_name=Materials Ordered].content.date',
+                  'value' => '*',
+                  'colour' => '#dc00002b'
+              ],
+              [
+                  'if' => 'content.data.$[content_name=Spec Completed].content.date',
+                  'value' => '*',
+                  'colour' => 'rgb(0, 128, 0, 0.2)'
+              ],
+              [
+                  'if' => 'content.data.$[content_name=Shipping Information].content.date',
+                  'value' => '*',
+                  'colour' => 'blue'
+              ]
+          ]
+      ],
   ],
 
   'default_content' => [
