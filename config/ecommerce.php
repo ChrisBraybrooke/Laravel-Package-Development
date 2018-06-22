@@ -86,29 +86,6 @@ return [
       'aditional_cols' => [
 
           'orders' => [
-              'Shipping' => [
-                  'prop' => 'shipping_completed',
-                  'sortable' => true,
-                  'label' => 'Shipping',
-                  'align' => 'left',
-                  'resizable' => true,
-                  'type' => 'button',
-                  'button' => [
-                      'type' => 'success',
-                      'plain' => true,
-                      'size' => 'mini',
-                      'text' => 'Shipping Complete'
-                  ],
-                  'action' => [
-                      'type' => 'api',
-                      'set' => 'content.data.$[content_name=Shipping Information].content.date',
-                      'value' => now()->format('Y-m-d')
-                  ],
-                  'api' => [
-                      'method' => 'put',
-                      'path' => 'orders/${id}'
-                  ]
-              ],
               'Specs' => [
                   'prop' => 'specs_completed',
                   'sortable' => true,
@@ -120,12 +97,15 @@ return [
                       'type' => 'success',
                       'plain' => true,
                       'size' => 'mini',
-                      'text' => 'Shipping Complete'
+                      'text' => 'Complete',
+                      'show_value' => true,
+                      'value' => 'content.data.$[content_name=Spec Completed].content.date',
+                      'hide_if_value' => true
                   ],
                   'action' => [
                       'type' => 'api',
                       'set' => 'content.data.$[content_name=Spec Completed].content.date',
-                      'value' => now()->format('Y-m-d')
+                      'value' => now()->format('d-m-Y')
                   ],
                   'api' => [
                       'method' => 'put',
@@ -143,12 +123,61 @@ return [
                       'type' => 'success',
                       'plain' => true,
                       'size' => 'mini',
-                      'text' => 'Materials Ordered'
+                      'text' => 'Ordered',
+                      'show_value' => true,
+                      'value' => 'content.data.$[content_name=Materials Ordered].content.date',
+                      'hide_if_value' => true
                   ],
                   'action' => [
                       'type' => 'api',
                       'set' => 'content.data.$[content_name=Materials Ordered].content.date',
-                      'value' => now()->format('Y-m-d')
+                      'value' => now()->format('d-m-Y')
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+              'Shipping' => [
+                  'prop' => 'shipping_completed',
+                  'sortable' => true,
+                  'label' => 'Shipping',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'mini',
+                      'text' => 'Complete',
+                      'show_value' => true,
+                      'value' => 'content.data.$[content_name=Shipping Information].content.date',
+                      'hide_if_value' => true
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Shipping Information].content.date',
+                      'value' => now()->format('d-m-Y')
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+              'Delivery' => [
+                  'prop' => 'delivery_date',
+                  'sortable' => true,
+                  'label' => 'Delivery',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'date',
+                  'value' => 'content.data.$[content_name=Delivery Date].content.date',
+                  'date' => [
+
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Delivery Date].content.date',
                   ],
                   'api' => [
                       'method' => 'put',
@@ -162,19 +191,22 @@ return [
       'col_colours' => [
           'orders' => [
               [
-                  'if' => 'content.data.$[content_name=Materials Ordered].content.date',
-                  'value' => '*',
-                  'colour' => '#dc00002b'
-              ],
-              [
+                  'name' => 'Spec Completed',
                   'if' => 'content.data.$[content_name=Spec Completed].content.date',
                   'value' => '*',
                   'colour' => 'rgb(0, 128, 0, 0.2)'
               ],
               [
+                  'name' => 'Materials Ordered',
+                  'if' => 'content.data.$[content_name=Materials Ordered].content.date',
+                  'value' => '*',
+                  'colour' => '#dc00002b'
+              ],
+              [
+                  'name' => 'Shipping Information',
                   'if' => 'content.data.$[content_name=Shipping Information].content.date',
                   'value' => '*',
-                  'colour' => 'blue'
+                  'colour' => 'rgba(103, 194, 58, 0.35)'
               ]
           ]
       ],
@@ -183,9 +215,10 @@ return [
   'default_content' => [
 
       'orders' => [
-          ['content_name' => 'Shipping Information', 'content' => ['paid' => '', 'cost' => '', 'date' => '', 'reference' => ''], 'type' => 'json', 'order' => 1],
-          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 2],
-          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
+          ['content_name' => 'Shipping Information', 'content' => ['date' => '', 'reference' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 2],
+          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
+          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
       ]
   ],
 
