@@ -4,6 +4,10 @@
  * Your package config would go here
  */
 
+$green = 'rgba(103, 194, 58, 0.35)';
+$red = 'rgba(194, 58, 58, 0.35)';
+$blue = 'rgba(16, 92, 216, 0.35)';
+
 return [
 
   'web_uri' => env('ECOMMERCE_WEB_URI', 'admin'),
@@ -89,6 +93,35 @@ return [
       'aditional_cols' => [
 
           'orders' => [
+              'Job Number' => [
+                  'prop' => 'ref_number',
+                  'sortable' => true,
+                  'label' => 'Job No.',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=In Production].content.date',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'mini',
+                      'text' => 'In Production',
+                      'only_show_hover' => true,
+                      'show_value' => true,
+                      'value' => 'ref_number',
+                      'hide_if_value' => true
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=In Production].content.date',
+                      'value' => now()->format('d-m-Y')
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
               'Specs' => [
                   'prop' => 'specs_completed',
                   'sortable' => true,
@@ -96,6 +129,9 @@ return [
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
+                  'empty_background' => $red,
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=Spec Completed].content.date',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
@@ -122,6 +158,9 @@ return [
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
+                  'empty_background' => $red,
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=Materials Ordered].content.date',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
@@ -148,6 +187,9 @@ return [
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
+                  'empty_background' => $red,
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=Shipping Information].content.date',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
@@ -167,20 +209,51 @@ return [
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Delivery' => [
-                  'prop' => 'delivery_date',
+              'Shipping Cost' => [
+                  'prop' => 'shipping_cost',
                   'sortable' => true,
-                  'label' => 'Delivery',
+                  'label' => 'Shippping Cost',
                   'align' => 'left',
                   'resizable' => true,
-                  'type' => 'date',
-                  'value' => 'content.data.$[content_name=Delivery Date].content.date',
-                  'date' => [
-
+                  'type' => 'number',
+                  'empty_background' => $red,
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=Shipping Information].content.cost',
+                  'number' => [
+                      'controls' => false
                   ],
                   'action' => [
                       'type' => 'api',
-                      'set' => 'content.data.$[content_name=Delivery Date].content.date',
+                      'set' => 'content.data.$[content_name=Shipping Information].content.cost',
+                  ],
+                  'api' => [
+                      'method' => 'put',
+                      'path' => 'orders/${id}'
+                  ]
+              ],
+              'Shipping Invoice' => [
+                  'prop' => 'shipping_invoice',
+                  'sortable' => true,
+                  'label' => 'Shippping Invoice',
+                  'align' => 'left',
+                  'resizable' => true,
+                  'type' => 'button',
+                  'empty_background' => $red,
+                  'filled_background' => $green,
+                  'value' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                  'button' => [
+                      'type' => 'success',
+                      'plain' => true,
+                      'size' => 'mini',
+                      'text' => 'Recieved',
+                      'show_value' => true,
+                      'value' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                      'hide_if_value' => true
+                  ],
+                  'action' => [
+                      'type' => 'api',
+                      'set' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                      'value' => now()->format('d-m-Y')
                   ],
                   'api' => [
                       'method' => 'put',
@@ -194,22 +267,16 @@ return [
       'col_colours' => [
           'orders' => [
               [
-                  'name' => 'Spec Completed',
-                  'if' => 'content.data.$[content_name=Spec Completed].content.date',
-                  'value' => '*',
-                  'colour' => 'rgb(0, 128, 0, 0.2)'
+                  'name' => 'Delivery',
+                  'if' => 'status',
+                  'value' => 'Processing',
+                  'colour' => $blue
               ],
               [
-                  'name' => 'Materials Ordered',
-                  'if' => 'content.data.$[content_name=Materials Ordered].content.date',
-                  'value' => '*',
-                  'colour' => '#dc00002b'
-              ],
-              [
-                  'name' => 'Shipping Information',
-                  'if' => 'content.data.$[content_name=Shipping Information].content.date',
-                  'value' => '*',
-                  'colour' => 'rgba(103, 194, 58, 0.35)'
+                  'name' => 'Delivery',
+                  'if' => 'status',
+                  'value' => 'Completed',
+                  'colour' => $green
               ]
           ]
       ],
@@ -218,10 +285,11 @@ return [
   'default_content' => [
 
       'orders' => [
-          ['content_name' => 'Shipping Information', 'content' => ['date' => '', 'reference' => ''], 'type' => 'json', 'order' => 1],
-          ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 2],
-          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
-          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
+          ['content_name' => 'Shipping Information', 'content' => ['date' => '', 'reference' => '', 'cost' => '', 'invoice' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'In Production', 'content' => ['date' => '', 'notes' => ''], 'type' => 'json', 'order' => 2],
+          ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
+          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
+          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 5],
       ]
   ],
 
