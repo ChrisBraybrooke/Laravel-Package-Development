@@ -17,6 +17,8 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->nullable()->unsigned();
             $table->string('reference');
+            $table->boolean('refunded')->default(0);
+            $table->text('notes')->nullable()->default(null);
             $table->string('method')->nullable()->default(null);
             $table->string('currency')->nullable()->default(null);
             $table->string('amount')->nullable()->default(null);

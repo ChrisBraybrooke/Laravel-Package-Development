@@ -1,4 +1,4 @@
-webpackJsonp([23],{
+webpackJsonp([24],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -81,10 +81,10 @@ exports.default = {
 
     components: {
         ProductForm: function ProductForm() {
-            return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
+            return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
         },
         DataTable: function DataTable() {
-            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
+            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
         }
     },
 
@@ -287,7 +287,7 @@ var render = function() {
       attrs: {
         "type-name": "estimate",
         "base-url": "orders",
-        "edit-path": "orders",
+        "edit-path": "estimates",
         "bulk-update-url": "orders/bulk",
         "with-params": { withStatus: "estimate" },
         "request-with": "content",

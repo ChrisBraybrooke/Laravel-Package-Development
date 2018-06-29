@@ -1,4 +1,4 @@
-webpackJsonp([30],{
+webpackJsonp([31],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/DataTable.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
 //
 //
 //
@@ -213,7 +214,7 @@ exports.default = {
 
     components: {
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         }
     },
 
@@ -243,12 +244,12 @@ exports.default = {
             }
         },
         requestWith: {
-            type: String,
+            type: [String, Array],
             required: false,
             default: function _default() {}
         },
         requestIncludes: {
-            type: Array,
+            type: [String, Array],
             required: false,
             default: function _default() {
                 return [];
@@ -737,7 +738,6 @@ exports.default = {
 
             var row_has_colour = _collumn2.default.getRowColour(this.colourRules, row);
 
-            console.log('Colour: ' + row_has_colour);
             if (!row_has_colour) {
                 return '';
             }
@@ -7009,6 +7009,7 @@ var render = function() {
               _c("el-table-column", {
                 attrs: {
                   prop: col.prop,
+                  width: col.width,
                   formatter: col.formatter ? col.formatter : null,
                   sortable: "",
                   label: col.label

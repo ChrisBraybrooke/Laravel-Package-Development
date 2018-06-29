@@ -22,7 +22,7 @@ exports.default = {
 
     components: {
         GalleriesComponent: function GalleriesComponent() {
-            return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleriesComponent.vue"));
+            return __webpack_require__.e/* import() */(38).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleriesComponent.vue"));
         }
     },
 

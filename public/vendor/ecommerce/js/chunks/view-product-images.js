@@ -60,10 +60,10 @@ exports.default = {
 
     components: {
         ProductPageLayout: function ProductPageLayout() {
-            return __webpack_require__.e/* import() */(32).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
+            return __webpack_require__.e/* import() */(33).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
         },
         FilePickerModal: function FilePickerModal() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
+            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
         }
     },
 

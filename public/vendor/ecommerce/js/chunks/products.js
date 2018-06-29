@@ -35,7 +35,7 @@ exports.default = {
 
     components: {
         DataTable: function DataTable() {
-            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
+            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
         }
     },
 
@@ -49,6 +49,8 @@ exports.default = {
         console.log('Products.vue Mounted.');
     },
     data: function data() {
+        var _this = this;
+
         var h = this.$createElement;
 
         return {
@@ -83,6 +85,48 @@ exports.default = {
                         }
                     },
                     resizable: true
+                }, {
+                    prop: 'price',
+                    sortable: true,
+                    label: 'Price',
+                    align: 'left',
+                    resizable: true,
+                    formatter: function formatter(row, collumn, cellValue) {
+                        return _this.formatPrice(cellValue, '£');
+                    }
+                }, {
+                    prop: 'can_customise',
+                    sortable: true,
+                    label: 'Customisable',
+                    align: 'left',
+                    resizable: true,
+                    formatter: function formatter(row, collumn, cellValue) {
+                        if (cellValue) {
+                            return h('i', { 'class': 'el-icon-check' });
+                        }
+                    }
+                }, {
+                    prop: 'list_in_shop',
+                    sortable: true,
+                    label: 'In Shop',
+                    align: 'left',
+                    resizable: true,
+                    formatter: function formatter(row, collumn, cellValue) {
+                        if (cellValue) {
+                            return h('i', { 'class': 'el-icon-check' });
+                        }
+                    }
+                }, {
+                    prop: 'featured',
+                    sortable: true,
+                    label: 'Featured',
+                    align: 'left',
+                    resizable: true,
+                    formatter: function formatter(row, collumn, cellValue) {
+                        if (cellValue) {
+                            return h('i', { 'class': 'el-icon-check' });
+                        }
+                    }
                 }, {
                     prop: 'created_at.human',
                     sortable: true,
@@ -124,7 +168,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -144,7 +188,14 @@ var render = function() {
       "bulk-update-url": "products/bulk",
       "table-options": _vm.tableOptions,
       "request-with": "variant",
-      "request-includes": ["live_at", "created_at"],
+      "request-includes": [
+        "live_at",
+        "created_at",
+        "price",
+        "can_customise",
+        "list_in_shop",
+        "featured"
+      ],
       "create-form": _vm.productsCreateForm
     },
     scopedSlots: _vm._u([

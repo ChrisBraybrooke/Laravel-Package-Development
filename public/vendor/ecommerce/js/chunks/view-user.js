@@ -21,10 +21,10 @@ exports.default = {
 
     components: {
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         },
         AddressForm: function AddressForm() {
-            return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
+            return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
         }
     },
 

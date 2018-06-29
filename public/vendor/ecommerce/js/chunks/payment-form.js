@@ -1,4 +1,4 @@
-webpackJsonp([45],{
+webpackJsonp([39],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/PaymentForm.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -167,10 +167,10 @@ exports.default = {
 
     components: {
         CardPaymentForm: function CardPaymentForm() {
-            return __webpack_require__.e/* import() */(49).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/CardPaymentForm.vue"));
+            return __webpack_require__.e/* import() */(50).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/CardPaymentForm.vue"));
         },
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         }
     },
 
@@ -188,7 +188,7 @@ exports.default = {
         },
         startingAmount: {
             required: false,
-            type: String,
+            type: [String, Number],
             default: function _default() {
                 return null;
             }
@@ -202,7 +202,6 @@ exports.default = {
         },
         onPaymentProcessed: {
             required: false,
-            type: Function,
             default: function _default() {
                 return function (payment) {};
             }
@@ -248,35 +247,38 @@ exports.default = {
         processPayment: function processPayment() {
             var _this = this;
 
-            this.$refs['paymentForm'].validate(function (valid, errors) {
-                if (valid) {
-                    if (_this.activePaymentTab !== 'other') {
-                        _this.model.payment_method = _this.activePaymentTab;
-                    }
-                    _this.model.order.id = _this.order.id;
-                    _this.loading = true;
-                    _this.model.include = ['payment.reference', 'payment.method', 'payment.currency', 'payment.amount', 'payment.fee', 'payment.source'];
-                    _apiService2.default.persist('post', {
-                        path: 'payments',
-                        object: _this.model
-                    }).then(function (data) {
-                        _this.onPaymentProcessed(data.data);
-                        _this.loading = false;
-                        _this.model = {
-                            order: {}
+            if (this.activePaymentTab !== 'none') {
+                this.$refs['paymentForm'].validate(function (valid, errors) {
+                    if (valid) {
+                        if (_this.activePaymentTab !== 'other') {
+                            _this.model.payment_method = _this.activePaymentTab;
+                        }
+                        _this.model.order.id = _this.order.id;
+                        _this.loading = true;
+                        _this.model.include = ['payment.reference', 'payment.method', 'payment.currency', 'payment.amount', 'payment.fee', 'payment.source'];
+                        _apiService2.default.persist('post', {
+                            path: 'payments',
+                            object: _this.model
+                        }).then(function (data) {
+                            _this.onPaymentProcessed(data.data);
+                            _this.loading = false;
+                            _this.model = {
+                                order: {}
+                            };
+                            _this.errors = {};
+                        }).catch(function (error) {
+                            _this.errors = error;
+                            _this.loading = false;
+                        });
+                    } else {
+                        _this.errors = {
+                            message: 'There are required feilds empty below.'
                         };
-                        _this.errors = {};
-                        _this.showModal = false;
-                    }).catch(function (error) {
-                        _this.errors = error;
-                        _this.loading = false;
-                    });
-                } else {
-                    _this.errors = {
-                        message: 'There are required feilds empty below.'
-                    };
-                }
-            });
+                    }
+                });
+            } else {
+                this.onPaymentProcessed({});
+            }
         }
     }
 
@@ -292,7 +294,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 

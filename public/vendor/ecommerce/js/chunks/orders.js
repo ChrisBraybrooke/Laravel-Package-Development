@@ -1,5 +1,126 @@
 webpackJsonp([0],{
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/Payments.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+
+    name: 'Payments',
+
+    components: {
+        PaymentDetails: function PaymentDetails() {
+            return __webpack_require__.e/* import() */(47).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentDetails.vue"));
+        },
+        PaymentForm: function PaymentForm() {
+            return __webpack_require__.e/* import() */(39).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentForm.vue"));
+        }
+    },
+
+    props: {
+        payments: {
+            type: Array,
+            required: true
+        },
+        order: {
+            type: Object,
+            required: true
+        },
+        onPaymentProcessed: {
+            required: false,
+            default: function _default() {
+                return function (payment) {};
+            }
+        },
+        showPayments: {
+            type: Boolean,
+            required: false,
+            default: function _default() {
+                return true;
+            }
+        },
+        formStartingAmount: {
+            required: false,
+            type: [String, Number],
+            default: function _default() {
+                return null;
+            }
+        }
+    },
+
+    data: function data() {
+        return {
+            loading: false,
+            showModal: false,
+            payment: {}
+        };
+    },
+
+
+    computed: {},
+
+    watch: {},
+
+    mounted: function mounted() {
+        console.log('Payments.vue mounted!');
+    },
+
+
+    methods: {
+        closeAndClearModal: function closeAndClearModal() {
+            var _this = this;
+
+            this.$confirm('Are you sure to close the payment form?').then(function (_) {
+                _this.showModal = false;
+            }).catch(function (_) {});
+        },
+        clearModal: function clearModal(payment) {
+            this.onPaymentProcessed(payment);
+            this.order.payments.data.push(payment);
+            this.showModal = false;
+        },
+        displayModal: function displayModal() {
+            this.showModal = true;
+        }
+    }
+
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/TableCollumn.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -495,10 +616,10 @@ exports.default = {
 
     components: {
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         },
         AddressForm: function AddressForm() {
-            return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
+            return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
         }
     },
 
@@ -702,63 +823,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
 
@@ -773,11 +837,11 @@ exports.default = {
     name: 'orderStepThree',
 
     components: {
-        CardPaymentForm: function CardPaymentForm() {
-            return __webpack_require__.e/* import() */(49).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/CardPaymentForm.vue"));
+        PaymentForm: function PaymentForm() {
+            return __webpack_require__.e/* import() */(39).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentForm.vue"));
         },
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         }
     },
 
@@ -792,7 +856,7 @@ exports.default = {
     },
 
 
-    computed: _extends({}, (0, _vuex.mapGetters)(['order', 'orderTotals', 'shopData'])),
+    computed: _extends({}, (0, _vuex.mapGetters)(['order', 'orderTotals', 'orderTotal', 'shopData'])),
 
     watch: {
         order: {
@@ -812,51 +876,9 @@ exports.default = {
 
 
     methods: _extends({}, (0, _vuex.mapActions)(['resetOrder']), {
-        processSubmit: function processSubmit(ref) {
-            var _this = this;
-
-            this.loading = true;
-
-            this.$refs[ref].validate(function (valid) {
-                if (valid && _this.activePaymentTab === 'card') {
-                    _this.$refs.paymentForm.createToken();
-                } else if (_this.activePaymentTab !== 'card') {
-
-                    _this.order.payment_method = _this.order.payment_method ? _this.order.payment_method : _this.activePaymentTab;
-                    _apiService2.default.persist("post", {
-                        path: "orders/" + _this.order.id + "/payment",
-                        object: _this.order
-                    }).then(function (data) {
-                        this.loading = false;
-                        this.$router.push({ name: 'orders.view', params: { orderId: this.order.id.toString() } });
-                        this.resetOrder();
-                        // this.data = data.data;
-                    }.bind(_this)).catch(function (error) {
-                        this.loading = false;
-                        // this.errors = error;
-                    }.bind(_this));
-                } else {
-                    return false;
-                    _this.loading = false;
-                }
-            });
-        },
-        onTokenCreation: function onTokenCreation(has_error, token_object, error_object) {
-            if (!has_error && this.order.id) {
-                this.order.payment_method = 'stripe';
-                _apiService2.default.persist("post", {
-                    path: "orders/" + this.order.id + "/payment",
-                    object: this.order
-                }).then(function (data) {
-                    this.loading = false;
-                    this.$router.push({ name: 'orders.view', params: { orderId: this.order.id.toString() } });
-                    this.resetOrder();
-                    // this.data = data.data;
-                }.bind(this)).catch(function (error) {
-                    this.loading = false;
-                    // this.errors = error;
-                }.bind(this));
-            }
+        onPaymentProcessed: function onPaymentProcessed(payment) {
+            this.$router.push({ name: 'orders.view', params: { orderId: this.order.id.toString() } });
+            this.resetOrder();
         }
     })
 };
@@ -950,13 +972,13 @@ exports.default = {
 
     components: {
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         },
         ProductForm: function ProductForm() {
-            return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
+            return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
         },
         ProductTable: function ProductTable() {
-            return __webpack_require__.e/* import() */(34).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
+            return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
         }
     },
 
@@ -1325,8 +1347,24 @@ var _TableCollumn = __webpack_require__("./resources/assets/admin-spa/components
 
 var _TableCollumn2 = _interopRequireDefault(_TableCollumn);
 
+var _Payments = __webpack_require__("./resources/assets/admin-spa/components/Payments.vue");
+
+var _Payments2 = _interopRequireDefault(_Payments);
+
+var _order = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
+
+var _order2 = _interopRequireDefault(_order);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1396,14 +1434,17 @@ exports.default = {
 
     components: {
         DataTable: function DataTable() {
-            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
+            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
         },
+        Payments: _Payments2.default,
         TableCollumn: _TableCollumn2.default
     },
 
     props: [],
 
     data: function data() {
+        var _this3 = this;
+
         var h = this.$createElement;
 
         return {
@@ -1430,6 +1471,7 @@ exports.default = {
                 deleteText: '',
                 collumns: [{
                     prop: 'ref_number',
+                    width: '130px',
                     sortable: true,
                     label: 'Ref',
                     align: 'left',
@@ -1478,6 +1520,7 @@ exports.default = {
                     prop: 'name',
                     sortable: true,
                     label: 'Customer',
+                    width: '150px',
                     formatter: function (row, column, cellValue) {
                         var _this2 = this;
 
@@ -1545,12 +1588,14 @@ exports.default = {
                     prop: 'created_at.date',
                     sortable: true,
                     label: 'Order Placed',
+                    width: '120px',
                     align: 'left',
                     resizable: false
                 }, {
                     prop: 'items',
                     sortable: true,
-                    label: 'Summary',
+                    label: 'Products',
+                    width: '100px',
                     align: 'left',
                     resizable: false,
                     formatter: function formatter(row, column, cellValue) {
@@ -1586,8 +1631,61 @@ exports.default = {
                     prop: 'amount',
                     sortable: true,
                     label: 'Total',
+                    width: '90px',
                     formatter: function formatter(row, column, cellValue) {
                         return row.cart.currency ? row.cart.currency + row.cart.totals.Total : '-';
+                    },
+                    align: 'left',
+                    resizable: false
+                }, {
+                    prop: 'payment_amount',
+                    sortable: true,
+                    label: 'Paid',
+                    width: '90px',
+                    formatter: function formatter(row) {
+                        var payments = [];
+                        row.payments.data.forEach(function (payment) {
+                            if (!payment.refunded) {
+                                payments.push(h('li', [_this3.formatPrice(payment.amount, row.cart.currency), ' by ', h('strong', [payment.method])]));
+                            }
+                        });
+                        var payment_info = payments.length > 0 ? h(
+                            'ul',
+                            { 'class': 'order_items_list table_col_list' },
+                            [payments]
+                        ) : h('span', ['No Payment Information']);
+                        return h(
+                            'el-popover',
+                            {
+                                attrs: { trigger: 'hover', placement: 'top' }
+                            },
+                            [payment_info, h(
+                                'payments',
+                                {
+                                    attrs: { payments: row.payments.data, order: row, 'show-payments': false, 'form-starting-amount': row.cart.totals.Total - row.payment_amount }
+                                },
+                                [function (props) {
+                                    return h(
+                                        'el-button',
+                                        {
+                                            on: {
+                                                'click': function click() {
+                                                    return props.showModal();
+                                                }
+                                            },
+                                            attrs: {
+                                                type: 'success', size: 'mini',
+                                                plain: true }
+                                        },
+                                        ['Make Payment']
+                                    );
+                                }]
+                            ), h(
+                                'div',
+                                { slot: 'reference' },
+                                [h('strong', [_this3.formatPrice(_order2.default.paymentTotal(row.payments.data), row.cart.currency)])]
+                            )]
+                        );
                     },
                     align: 'left',
                     resizable: false
@@ -1620,7 +1718,7 @@ exports.default = {
     watch: {},
 
     mounted: function mounted() {
-        var _this3 = this;
+        var _this4 = this;
 
         var h = this.$createElement;
 
@@ -1628,16 +1726,16 @@ exports.default = {
 
         if (this.objectHas(ecommerceConfig, 'aditional_cols.orders')) {
             forEach(ecommerceConfig.aditional_cols.orders, function (col) {
-                var col_index = findIndex(_this3.tableOptions.collumns, ['prop', col.prop]);
+                var col_index = findIndex(_this4.tableOptions.collumns, ['prop', col.prop]);
                 col.formatter = function (row) {
                     return h('table-collumn', {
                         attrs: { col: col, row: row }
                     });
                 };
                 if (col_index === -1) {
-                    _this3.tableOptions.collumns.push(col);
+                    _this4.tableOptions.collumns.push(col);
                 } else {
-                    _this3.tableOptions.collumns[col_index] = col;
+                    _this4.tableOptions.collumns[col_index] = col;
                 }
             });
         }
@@ -1645,8 +1743,9 @@ exports.default = {
             prop: 'status',
             sortable: true,
             label: 'Status',
+            width: '120px',
             formatter: function (row, column, cellValue) {
-                var _this4 = this;
+                var _this5 = this;
 
                 var type = row.status == 'Completed' ? 'success' : row.status == 'Processing' ? 'danger' : 'info';
                 var config = this.ecommerceConfig;
@@ -1668,7 +1767,7 @@ exports.default = {
                         (0, _babelHelperVueJsxMergeProps2.default)([{
                             on: {
                                 'change': function change() {
-                                    return _this4.apiAction(row);
+                                    return _this5.apiAction(row);
                                 },
                                 'input': function input($$v) {
                                     row.status = $$v;
@@ -1706,6 +1805,10 @@ exports.default = {
 
 
     methods: {
+        processPayment: function processPayment(payment) {
+            console.log(payment);
+        },
+
 
         /**
          * Open the print dialog.
@@ -1756,6 +1859,17 @@ exports.default = {
 
             row.status = status;
             this.apiAction(row);
+        },
+        mailToCourier: function mailToCourier(row) {
+            var delivery_details = [];
+
+            forEach(row.shipping_address, function (line, key) {
+                if (line) {
+                    delivery_details.push(line);
+                }
+            });
+
+            return 'mailto:?subject=Order Ref ' + row.ref_number + '&body=Hello,%0A%0A The delivery details are as follows: %0A%0A' + delivery_details.join('%0A');
         }
     }
 
@@ -1944,88 +2058,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
 
 var _apiService2 = _interopRequireDefault(_apiService);
+
+var _order = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
+
+var _order2 = _interopRequireDefault(_order);
 
 var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 
@@ -2040,13 +2080,16 @@ exports.default = {
 
     components: {
         Errors: function Errors() {
-            return __webpack_require__.e/* import() */(29/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+            return __webpack_require__.e/* import() */(30/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
         },
         ProductTable: function ProductTable() {
-            return __webpack_require__.e/* import() */(34).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
+            return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
         },
         Payments: function Payments() {
-            return __webpack_require__.e/* import() */(44).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Payments.vue"));
+            return new Promise(function(resolve) { resolve(); }).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Payments.vue"));
+        },
+        ContentComponent: function ContentComponent() {
+            return __webpack_require__.e/* import() */(34).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ContentComponent.vue"));
         }
     },
 
@@ -2094,15 +2137,11 @@ exports.default = {
             return [];
         },
         orderTotals: function orderTotals() {
-            var totals = [];
-            forEach(this.order.cart.totals, function (value, key) {
-                totals.push({
-                    'total': key,
-                    'value': value
-                });
-            }.bind(this));
 
-            return totals;
+            if (this.order.cart) {
+                return _order2.default.totals(this.order.items, this.order.cart.totals['Shipping'], this.order.cart.totals['Discount']);
+            }
+            return [{}];
         }
     },
 
@@ -2133,7 +2172,7 @@ exports.default = {
                 path: 'orders/' + this.orderId,
                 params: {
                     with: ['content', 'payments'],
-                    include: ['payment.reference', 'payment.method', 'payment.currency', 'payment.amount', 'payment.fee', 'payment.source']
+                    include: ['payment.reference', 'payment.method', 'payment.currency', 'payment.amount', 'payment.fee', 'payment.source', 'payment.refunded', 'payment.notes']
                 }
             }).then(function (data) {
                 this.loading = false;
@@ -2211,10 +2250,6 @@ exports.default = {
             }
 
             this.printUrl = null;
-        },
-        onPaymentProcessed: function onPaymentProcessed(payment) {
-            console.log(payment);
-            this.order.payments.data.push(payment);
         }
     })
 
@@ -2260,7 +2295,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -2306,6 +2341,21 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 // module
 exports.push([module.i, "/* Element Chalk Variables */\n/* Transition\n-------------------------- */\n/* Colors\n-------------------------- */\n/* 53a8ff */\n/* 66b1ff */\n/* 79bbff */\n/* 8cc5ff */\n/* a0cfff */\n/* b3d8ff */\n/* c6e2ff */\n/* d9ecff */\n/* ecf5ff */\n/* Link\n-------------------------- */\n/* Background\n-------------------------- */\n/* Border\n-------------------------- */\n/* Box-shadow\n-------------------------- */\n/* Fill\n-------------------------- */\n/* Font\n-------------------------- */\n/* Size\n-------------------------- */\n/* z-index\n-------------------------- */\n/* Disable base\n-------------------------- */\n/* Icon\n-------------------------- */\n/* Checkbox\n-------------------------- */\n/* Radio\n-------------------------- */\n/* Select\n-------------------------- */\n/* Alert\n-------------------------- */\n/* Message Box\n-------------------------- */\n/* Message\n-------------------------- */\n/* Notification\n-------------------------- */\n/* Input\n-------------------------- */\n/* Cascader\n-------------------------- */\n/* Group\n-------------------------- */\n/* Tab\n-------------------------- */\n/* Button\n-------------------------- */\n/* cascader\n-------------------------- */\n/* Switch\n-------------------------- */\n/* Dialog\n-------------------------- */\n/* Table\n-------------------------- */\n/* Pagination\n-------------------------- */\n/* Popover\n-------------------------- */\n/* Tooltip\n-------------------------- */\n/* Tag\n-------------------------- */\n/* Tree\n-------------------------- */\n/* Dropdown\n-------------------------- */\n/* Badge\n-------------------------- */\n/* Card\n--------------------------*/\n/* Slider\n--------------------------*/\n/* Steps\n--------------------------*/\n/* Menu\n--------------------------*/\n/* Rate\n--------------------------*/\n/* DatePicker\n--------------------------*/\n/* Loading\n--------------------------*/\n/* Scrollbar\n--------------------------*/\n/* Carousel\n--------------------------*/\n/* Collapse\n--------------------------*/\n/* Transfer\n--------------------------*/\n/* Header\n  --------------------------*/\n/* Footer\n--------------------------*/\n/* Main\n--------------------------*/\n/* Break-point\n--------------------------*/\n/* Custom */\n/* Menu\n-------------------------- */\n.form_option_section {\n  border-bottom: dashed 2px #e4e7ed;\n  padding: 10px 0px;\n  margin-bottom: 10px;\n}\nul.order_item_options {\n  list-style: circle;\n  font-size: 13px;\n  padding: 0px 25px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/admin-spa/components/Payments.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -10156,276 +10206,14 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "el-tabs",
-            {
-              model: {
-                value: _vm.activePaymentTab,
-                callback: function($$v) {
-                  _vm.activePaymentTab = $$v
-                },
-                expression: "activePaymentTab"
-              }
-            },
-            [
-              _c(
-                "el-tab-pane",
-                { attrs: { label: "Card", name: "card" } },
-                [
-                  _c("card-payment-form", {
-                    ref: "paymentForm",
-                    attrs: {
-                      form: _vm.order,
-                      loading: _vm.loading,
-                      "on-token-creation": _vm.onTokenCreation
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-tab-pane",
-                { attrs: { label: "BACS", name: "bacs" } },
-                [
-                  _c(
-                    "el-row",
-                    { attrs: { gutter: 20 } },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: { span: 8, offset: 4 } } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              attrs: {
-                                label: "Amount",
-                                size: "small",
-                                prop: "payment_amount"
-                              }
-                            },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  autofocus: true,
-                                  "auto-complete": "off"
-                                },
-                                model: {
-                                  value: _vm.order.payment_amount,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.order, "payment_amount", $$v)
-                                  },
-                                  expression: "order.payment_amount"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        { attrs: { md: 8 } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              attrs: {
-                                label: "Reference",
-                                size: "small",
-                                prop: "payment_reference"
-                              }
-                            },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  autofocus: true,
-                                  "auto-complete": "off"
-                                },
-                                model: {
-                                  value: _vm.order.payment_reference,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.order,
-                                      "payment_reference",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "order.payment_reference"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-tab-pane",
-                { attrs: { label: "Other", name: "other" } },
-                [
-                  _c(
-                    "el-row",
-                    { attrs: { gutter: 20 } },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: { span: 8, offset: 4 } } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              attrs: {
-                                label: "Payment Method",
-                                size: "small",
-                                prop: "payment_method"
-                              }
-                            },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  autofocus: true,
-                                  "auto-complete": "off"
-                                },
-                                model: {
-                                  value: _vm.order.payment_method,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.order, "payment_method", $$v)
-                                  },
-                                  expression: "order.payment_method"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    { attrs: { gutter: 20 } },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: { span: 8, offset: 4 } } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              attrs: {
-                                label: "Amount",
-                                size: "small",
-                                prop: "payment_amount"
-                              }
-                            },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  autofocus: true,
-                                  "auto-complete": "off"
-                                },
-                                model: {
-                                  value: _vm.order.payment_amount,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.order, "payment_amount", $$v)
-                                  },
-                                  expression: "order.payment_amount"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        { attrs: { md: 8 } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              attrs: {
-                                label: "Reference",
-                                size: "small",
-                                prop: "payment_reference"
-                              }
-                            },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  autofocus: true,
-                                  "auto-complete": "off"
-                                },
-                                model: {
-                                  value: _vm.order.payment_reference,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.order,
-                                      "payment_reference",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "order.payment_reference"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-row",
-            { staticStyle: { "margin-top": "40px" }, attrs: { gutter: 20 } },
-            [
-              _c(
-                "el-col",
-                { attrs: { md: { span: 24 } } },
-                [
-                  _c(
-                    "el-button",
-                    {
-                      attrs: { type: "success", plain: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.processSubmit("orderForm")
-                        }
-                      }
-                    },
-                    [_vm._v("Complete Payment")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("payment-form", {
+            attrs: {
+              order: _vm.order,
+              "show-none-option": true,
+              "starting-amount": _vm.orderTotal,
+              "on-payment-processed": _vm.onPaymentProcessed
+            }
+          })
         ],
         1
       )
@@ -10490,8 +10278,13 @@ var render = function() {
           attrs: {
             "type-name": "order",
             "full-modal": true,
-            "request-with": "content",
-            "with-params": { withOutStatuses: ["quote", "estimate"] },
+            "request-with": ["content", "payments"],
+            "request-includes": [
+              "payment.amount",
+              "payment.method",
+              "payment.refunded"
+            ],
+            "with-params": { withOutStatuses: "STATUS_ESTIMATE" },
             "table-options": _vm.tableOptions,
             "create-form": _vm.ordersCreateForm,
             "create-form-rules": _vm.createFormRules
@@ -10547,7 +10340,7 @@ var render = function() {
                               props.row.ref_number +
                               "&body=Hello " +
                               props.row.customer.first_name +
-                              ","
+                              ",%0A%0A"
                           }
                         },
                         [
@@ -10558,6 +10351,22 @@ var render = function() {
                               attrs: { size: "mini", plain: "" }
                             },
                             [_vm._v("Email Customer\n                    ")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: _vm.mailToCourier(props.row) } },
+                        [
+                          _c(
+                            "el-button",
+                            {
+                              staticClass: "action_btn view_btn",
+                              attrs: { size: "mini", plain: "" }
+                            },
+                            [_vm._v("Email Courier\n                    ")]
                           )
                         ],
                         1
@@ -10851,350 +10660,22 @@ var render = function() {
         "el-row",
         { attrs: { gutter: 20 } },
         [
-          _vm._l(_vm.formattedContent, function(content, key) {
-            return _c(
-              "el-col",
-              {
-                key: content.id,
-                staticStyle: { "margin-bottom": "50px" },
-                attrs: { lg: 12 }
-              },
-              [
-                _c(
-                  "el-card",
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "clearfix",
-                        attrs: { slot: "header" },
-                        slot: "header"
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(content.content_name) +
-                            "\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-form",
-                      {
-                        attrs: {
-                          model: _vm.order,
-                          "label-width": "120px",
-                          size: "mini"
-                        }
-                      },
-                      [
-                        content.type === "json"
-                          ? _c(
-                              "el-row",
-                              _vm._l(content.content, function(jsonContent, k) {
-                                return _c(
-                                  "el-col",
-                                  { key: k, attrs: { md: 12 } },
-                                  [
-                                    _c(
-                                      "el-form-item",
-                                      {
-                                        attrs: {
-                                          label: _vm.capitalize(k),
-                                          prop: k
-                                        }
-                                      },
-                                      [
-                                        k !== "date"
-                                          ? _c("el-input", {
-                                              model: {
-                                                value:
-                                                  _vm.order.content.data[key]
-                                                    .content[k],
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.order.content.data[key]
-                                                      .content,
-                                                    k,
-                                                    $$v
-                                                  )
-                                                },
-                                                expression:
-                                                  "order.content.data[key].content[k]"
-                                              }
-                                            })
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        k === "date"
-                                          ? _c("el-date-picker", {
-                                              staticStyle: { width: "100%" },
-                                              attrs: {
-                                                type: "date",
-                                                placeholder: "Pick a date",
-                                                format: "dd/MM/yyyy",
-                                                "value-format": "dd-MM-yyy",
-                                                "picker-options":
-                                                  _vm.deliveryDateOptions
-                                              },
-                                              model: {
-                                                value:
-                                                  _vm.order.content.data[key]
-                                                    .content[k],
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.order.content.data[key]
-                                                      .content,
-                                                    k,
-                                                    $$v
-                                                  )
-                                                },
-                                                expression:
-                                                  "order.content.data[key].content[k]"
-                                              }
-                                            })
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              })
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "el-row",
-                          [
-                            _c(
-                              "el-col",
-                              { attrs: { xl: 12 } },
-                              [
-                                _c(
-                                  "el-form-item",
-                                  [
-                                    _c(
-                                      "el-button",
-                                      {
-                                        attrs: {
-                                          type: "primary",
-                                          loading: _vm.loading
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.updateOrder()
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Save")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          }),
-          _vm._v(" "),
           _c(
             "el-col",
-            { staticStyle: { "margin-bottom": "50px" }, attrs: { lg: 12 } },
             [
-              _c(
-                "el-card",
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "clearfix",
-                      attrs: { slot: "header" },
-                      slot: "header"
-                    },
-                    [
-                      _c("span", [_vm._v("Payment Information")]),
-                      _vm._v(" "),
-                      _vm.order.payment_id
-                        ? _c(
-                            "a",
-                            {
-                              staticClass: "el-button el-button--text",
-                              staticStyle: {
-                                float: "right",
-                                padding: "3px 0",
-                                "text-decoration": "none"
-                              },
-                              attrs: {
-                                href:
-                                  "https://dashboard.stripe.com/payments/" +
-                                  _vm.order.payment_id,
-                                target: "_blank"
-                              }
-                            },
-                            [_vm._v("View In Stripe")]
-                          )
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-form",
-                    {
-                      ref: "paymentInformationForm",
-                      attrs: {
-                        model: _vm.order,
-                        "label-width": "120px",
-                        size: "mini"
-                      }
-                    },
-                    [
-                      _c(
-                        "el-row",
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { xl: 12 } },
-                            [
-                              _c(
-                                "el-form-item",
-                                {
-                                  attrs: {
-                                    label: "Payment Id",
-                                    prop: "payment_id"
-                                  }
-                                },
-                                [
-                                  _c("el-input", {
-                                    attrs: { disabled: true, autofocus: true },
-                                    model: {
-                                      value: _vm.order.payment_id,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.order, "payment_id", $$v)
-                                      },
-                                      expression: "order.payment_id"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-row",
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { xl: 12 } },
-                            [
-                              _c(
-                                "el-form-item",
-                                {
-                                  attrs: {
-                                    label: "Payment Method",
-                                    prop: "payment_method"
-                                  }
-                                },
-                                [
-                                  _c("el-input", {
-                                    attrs: { disabled: true, autofocus: true },
-                                    model: {
-                                      value: _vm.order.payment_method,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.order,
-                                          "payment_method",
-                                          $$v
-                                        )
-                                      },
-                                      expression: "order.payment_method"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-row",
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { xl: 12 } },
-                            [
-                              _c(
-                                "el-form-item",
-                                {
-                                  attrs: {
-                                    label: "Amount Paid",
-                                    prop: "amount_paid"
-                                  }
-                                },
-                                [
-                                  _c("el-input", {
-                                    attrs: { disabled: true, autofocus: true },
-                                    model: {
-                                      value: _vm.order.amount_paid,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.order, "amount_paid", $$v)
-                                      },
-                                      expression: "order.amount_paid"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-row",
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { xl: 12 } },
-                            [_c("el-form-item")],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
+              _c("content-component", {
+                attrs: {
+                  content: _vm.formattedContent,
+                  editable: false,
+                  "language-options": false,
+                  language: "en"
+                }
+              })
             ],
             1
           )
         ],
-        2
+        1
       ),
       _vm._v(" "),
       _c(
@@ -11647,7 +11128,7 @@ var render = function() {
                     [
                       _c("product-table", {
                         attrs: {
-                          editable: true,
+                          editable: false,
                           order: _vm.order,
                           "order-totals": _vm.orderTotals
                         }
@@ -11675,8 +11156,7 @@ var render = function() {
                   _c("payments", {
                     attrs: {
                       payments: _vm.order.payments.data,
-                      order: _vm.order,
-                      "on-payment-processed": _vm.onPaymentProcessed
+                      order: _vm.order
                     }
                   })
                 ],
@@ -12435,6 +11915,87 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-db37f72e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/Payments.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { loading: _vm.loading } },
+    [
+      _vm._t(
+        "default",
+        [
+          _c(
+            "el-button",
+            {
+              staticStyle: { "margin-bottom": "20px" },
+              attrs: { type: "success", plain: "" },
+              on: {
+                click: function($event) {
+                  _vm.showModal = true
+                }
+              }
+            },
+            [_vm._v("Add Payment")]
+          )
+        ],
+        { showModal: _vm.displayModal }
+      ),
+      _vm._v(" "),
+      _vm.showPayments
+        ? _c("payment-details", { attrs: { payments: _vm.payments } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c(
+            "el-dialog",
+            {
+              attrs: {
+                title: "Add Payment",
+                "close-on-click-modal": false,
+                "append-to-body": true,
+                "before-close": _vm.closeAndClearModal,
+                visible: _vm.showModal
+              },
+              on: {
+                "update:visible": function($event) {
+                  _vm.showModal = $event
+                }
+              }
+            },
+            [
+              _c("payment-form", {
+                attrs: {
+                  "starting-amount": _vm.formStartingAmount,
+                  model: _vm.payment,
+                  order: _vm.order,
+                  "on-payment-processed": _vm.clearModal
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-db37f72e", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31bd2ff2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/sass-loader/lib/loader.js!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/admin-spa/pages/orders/NewOrderStepThree.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12597,6 +12158,33 @@ if(false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/admin-spa/components/Payments.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/admin-spa/components/Payments.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("a9ab3ec0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Payments.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Payments.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/module.js":
 /***/ (function(module, exports) {
 
@@ -12622,6 +12210,58 @@ module.exports = function(module) {
 	}
 	return module;
 };
+
+
+/***/ }),
+
+/***/ "./resources/assets/admin-spa/components/Payments.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db37f72e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/admin-spa/components/Payments.vue")
+}
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/Payments.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-db37f72e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/Payments.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/admin-spa/components/Payments.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-db37f72e", Component.options)
+  } else {
+    hotAPI.reload("data-v-db37f72e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),

@@ -1,4 +1,4 @@
-webpackJsonp([32],{
+webpackJsonp([33],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -84,6 +84,7 @@ var find = __webpack_require__("./node_modules/lodash.find/index.js"); //
 //
 //
 //
+//
 
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 var has = __webpack_require__("./node_modules/lodash.has/index.js");
@@ -95,7 +96,7 @@ exports.default = {
 
     components: {
         PageLayout: function PageLayout() {
-            return __webpack_require__.e/* import() */(40).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/PageLayout.vue"));
+            return __webpack_require__.e/* import() */(43).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/PageLayout.vue"));
         }
     },
 
@@ -182,7 +183,7 @@ exports.default = {
             _apiService2.default.get({
                 path: 'products/' + this.productId,
                 params: {
-                    with: this.requestWith,
+                    with: this.requestWith.concat(['variant']),
                     include: this.requestIncludes
                 }
             }).then(function (data) {
@@ -206,7 +207,7 @@ exports.default = {
 
             this.productErrors = {};
             this.loading = true;
-            this.productForm.with = this.requestWith;
+            this.productForm.with = this.requestWith.concat(['variant']);
             this.productForm.include = this.requestIncludes;
 
             this.$refs[formName].validate(function (valid) {
@@ -5238,6 +5239,24 @@ var render = function() {
           _c("el-breadcrumb-item", { attrs: { to: { name: "products" } } }, [
             _vm._v("Products")
           ]),
+          _vm._v(" "),
+          _vm.productForm.variant
+            ? _c(
+                "el-breadcrumb-item",
+                {
+                  attrs: {
+                    to: {
+                      name: "products.view.variants",
+                      params: {
+                        productId: _vm.productForm.variant.id.toString()
+                      },
+                      force: true
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.productForm.variant.name))]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c("el-breadcrumb-item", [_vm._v(_vm._s(_vm.productForm.name))])
         ],

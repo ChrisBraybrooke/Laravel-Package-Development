@@ -4,9 +4,9 @@
  * Your package config would go here
  */
 
-$green = 'rgba(103, 194, 58, 0.35)';
-$red = 'rgba(194, 58, 58, 0.35)';
-$blue = 'rgba(16, 92, 216, 0.35)';
+$green = '#93d250';
+$red = '#fe0002';
+$blue = '#66cbff';
 
 return [
 
@@ -102,6 +102,7 @@ return [
                   'type' => 'button',
                   'filled_background' => $green,
                   'value' => 'content.data.$[content_name=In Production].content.date',
+                  'width' => '130px',
                   'button' => [
                       'type' => 'success',
                       'plain' => true,
@@ -131,9 +132,10 @@ return [
                   'type' => 'button',
                   'empty_background' => $red,
                   'filled_background' => $green,
+                  'width' => '100px',
                   'value' => 'content.data.$[content_name=Spec Completed].content.date',
                   'button' => [
-                      'type' => 'success',
+                      'type' => 'danger',
                       'plain' => true,
                       'size' => 'mini',
                       'text' => 'Complete',
@@ -160,9 +162,10 @@ return [
                   'type' => 'button',
                   'empty_background' => $red,
                   'filled_background' => $green,
+                  'width' => '100px',
                   'value' => 'content.data.$[content_name=Materials Ordered].content.date',
                   'button' => [
-                      'type' => 'success',
+                      'type' => 'danger',
                       'plain' => true,
                       'size' => 'mini',
                       'text' => 'Ordered',
@@ -180,28 +183,29 @@ return [
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Shipping' => [
+              'Delivery' => [
                   'prop' => 'shipping_completed',
                   'sortable' => true,
-                  'label' => 'Shipping',
+                  'label' => 'Delivery',
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
                   'empty_background' => $red,
                   'filled_background' => $green,
-                  'value' => 'content.data.$[content_name=Shipping Information].content.date',
+                  'width' => '100px',
+                  'value' => 'content.data.$[content_name=Delivery Information].content.date',
                   'button' => [
-                      'type' => 'success',
+                      'type' => 'danger',
                       'plain' => true,
                       'size' => 'mini',
                       'text' => 'Complete',
                       'show_value' => true,
-                      'value' => 'content.data.$[content_name=Shipping Information].content.date',
+                      'value' => 'content.data.$[content_name=Delivery Information].content.date',
                       'hide_if_value' => true
                   ],
                   'action' => [
                       'type' => 'api',
-                      'set' => 'content.data.$[content_name=Shipping Information].content.date',
+                      'set' => 'content.data.$[content_name=Delivery Information].content.date',
                       'value' => now()->format('d-m-Y')
                   ],
                   'api' => [
@@ -209,50 +213,52 @@ return [
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Shipping Cost' => [
+              'Delivery Cost' => [
                   'prop' => 'shipping_cost',
                   'sortable' => true,
-                  'label' => 'Shippping Cost',
+                  'label' => 'Delivery Cost',
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'number',
                   'empty_background' => $red,
                   'filled_background' => $green,
-                  'value' => 'content.data.$[content_name=Shipping Information].content.cost',
+                  'width' => '120px',
+                  'value' => 'content.data.$[content_name=Delivery Information].content.cost',
                   'number' => [
                       'controls' => false
                   ],
                   'action' => [
                       'type' => 'api',
-                      'set' => 'content.data.$[content_name=Shipping Information].content.cost',
+                      'set' => 'content.data.$[content_name=Delivery Information].content.cost',
                   ],
                   'api' => [
                       'method' => 'put',
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Shipping Invoice' => [
+              'Delivery Invoice' => [
                   'prop' => 'shipping_invoice',
                   'sortable' => true,
-                  'label' => 'Shippping Invoice',
+                  'label' => 'Delivery Invoice',
                   'align' => 'left',
                   'resizable' => true,
                   'type' => 'button',
                   'empty_background' => $red,
                   'filled_background' => $green,
-                  'value' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                  'width' => '130px',
+                  'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
                   'button' => [
-                      'type' => 'success',
+                      'type' => 'danger',
                       'plain' => true,
                       'size' => 'mini',
                       'text' => 'Recieved',
                       'show_value' => true,
-                      'value' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                      'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
                       'hide_if_value' => true
                   ],
                   'action' => [
                       'type' => 'api',
-                      'set' => 'content.data.$[content_name=Shipping Information].content.invoice',
+                      'set' => 'content.data.$[content_name=Delivery Information].content.invoice',
                       'value' => now()->format('d-m-Y')
                   ],
                   'api' => [
@@ -285,12 +291,16 @@ return [
   'default_content' => [
 
       'orders' => [
-          ['content_name' => 'Shipping Information', 'content' => ['date' => '', 'reference' => '', 'cost' => '', 'invoice' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'Delivery Information', 'content' => ['date' => '', 'reference' => '', 'cost' => '', 'invoice' => ''], 'type' => 'json', 'order' => 1],
           ['content_name' => 'In Production', 'content' => ['date' => '', 'notes' => ''], 'type' => 'json', 'order' => 2],
           ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
           ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
           ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 5],
-      ]
+      ],
+      'products' => [
+          ['content_name' => 'Main Content', 'content' => '', 'type' => 'quill'],
+          ['content_name' => 'Snippet', 'content' => '', 'type' => 'text']
+      ],
   ],
 
 ];

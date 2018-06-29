@@ -1,4 +1,4 @@
-webpackJsonp([43],{
+webpackJsonp([46],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductCustomisationComponent.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -38,7 +38,7 @@ exports.default = {
 
     components: {
         ProductCustomisationOptionComponent: function ProductCustomisationOptionComponent() {
-            return __webpack_require__.e/* import() */(42).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductCustomisationOptionComponent.vue"));
+            return __webpack_require__.e/* import() */(45).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductCustomisationOptionComponent.vue"));
         }
     },
 

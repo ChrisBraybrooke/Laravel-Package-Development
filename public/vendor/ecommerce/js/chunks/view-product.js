@@ -22,7 +22,10 @@ exports.default = {
 
     components: {
         ProductPageLayout: function ProductPageLayout() {
-            return __webpack_require__.e/* import() */(32).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
+            return __webpack_require__.e/* import() */(33).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
+        },
+        ContentComponent: function ContentComponent() {
+            return __webpack_require__.e/* import() */(34).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ContentComponent.vue"));
         }
     },
 
@@ -82,11 +85,6 @@ exports.default = {
     }
 
 }; //
-//
-//
-//
-//
-//
 //
 //
 //
@@ -409,48 +407,22 @@ var render = function() {
                       "el-row",
                       { attrs: { gutter: 20 } },
                       [
-                        _vm._l(props.productForm.content.data, function(
-                          content
-                        ) {
-                          return [
-                            _c(
-                              "el-col",
-                              { attrs: { lg: 12, md: 24 } },
-                              [
-                                _c(
-                                  "el-form-item",
-                                  {
-                                    attrs: {
-                                      label: content.content_name,
-                                      prop: content.content_name,
-                                      size: "small"
-                                    }
-                                  },
-                                  [
-                                    _c("el-input", {
-                                      attrs: {
-                                        type: "textarea",
-                                        autosize: { minRows: 5 },
-                                        autofocus: true
-                                      },
-                                      model: {
-                                        value: content.content,
-                                        callback: function($$v) {
-                                          _vm.$set(content, "content", $$v)
-                                        },
-                                        expression: "content.content"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        })
+                        _c(
+                          "el-col",
+                          { attrs: { span: 24 } },
+                          [
+                            props.productForm.content
+                              ? _c("content-component", {
+                                  attrs: {
+                                    content: props.productForm.content.data
+                                  }
+                                })
+                              : _vm._e()
+                          ],
+                          1
+                        )
                       ],
-                      2
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),

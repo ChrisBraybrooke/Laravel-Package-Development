@@ -43,10 +43,10 @@ exports.default = {
 
     components: {
         ProductPageLayout: function ProductPageLayout() {
-            return __webpack_require__.e/* import() */(32).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
+            return __webpack_require__.e/* import() */(33).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
         },
         ProductVariantComponent: function ProductVariantComponent() {
-            return __webpack_require__.e/* import() */(41).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductVariantComponent.vue"));
+            return __webpack_require__.e/* import() */(44).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductVariantComponent.vue"));
         }
     },
 
@@ -77,9 +77,7 @@ exports.default = {
     },
 
 
-    methods: {
-        //
-    }
+    methods: {}
 
 };
 
@@ -133,7 +131,10 @@ var render = function() {
                         },
                         [
                           _c("product-variant-component", {
-                            attrs: { model: variant }
+                            attrs: {
+                              model: variant,
+                              variants: props.productForm.variants.data
+                            }
                           })
                         ],
                         1

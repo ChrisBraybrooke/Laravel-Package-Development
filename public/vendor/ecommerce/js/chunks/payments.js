@@ -1,4 +1,4 @@
-webpackJsonp([44],{
+webpackJsonp([46],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/Payments.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -32,6 +32,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
 
 exports.default = {
 
@@ -39,10 +42,10 @@ exports.default = {
 
     components: {
         PaymentDetails: function PaymentDetails() {
-            return __webpack_require__.e/* import() */(46).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentDetails.vue"));
+            return __webpack_require__.e/* import() */(48).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentDetails.vue"));
         },
         PaymentForm: function PaymentForm() {
-            return __webpack_require__.e/* import() */(45).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentForm.vue"));
+            return __webpack_require__.e/* import() */(47).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PaymentForm.vue"));
         }
     },
 
@@ -54,6 +57,19 @@ exports.default = {
         order: {
             type: Object,
             required: true
+        },
+        onPaymentProcessed: {
+            required: false,
+            default: function _default() {
+                return function (payment) {};
+            }
+        },
+        showPayments: {
+            type: Boolean,
+            required: false,
+            default: function _default() {
+                return true;
+            }
         }
     },
 
@@ -82,6 +98,14 @@ exports.default = {
             this.$confirm('Are you sure to close the payment form?').then(function (_) {
                 _this.showModal = false;
             }).catch(function (_) {});
+        },
+        clearModal: function clearModal(payment) {
+            this.onPaymentProcessed(payment);
+            this.order.payments.data.push(payment);
+            this.showModal = false;
+        },
+        displayModal: function displayModal() {
+            this.showModal = true;
         }
     }
 
@@ -97,7 +121,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -115,26 +139,29 @@ var render = function() {
     "div",
     { attrs: { loading: _vm.loading } },
     [
-      _c(
-        "el-button",
-        {
-          staticStyle: { "margin-bottom": "20px" },
-          attrs: { type: "success", plain: "" },
-          on: {
-            click: function($event) {
-              _vm.showModal = true
-            }
-          }
-        },
-        [_vm._v("Add Payment")]
+      _vm._t(
+        "default",
+        [
+          _c(
+            "el-button",
+            {
+              staticStyle: { "margin-bottom": "20px" },
+              attrs: { type: "success", plain: "" },
+              on: {
+                click: function($event) {
+                  _vm.showModal = true
+                }
+              }
+            },
+            [_vm._v("Add Payment")]
+          )
+        ],
+        { showModal: _vm.displayModal }
       ),
       _vm._v(" "),
-      _vm._l(_vm.payments, function(payment) {
-        return _c("payment-details", {
-          key: payment.id,
-          attrs: { payment: payment }
-        })
-      }),
+      _vm.showPayments
+        ? _c("payment-details", { attrs: { payments: _vm.payments } })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "el-dialog",
@@ -142,6 +169,7 @@ var render = function() {
           attrs: {
             title: "Add Payment",
             "close-on-click-modal": false,
+            "append-to-body": true,
             "before-close": _vm.closeAndClearModal,
             visible: _vm.showModal
           },
@@ -153,7 +181,11 @@ var render = function() {
         },
         [
           _c("payment-form", {
-            attrs: { model: _vm.payment, order: _vm.order }
+            attrs: {
+              model: _vm.payment,
+              order: _vm.order,
+              "on-payment-processed": _vm.clearModal
+            }
           })
         ],
         1

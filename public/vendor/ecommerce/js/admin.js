@@ -1,4 +1,4 @@
-webpackJsonp([27],{
+webpackJsonp([28],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/admin.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -14608,12 +14608,18 @@ var _vueClipboard = __webpack_require__("./node_modules/vue-clipboard2/vue-clipb
 
 var _vueClipboard2 = _interopRequireDefault(_vueClipboard);
 
+var _currency = __webpack_require__("./resources/assets/admin-spa/utils/currency.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.ecommerceConfig.web_version = '0.0.32';
+window.ecommerceConfig.web_version = '0.0.35';
 
 window.has = __webpack_require__("./node_modules/lodash.has/index.js");
 var numeral = __webpack_require__("./node_modules/numeral/numeral.js");
+
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+window.laravel_token = token.content;
 
 _vue2.default.use(_elementUi2.default, { locale: _en2.default });
 _vue2.default.use(_vueClipboard2.default);
@@ -14628,6 +14634,11 @@ _vue2.default.mixin({
         }
     },
     methods: {
+        currencyCodeToSymbol: function currencyCodeToSymbol(code) {
+            var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+            return (0, _currency.code_converter)(code, fallback);
+        },
         objectHas: function objectHas(object, value) {
             return has(object, value);
         },
@@ -14808,7 +14819,7 @@ _vue2.default.use(_vueRouter2.default);
 
 // Pages
 var Dashboard = function Dashboard() {
-    return __webpack_require__.e/* import() */(26).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Dashboard.vue"));
+    return __webpack_require__.e/* import() */(27).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Dashboard.vue"));
 };
 var Account = function Account() {
     return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Account.vue"));
@@ -14820,10 +14831,13 @@ var Quotes = function Quotes() {
     return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/quotes/Quotes.vue"));
 };
 var Estimates = function Estimates() {
-    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/Estimates.vue"));
+    return __webpack_require__.e/* import() */(24).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/Estimates.vue"));
 };
 var NewEstimate = function NewEstimate() {
-    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/NewEstimate.vue"));
+    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/NewEstimate.vue"));
+};
+var ViewEstimate = function ViewEstimate() {
+    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue"));
 };
 var NewOrderStepOne = function NewOrderStepOne() {
     return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepOne.vue"));
@@ -14844,7 +14858,7 @@ var ViewCollection = function ViewCollection() {
     return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collections/ViewCollection.vue"));
 };
 var ViewCollectionType = function ViewCollectionType() {
-    return __webpack_require__.e/* import() */(24).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collection-types/ViewCollectionType.vue"));
+    return __webpack_require__.e/* import() */(25).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collection-types/ViewCollectionType.vue"));
 };
 var Products = function Products() {
     return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/Products.vue"));
@@ -14901,7 +14915,7 @@ var ViewMenu = function ViewMenu() {
     return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/menus/ViewMenu.vue"));
 };
 var NotFound = function NotFound() {
-    return __webpack_require__.e/* import() */(25).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/NotFound.vue"));
+    return __webpack_require__.e/* import() */(26).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/NotFound.vue"));
 };
 var ImportExport = function ImportExport() {
     return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/reports/ImportExport.vue"));
@@ -14961,6 +14975,12 @@ var router = new _vueRouter2.default({
         component: NewEstimate,
         name: 'estimates.new',
         meta: { title: 'Admin: New Estimate' }
+    }, {
+        path: '/estimates/:estimateId',
+        component: ViewEstimate,
+        props: true,
+        name: 'estimates.view',
+        meta: { title: 'Admin: Estimate' }
     }, {
         path: '/collections',
         component: Collections,
@@ -15407,7 +15427,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _mutations;
@@ -15430,92 +15450,107 @@ var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
 // initial state
 var state = {
-  order: {
-    customer: {},
-    shipping_rate: 60,
-    discount_rate: 0,
-    billing_address: {},
-    shipping_address: {},
-    items: [],
-    cart: {},
-    use_billing_for_shipping: true,
-    status: 'STATUS_DRAFT',
-    needs_address: 'Needs Address'
-  }
+    order: {
+        customer: {},
+        billing_address: {},
+        shipping_address: {},
+        items: [],
+        cart: {
+            totals: {
+                Shipping: 60,
+                Discount: 0
+            }
+        },
+        use_billing_for_shipping: true,
+        status: 'STATUS_DRAFT',
+        needs_address: 'Needs Address'
+    }
 
-  // getters
+    // getters
 };var getters = {
-  order: function order(state) {
-    return state.order;
-  },
-  orderTotals: function orderTotals(state) {
-    return _order2.default.totals(state.order.items, state.order.shipping_rate, state.order.discount_rate);
-  }
+    order: function order(state) {
+        return state.order;
+    },
+    orderTotals: function orderTotals(state) {
+        return _order2.default.totals(state.order.items, state.order.cart.totals['Shipping'], state.order.cart.totals['Discount']);
+    },
+    orderTotal: function orderTotal(state, getters) {
+        var grand_total = 0;
+        forEach(getters.orderTotals, function (total) {
+            if (total.total === 'Total') {
+                grand_total = total.value;
+            }
+        });
+        return grand_total;
+    }
 };
 
 // actions
 var actions = {
-  setOrder: function setOrder(_ref) {
-    var commit = _ref.commit,
-        dispatch = _ref.dispatch;
-    var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    setOrder: function setOrder(_ref) {
+        var commit = _ref.commit,
+            dispatch = _ref.dispatch;
+        var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    console.log('Vuex: Set Order');
-    commit(types.SET_ORDER, data);
-  },
-  resetOrder: function resetOrder(_ref2) {
-    var state = _ref2.state,
-        commit = _ref2.commit,
-        dispatch = _ref2.dispatch;
+        console.log('Vuex: Set Order');
+        commit(types.SET_ORDER, data);
+    },
+    resetOrder: function resetOrder(_ref2) {
+        var state = _ref2.state,
+            commit = _ref2.commit,
+            dispatch = _ref2.dispatch;
 
-    console.log('Vuex: Reset Order');
-    commit(types.RESET_ORDER);
-  },
-  deleteOrderItem: function deleteOrderItem(_ref3, item) {
-    var commit = _ref3.commit,
-        dispatch = _ref3.dispatch;
+        console.log('Vuex: Reset Order');
+        commit(types.RESET_ORDER);
+    },
+    deleteOrderItem: function deleteOrderItem(_ref3, item) {
+        var commit = _ref3.commit,
+            dispatch = _ref3.dispatch;
 
-    console.log('Vuex: Delete Order Item');
-    commit(types.DELETE_ITEM, item);
-  },
-  editOrderItem: function editOrderItem(_ref4, item) {
-    var state = _ref4.state,
-        commit = _ref4.commit,
-        dispatch = _ref4.dispatch;
+        console.log('Vuex: Delete Order Item');
+        commit(types.DELETE_ITEM, item);
+    },
+    editOrderItem: function editOrderItem(_ref4, item) {
+        var state = _ref4.state,
+            commit = _ref4.commit,
+            dispatch = _ref4.dispatch;
 
-    console.log('Vuex: Update Order Item');
-    var item_index = state.order.items.indexOf(item);
-    state.order.items[item_index] = item;
-  }
+        console.log('Vuex: Update Order Item');
+        var item_index = state.order.items.indexOf(item);
+        state.order.items[item_index] = item;
+    }
 };
 
 // mutations
 var mutations = (_mutations = {}, _defineProperty(_mutations, types.SET_ORDER, function (state, order) {
-  state.order = order;
+    state.order = order;
 }), _defineProperty(_mutations, types.RESET_ORDER, function (state) {
-  state.order = {
-    customer: {},
-    shipping_rate: 60,
-    discount_rate: 0,
-    billing_address: {},
-    shipping_address: {},
-    items: [],
-    cart: {},
-    use_billing_for_shipping: true,
-    status: 'STATUS_DRAFT',
-    needs_address: 'Needs Address'
-  };
+    state.order = {
+        customer: {},
+        billing_address: {},
+        shipping_address: {},
+        items: [],
+        cart: {
+            totals: {
+                Shipping: 60,
+                Discount: 0
+            }
+        },
+        use_billing_for_shipping: true,
+        status: 'STATUS_DRAFT',
+        needs_address: 'Needs Address'
+    };
 }), _defineProperty(_mutations, types.ADD_PRODUCT_TO_ORDER, function (state, product) {
-  state.order.items.push(product);
+    state.order.items.push(product);
 }), _defineProperty(_mutations, types.DELETE_ITEM, function (state, item) {
-  state.order.items.splice(state.order.items.indexOf(item), 1);
+    state.order.items.splice(state.order.items.indexOf(item), 1);
 }), _mutations);
 
 exports.default = {
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
+    state: state,
+    getters: getters,
+    actions: actions,
+    mutations: mutations
 };
 
 /***/ }),
@@ -15786,6 +15821,46 @@ var DELETE_ITEM = exports.DELETE_ITEM = 'DELETE_ITEM';
 
 /***/ }),
 
+/***/ "./resources/assets/admin-spa/utils/currency.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var currency_symbols = exports.currency_symbols = {
+    'USD': '$', // US Dollar
+    'EUR': '€', // Euro
+    'CRC': '₡', // Costa Rican Colón
+    'GBP': '£', // British Pound Sterling
+    'ILS': '₪', // Israeli New Sheqel
+    'INR': '₹', // Indian Rupee
+    'JPY': '¥', // Japanese Yen
+    'KRW': '₩', // South Korean Won
+    'NGN': '₦', // Nigerian Naira
+    'PHP': '₱', // Philippine Peso
+    'PLN': 'zł', // Polish Zloty
+    'PYG': '₲', // Paraguayan Guarani
+    'THB': '฿', // Thai Baht
+    'UAH': '₴', // Ukrainian Hryvnia
+    'VND': '₫' // Vietnamese Dong
+};
+
+var code_converter = exports.code_converter = function code_converter(currency_name) {
+    var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    currency_name = currency_name.toUpperCase();
+
+    if (currency_symbols[currency_name] !== undefined) {
+        return currency_symbols[currency_name];
+    }
+    return fallback;
+};
+
+/***/ }),
+
 /***/ "./resources/assets/admin-spa/utils/operators.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15841,10 +15916,21 @@ exports.default = {
                 }
             });
         }
-        return extras;
+        return extras * product.quantity;
     },
     productTotal: function productTotal(product) {
         return _price2.default.normalise(this.productExtras(product)) + _price2.default.normalise(this.productSubTotal(product));
+    },
+    paymentTotal: function paymentTotal(payments) {
+        var total = 0;
+        payments.forEach(function (payment) {
+            if (payment.refunded !== true) {
+                var amount = String(payment.amount);
+                amount = parseFloat(amount.replace(/,/g, ''));
+                total = total + amount;
+            }
+        });
+        return total;
     },
     totals: function totals(products) {
         var shipping = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;

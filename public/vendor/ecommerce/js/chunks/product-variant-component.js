@@ -1,4 +1,4 @@
-webpackJsonp([41],{
+webpackJsonp([44],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -43,6 +43,13 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
 
@@ -50,7 +57,7 @@ exports.default = {
 
     components: {
         FilePickerModal: function FilePickerModal() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
+            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
         }
     },
 
@@ -58,6 +65,20 @@ exports.default = {
         model: {
             type: Object,
             required: true
+        },
+        variants: {
+            type: Array,
+            required: true,
+            default: function _default() {
+                return [];
+            }
+        },
+        onRemoveProduct: {
+            type: Function,
+            required: false,
+            default: function _default() {
+                return function (product) {};
+            }
         }
     },
 
@@ -71,6 +92,14 @@ exports.default = {
     mounted: function mounted() {
         console.log('ProductVariantComponent.vue mounted');
         this.productVariant = this.model;
+    },
+
+
+    methods: {
+        removeProduct: function removeProduct() {
+            this.variants.splice(this.variants.indexOf(this.productVariant), 1);
+            this.onRemoveProduct(this.productVariant);
+        }
     }
 };
 
@@ -84,7 +113,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -142,6 +171,7 @@ var render = function() {
                   _c(
                     "el-input",
                     {
+                      attrs: { disabled: _vm.productVariant.id ? true : false },
                       model: {
                         value: _vm.productVariant.slug,
                         callback: function($$v) {
@@ -167,45 +197,76 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "el-row",
-        { attrs: { gutter: 20 } },
-        [
-          _c(
-            "el-col",
-            { attrs: { md: 24 } },
+      !_vm.productVariant.id
+        ? _c(
+            "el-row",
+            { attrs: { gutter: 20 } },
             [
               _c(
-                "el-form-item",
-                { attrs: { label: "Main Img", prop: "main_img" } },
+                "el-col",
+                { attrs: { md: 24 } },
                 [
-                  _vm.productVariant.main_img
-                    ? _c("file-picker-modal", {
-                        attrs: {
-                          "current-files": _vm.productVariant.main_img.id
-                            ? [_vm.productVariant.main_img]
-                            : undefined,
-                          "show-btn": true,
-                          name: "Main Img",
-                          selectable: 1,
-                          "picker-id": "main_img"
-                        },
-                        on: {
-                          "update:files": function(val) {
-                            return (_vm.productVariant.main_img = val)
-                          }
-                        }
-                      })
-                    : _vm._e()
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Main Img", prop: "main_img" } },
+                    [
+                      _vm.productVariant.main_img
+                        ? _c("file-picker-modal", {
+                            attrs: {
+                              "current-files": _vm.productVariant.main_img.id
+                                ? [_vm.productVariant.main_img]
+                                : undefined,
+                              "show-btn": true,
+                              name: "Main Img",
+                              selectable: 1,
+                              "picker-id": "main_img"
+                            },
+                            on: {
+                              "update:files": function(val) {
+                                return (_vm.productVariant.main_img = val)
+                              }
+                            }
+                          })
+                        : _vm._e()
+                    ],
+                    1
+                  )
                 ],
                 1
               )
             ],
             1
           )
-        ],
-        1
-      )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.productVariant.id
+        ? _c(
+            "router-link",
+            {
+              attrs: {
+                to: {
+                  name: "products.view",
+                  params: { productId: _vm.productVariant.id.toString() }
+                }
+              }
+            },
+            [
+              _c(
+                "el-button",
+                { attrs: { plain: "", type: "success", size: "small" } },
+                [_vm._v("Edit Product")]
+              )
+            ],
+            1
+          )
+        : _c(
+            "el-button",
+            {
+              attrs: { type: "danger", size: "small" },
+              on: { click: _vm.removeProduct }
+            },
+            [_vm._v("Remove")]
+          )
     ],
     1
   )
