@@ -1,4 +1,4 @@
-webpackJsonp([45],{
+webpackJsonp([46],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductCustomisationOptionComponent.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -64,6 +64,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 exports.default = {
 
@@ -71,7 +73,7 @@ exports.default = {
 
     components: {
         FilePickerModal: function FilePickerModal() {
-            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
+            return __webpack_require__.e/* import() */(33/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
         }
     },
 
@@ -128,7 +130,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -183,23 +185,28 @@ var render = function() {
                 "el-form-item",
                 { attrs: { label: "Selector Img", prop: "selector_img" } },
                 [
-                  _c("file-picker-modal", {
-                    ref: "customisationSelectorFile",
-                    attrs: {
-                      "current-files": _vm.productCustomisationOption
-                        .selector_img
-                        ? [_vm.productCustomisationOption.selector_img]
-                        : undefined,
-                      name: _vm.productCustomisationOption + " Selector Img",
-                      selectable: 1,
-                      "show-btn": true,
-                      "picker-id": "selector_img"
-                    },
-                    on: {
-                      filesChosen: _vm.handleFilesChosen,
-                      filesUnChosen: _vm.handleFilesUnChosen
-                    }
-                  })
+                  _vm.objectHas(_vm.productCustomisationOption, "selector_img")
+                    ? _c("file-picker-modal", {
+                        ref: "customisationSelectorFile",
+                        attrs: {
+                          "current-files": _vm.objectHas(
+                            _vm.productCustomisationOption,
+                            "selector_img.id"
+                          )
+                            ? [_vm.productCustomisationOption.selector_img]
+                            : undefined,
+                          name:
+                            _vm.productCustomisationOption + " Selector Img",
+                          selectable: 1,
+                          "show-btn": true,
+                          "picker-id": "selector_img"
+                        },
+                        on: {
+                          filesChosen: _vm.handleFilesChosen,
+                          filesUnChosen: _vm.handleFilesUnChosen
+                        }
+                      })
+                    : _vm._e()
                 ],
                 1
               )
@@ -215,22 +222,27 @@ var render = function() {
                 "el-form-item",
                 { attrs: { label: "Main Img", prop: "main_img" } },
                 [
-                  _c("file-picker-modal", {
-                    ref: "customisationOptionFile",
-                    attrs: {
-                      "current-files": _vm.productCustomisationOption.main_img
-                        ? [_vm.productCustomisationOption.main_img]
-                        : undefined,
-                      name: _vm.productCustomisationOption + " Main Img",
-                      selectable: 1,
-                      "picker-id": "main_img",
-                      "show-btn": true
-                    },
-                    on: {
-                      filesChosen: _vm.handleFilesChosen,
-                      filesUnChosen: _vm.handleFilesUnChosen
-                    }
-                  })
+                  _vm.objectHas(_vm.productCustomisationOption, "main_img")
+                    ? _c("file-picker-modal", {
+                        ref: "customisationOptionFile",
+                        attrs: {
+                          "current-files": _vm.objectHas(
+                            _vm.productCustomisationOption,
+                            "main_img.id"
+                          )
+                            ? [_vm.productCustomisationOption.main_img]
+                            : undefined,
+                          name: _vm.productCustomisationOption + " Main Img",
+                          selectable: 1,
+                          "picker-id": "main_img",
+                          "show-btn": true
+                        },
+                        on: {
+                          filesChosen: _vm.handleFilesChosen,
+                          filesUnChosen: _vm.handleFilesUnChosen
+                        }
+                      })
+                    : _vm._e()
                 ],
                 1
               )

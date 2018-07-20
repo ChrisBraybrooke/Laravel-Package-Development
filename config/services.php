@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'bugsnag' => [
+        'env' => env('APP_ENV'),
+        'key' => env('BUGSNAG_KEY'),
+        'active' => env('BUGSNAG_ACTIVE') ? 'true' : 'false',
+    ],
+
 ];

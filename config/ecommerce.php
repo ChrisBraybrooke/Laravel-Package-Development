@@ -3,7 +3,6 @@
 /**
  * Your package config would go here
  */
-
 $green = '#93d250';
 $red = '#fe0002';
 $blue = '#66cbff';
@@ -91,7 +90,6 @@ return [
 
       //
       'aditional_cols' => [
-
           'orders' => [
               'Job Number' => [
                   'prop' => 'ref_number',
@@ -183,53 +181,31 @@ return [
                       'path' => 'orders/${id}'
                   ]
               ],
-              'Delivery' => [
-                  'prop' => 'shipping_completed',
-                  'sortable' => true,
-                  'label' => 'Delivery',
-                  'align' => 'left',
-                  'resizable' => true,
-                  'type' => 'button',
-                  'empty_background' => $red,
-                  'filled_background' => $green,
-                  'width' => '100px',
-                  'value' => 'content.data.$[content_name=Delivery Information].content.date',
-                  'button' => [
-                      'type' => 'danger',
-                      'plain' => true,
-                      'size' => 'mini',
-                      'text' => 'Complete',
-                      'show_value' => true,
-                      'value' => 'content.data.$[content_name=Delivery Information].content.date',
-                      'hide_if_value' => true
-                  ],
-                  'action' => [
-                      'type' => 'api',
-                      'set' => 'content.data.$[content_name=Delivery Information].content.date',
-                      'value' => now()->format('d-m-Y')
-                  ],
-                  'api' => [
-                      'method' => 'put',
-                      'path' => 'orders/${id}'
-                  ]
-              ],
               'Delivery Cost' => [
                   'prop' => 'shipping_cost',
                   'sortable' => true,
                   'label' => 'Delivery Cost',
                   'align' => 'left',
                   'resizable' => true,
-                  'type' => 'number',
+                  'type' => 'addition',
                   'empty_background' => $red,
                   'filled_background' => $green,
                   'width' => '120px',
-                  'value' => 'content.data.$[content_name=Delivery Information].content.cost',
-                  'number' => [
-                      'controls' => false
+                  'value' => 'content.data.$[content_name=Delivery Information].content.Totals Multi',
+                  'addition' => [
+                      'show_total' => false,
+                      'total_text' => 'Deliveries',
+                      'total_button' => true,
+                      'format_amount' => true,
+                      'amount_prefix' => '£',
+                      'add_button_text' => 'Add Delivery',
+                      'individual_name' => 'Delivery',
+                      'form_name' => 'Add Delivery',
+                      'additional_fields' => ['Date' => '', 'Notes' => ''],
                   ],
                   'action' => [
                       'type' => 'api',
-                      'set' => 'content.data.$[content_name=Delivery Information].content.cost',
+                      'set' => 'content.data.$[content_name=Delivery Information].content.Totals Multi',
                   ],
                   'api' => [
                       'method' => 'put',
@@ -275,31 +251,34 @@ return [
               [
                   'name' => 'Delivery',
                   'if' => 'status',
-                  'value' => 'Processing',
+                  'value' => App\Order::$statuses['STATUS_PROCESSING'],
                   'colour' => $blue
               ],
               [
                   'name' => 'Delivery',
                   'if' => 'status',
-                  'value' => 'Completed',
+                  'value' => App\Order::$statuses['STATUS_COMPLETED'],
                   'colour' => $green
-              ]
+              ],
           ]
       ],
   ],
 
   'default_content' => [
-
       'orders' => [
-          ['content_name' => 'Delivery Information', 'content' => ['date' => '', 'reference' => '', 'cost' => '', 'invoice' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'Delivery Information', 'content' => ['Totals Multi' => [], 'invoice' => ''], 'type' => 'json', 'order' => 1],
           ['content_name' => 'In Production', 'content' => ['date' => '', 'notes' => ''], 'type' => 'json', 'order' => 2],
           ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
           ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
           ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 5],
+          ['content_name' => 'Notes', 'content' => ['materials' => '', 'delivery' => '', 'completed checkbox' => false], 'type' => 'json', 'order' => 6],
       ],
       'products' => [
           ['content_name' => 'Main Content', 'content' => '', 'type' => 'quill'],
           ['content_name' => 'Snippet', 'content' => '', 'type' => 'text']
+      ],
+      'collection_types' => [
+          ['content_name' => 'Main Content', 'content' => '', 'type' => 'quill'],
       ],
   ],
 

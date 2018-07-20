@@ -34,7 +34,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		51: 0
+/******/ 		52: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -91,7 +91,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/chunks/" + ({"0":"orders","1":"pages","2":"collections","3":"account","4":"view-product-customisations","5":"view-menu","6":"view-form","7":"users","8":"forms","9":"customers","10":"config","11":"view-user","12":"import-export","13":"quotes","14":"view-product-variants","15":"view-product-pricing","16":"view-product-ordering","17":"view-product-images","18":"view-product","19":"products","20":"menus","21":"galleries","22":"view-estimates","23":"new-estimates","24":"estimates","25":"collectiontypes","26":"not-found","27":"dashboard","30":"errors","31":"data-table","32":"file-picker-modal","33":"product-page-layout","34":"content-component","35":"product-table","36":"product-form","37":"address-form","38":"galleries-component","39":"payment-form","40":"content-inner","41":"gallery-component","42":"file-upload-component","43":"page-layout","44":"product-variant-component","45":"product-customisation-option-component","46":"product-customisation-component","47":"payment-details","48":"form-section-component","49":"form-field-component","50":"card-payment-form"}[chunkId]||chunkId) + ".js";
+/******/ 		script.src = __webpack_require__.p + "js/chunks/" + ({"0":"orders","1":"pages","2":"collections","3":"account","4":"view-product-customisations","5":"view-menu","6":"view-form","7":"users","8":"forms","9":"customers","10":"config","11":"view-user","12":"import-export","13":"quotes","14":"view-product-variants","15":"view-product-pricing","16":"view-product-ordering","17":"view-product-images","18":"view-product","19":"products","20":"pro-formas","21":"menus","22":"galleries","23":"view-estimates","24":"new-estimates","25":"estimates","26":"collectiontypes","27":"not-found","28":"dashboard","31":"errors","32":"data-table","33":"file-picker-modal","34":"product-page-layout","35":"content-component","36":"product-table","37":"product-form","38":"content-inner","39":"address-form","40":"galleries-component","41":"payment-form","42":"gallery-component","43":"file-upload-component","44":"page-layout","45":"product-variant-component","46":"product-customisation-option-component","47":"product-customisation-component","48":"payment-details","49":"form-section-component","50":"form-field-component","51":"card-payment-form"}[chunkId]||chunkId) + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {

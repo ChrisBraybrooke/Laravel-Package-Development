@@ -1,4 +1,4 @@
-webpackJsonp([40],{
+webpackJsonp([38],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ContentInner.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -10,6 +10,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _name$components$prop;
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 __webpack_require__("./node_modules/quill/dist/quill.core.css");
@@ -18,10 +20,29 @@ __webpack_require__("./node_modules/quill/dist/quill.snow.css");
 
 __webpack_require__("./node_modules/quill/dist/quill.bubble.css");
 
+var _content = __webpack_require__("./resources/assets/admin-spa/utils/content.js");
+
+var _content2 = _interopRequireDefault(_content);
+
 var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 
 var _vueQuillEditor = __webpack_require__("./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -188,14 +209,17 @@ var _vueQuillEditor = __webpack_require__("./node_modules/vue-quill-editor/dist/
 
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
-exports.default = {
+exports.default = (_name$components$prop = {
 
     name: 'ContentInner',
 
     components: {
         quillEditor: _vueQuillEditor.quillEditor,
         FilePickerModal: function FilePickerModal() {
-            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
+            return __webpack_require__.e/* import() */(33/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
+        },
+        ContentInner: function ContentInner() {
+            return new Promise(function(resolve) { resolve(); }).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ContentInner.vue"));
         }
     },
 
@@ -238,6 +262,12 @@ exports.default = {
         }
     },
 
+    watch: {
+        'content.content': function contentContent(value) {
+            console.log(value);
+        }
+    },
+
     data: function data() {
         var self = this;
         return {
@@ -263,52 +293,55 @@ exports.default = {
     },
 
 
-    computed: _extends({}, (0, _vuex.mapGetters)(['shopData'])),
-
-    watch: {},
-
-    mounted: function mounted() {
-        console.log('ContentInner.vue mounted!');
-    },
-
-
-    methods: {
-        deleteJsonContent: function deleteJsonContent(json_key) {
-            this.$delete(this.content.content, json_key);
-        },
-        addJsonContent: function addJsonContent() {
-            var _this = this;
-
-            this.$prompt('Content Name', 'Content Name', {
-                confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel',
-                inputValidator: function inputValidator(val) {
-                    return val ? true : false;
-                },
-                inputErrorMessage: 'Name is required.'
-            }).then(function (value) {
-                _this.$set(_this.content.content, value.value, '');
-            });
-        },
-        deleteContent: function deleteContent() {
-            this.onDeleteContent(this.contentKey);
-        },
-        insertQuillImage: function insertQuillImage(files) {
-            forEach(files, function (file) {
-                this.quillInstance.quill.insertEmbed(this.quillSelection.index, 'image', file.url);
-            }.bind(this));
-
-            this.quillInstance = null;
-            this.quillSelection = null;
-        },
-        fileModalClosed: function fileModalClosed() {
-            this.showFilePicker = false;
-            this.quillInstance = null;
-            this.quillSelection = null;
+    computed: _extends({}, (0, _vuex.mapGetters)(['shopData']), {
+        contentLabel: function contentLabel() {
+            var content_name = this.content.content_name.replace("multi", "");
+            return this.showSectionTitle ? content_name + (this.anguageOptions ? ' (' + (this.content.language ? this.content.language : '') + ')' : '') : '';
         }
-    }
+    })
 
-};
+}, _defineProperty(_name$components$prop, 'watch', {}), _defineProperty(_name$components$prop, 'mounted', function mounted() {
+    console.log('ContentInner.vue mounted!');
+}), _defineProperty(_name$components$prop, 'methods', {
+    deleteJsonContent: function deleteJsonContent(json_key) {
+        this.$delete(this.content.content, json_key);
+    },
+    inputLabel: function inputLabel(json_key) {
+        return this.capitalize(_content2.default.inputLabel(json_key));
+    },
+    addJsonContent: function addJsonContent() {
+        var _this = this;
+
+        this.$prompt('Content Name', 'Content Name', {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            inputValidator: function inputValidator(val) {
+                return val ? true : false;
+            },
+            inputErrorMessage: 'Name is required.'
+        }).then(function (value) {
+            var content = _this.content.content;
+            var inner_content = value.value.toUpperCase().includes('MULTI') ? {} : '';
+            _this.$set(_this.content.content, value.value, inner_content);
+        });
+    },
+    deleteContent: function deleteContent() {
+        this.onDeleteContent(this.contentKey);
+    },
+    insertQuillImage: function insertQuillImage(files) {
+        forEach(files, function (file) {
+            this.quillInstance.quill.insertEmbed(this.quillSelection.index, 'image', file.url);
+        }.bind(this));
+
+        this.quillInstance = null;
+        this.quillSelection = null;
+    },
+    fileModalClosed: function fileModalClosed() {
+        this.showFilePicker = false;
+        this.quillInstance = null;
+        this.quillSelection = null;
+    }
+}), _name$components$prop);
 
 /***/ }),
 
@@ -365,7 +398,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -14511,19 +14544,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-form-item",
-        {
-          attrs: {
-            label: _vm.showSectionTitle
-              ? _vm.content.content_name +
-                (_vm.languageOptions
-                  ? " (" +
-                    (_vm.content.language ? _vm.content.language : "") +
-                    ")"
-                  : "")
-              : "",
-            prop: _vm.content.content_name
-          }
-        },
+        { attrs: { label: _vm.contentLabel, prop: _vm.content.content_name } },
         [
           _vm.content.type === "quill"
             ? _c("quill-editor", {
@@ -14555,15 +14576,7 @@ var render = function() {
                               _c(
                                 "span",
                                 { staticStyle: { display: "block" } },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.capitalize(
-                                        json_key.replace(/_/g, " ")
-                                      )
-                                    )
-                                  )
-                                ]
+                                [_vm._v(_vm._s(_vm.inputLabel(json_key)))]
                               ),
                               _vm._v(" "),
                               json_key.toUpperCase().includes("DATE")
@@ -14685,7 +14698,9 @@ var render = function() {
                                     ],
                                     1
                                   )
-                                : json_key.toUpperCase().includes("NUMBER")
+                                : json_key.toUpperCase().includes("NUMBER") ||
+                                  json_key.toUpperCase().includes("VALUE") ||
+                                  json_key.toUpperCase().includes("AMOUNT")
                                   ? _c(
                                       "div",
                                       { staticStyle: { width: "100%" } },
@@ -15184,125 +15199,192 @@ var render = function() {
                                             ],
                                             1
                                           )
-                                        : _c(
-                                            "div",
-                                            [
-                                              _c("el-input", {
-                                                staticStyle: {
-                                                  width: "100%",
-                                                  "max-width": "300px"
-                                                },
-                                                attrs: { size: "small" },
-                                                model: {
-                                                  value:
-                                                    _vm.content.content[
-                                                      json_key
-                                                    ],
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.content.content,
-                                                      json_key,
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "content.content[json_key]"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _vm.editable
-                                                ? _c(
-                                                    "el-popover",
-                                                    {
-                                                      ref:
-                                                        "json_content_delete_confirm_" +
+                                        : json_key
+                                            .toUpperCase()
+                                            .includes("CHECK") ||
+                                          json_key
+                                            .toUpperCase()
+                                            .includes("CHECKBOX")
+                                          ? _c(
+                                              "div",
+                                              [
+                                                _c("el-checkbox", {
+                                                  model: {
+                                                    value:
+                                                      _vm.content.content[
+                                                        json_key
+                                                      ],
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.content.content,
                                                         json_key,
-                                                      refInFor: true,
-                                                      attrs: {
-                                                        placement: "top",
-                                                        width: "160"
-                                                      }
+                                                        $$v
+                                                      )
                                                     },
-                                                    [
-                                                      _c("p", [
-                                                        _vm._v(
-                                                          "Delete content?"
+                                                    expression:
+                                                      "content.content[json_key]"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : json_key
+                                              .toUpperCase()
+                                              .includes("MULTI")
+                                            ? _c(
+                                                "div",
+                                                [
+                                                  _c("content-inner", {
+                                                    attrs: {
+                                                      "show-section-title": false,
+                                                      "on-delete-content":
+                                                        _vm.deleteJsonContent,
+                                                      content: {
+                                                        content_name: json_key,
+                                                        content:
+                                                          _vm.content.content[
+                                                            json_key
+                                                          ],
+                                                        type: "json"
+                                                      },
+                                                      "content-key": json_key,
+                                                      editable: true,
+                                                      "language-options": false
+                                                    }
+                                                  })
+                                                ],
+                                                1
+                                              )
+                                            : _c(
+                                                "div",
+                                                [
+                                                  _c("el-input", {
+                                                    staticStyle: {
+                                                      width: "100%",
+                                                      "max-width": "300px"
+                                                    },
+                                                    attrs: { size: "small" },
+                                                    model: {
+                                                      value:
+                                                        _vm.content.content[
+                                                          json_key
+                                                        ],
+                                                      callback: function($$v) {
+                                                        _vm.$set(
+                                                          _vm.content.content,
+                                                          json_key,
+                                                          $$v
                                                         )
-                                                      ]),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "div",
+                                                      },
+                                                      expression:
+                                                        "content.content[json_key]"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _vm.editable
+                                                    ? _c(
+                                                        "el-popover",
                                                         {
-                                                          staticStyle: {
-                                                            "text-align":
-                                                              "right",
-                                                            margin: "0"
+                                                          ref:
+                                                            "json_content_delete_confirm_" +
+                                                            json_key,
+                                                          refInFor: true,
+                                                          attrs: {
+                                                            placement: "top",
+                                                            width: "160"
                                                           }
                                                         },
                                                         [
-                                                          _c(
-                                                            "el-button",
-                                                            {
-                                                              attrs: {
-                                                                size: "mini",
-                                                                type: "text"
-                                                              },
-                                                              on: {
-                                                                click: function(
-                                                                  $event
-                                                                ) {
-                                                                  _vm.$refs[
-                                                                    "json_content_delete_confirm_" +
-                                                                      json_key
-                                                                  ][0].doClose()
-                                                                }
-                                                              }
-                                                            },
-                                                            [_vm._v("Cancel")]
-                                                          ),
+                                                          _c("p", [
+                                                            _vm._v(
+                                                              "Delete content?"
+                                                            )
+                                                          ]),
                                                           _vm._v(" "),
                                                           _c(
-                                                            "el-button",
+                                                            "div",
                                                             {
-                                                              attrs: {
-                                                                type: "primary",
-                                                                size: "mini"
-                                                              },
-                                                              on: {
-                                                                click: function(
-                                                                  $event
-                                                                ) {
-                                                                  _vm.deleteJsonContent(
-                                                                    json_key
-                                                                  )
-                                                                }
+                                                              staticStyle: {
+                                                                "text-align":
+                                                                  "right",
+                                                                margin: "0"
                                                               }
                                                             },
-                                                            [_vm._v("Confirm")]
-                                                          )
+                                                            [
+                                                              _c(
+                                                                "el-button",
+                                                                {
+                                                                  attrs: {
+                                                                    size:
+                                                                      "mini",
+                                                                    type: "text"
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      _vm.$refs[
+                                                                        "json_content_delete_confirm_" +
+                                                                          json_key
+                                                                      ][0].doClose()
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Cancel"
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "el-button",
+                                                                {
+                                                                  attrs: {
+                                                                    type:
+                                                                      "primary",
+                                                                    size: "mini"
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      _vm.deleteJsonContent(
+                                                                        json_key
+                                                                      )
+                                                                    }
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Confirm"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("el-button", {
+                                                            staticClass:
+                                                              "mini_delete",
+                                                            attrs: {
+                                                              slot: "reference",
+                                                              plain: "",
+                                                              size: "mini",
+                                                              type: "danger",
+                                                              icon:
+                                                                "el-icon-error"
+                                                            },
+                                                            slot: "reference"
+                                                          })
                                                         ],
                                                         1
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("el-button", {
-                                                        staticClass:
-                                                          "mini_delete",
-                                                        attrs: {
-                                                          slot: "reference",
-                                                          plain: "",
-                                                          size: "mini",
-                                                          type: "danger",
-                                                          icon: "el-icon-error"
-                                                        },
-                                                        slot: "reference"
-                                                      })
-                                                    ],
-                                                    1
-                                                  )
-                                                : _vm._e()
-                                            ],
-                                            1
-                                          )
+                                                      )
+                                                    : _vm._e()
+                                                ],
+                                                1
+                                              )
                             ])
                           }),
                           _vm._v(" "),
@@ -15516,6 +15598,25 @@ if (false) {(function () {
 
 module.exports = Component.exports
 
+
+/***/ }),
+
+/***/ "./resources/assets/admin-spa/utils/content.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    inputLabel: function inputLabel(json_key) {
+        if (typeof json_key === 'string') {
+            return json_key.replace(/_/g, ' ').replace('multi', '').replace('Multi', '').replace('checkbox', '').replace('Checkbox', '');
+        }
+    }
+};
 
 /***/ })
 
