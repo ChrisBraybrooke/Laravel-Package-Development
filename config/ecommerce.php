@@ -4,9 +4,9 @@
  * Your package config would go here
  */
 
- $green = '#93d250';
+ $green = '#a9d100';
  $red = '#fe0002';
- $blue = '#66cbff';
+ $blue = '#2294ad';
 
 return [
 
@@ -227,6 +227,8 @@ return [
                 'value' => 'content.data.$[content_name=Delivery Information].content.Totals Multi',
                 'addition' => [
                     'show_total' => false,
+                    'editable' => true,
+                    'editable_text' => 'Edit',
                     'total_text' => 'Deliveries',
                     'total_button' => true,
                     'format_amount' => true,
@@ -234,7 +236,7 @@ return [
                     'add_button_text' => 'Add Delivery',
                     'individual_name' => 'Delivery',
                     'form_name' => 'Add Delivery',
-                    'additional_fields' => ['Date' => '', 'Notes' => ''],
+                    'additional_fields' => ['Date' => '', 'Notes' => '', 'Completed' => ''],
                 ],
                 'action' => [
                     'type' => 'api',
@@ -245,36 +247,36 @@ return [
                     'path' => 'orders/${id}'
                 ]
             ],
-            'Delivery Invoice' => [
-                'prop' => 'Delivery_invoice',
-                'sortable' => true,
-                'label' => 'Delivery Invoice',
-                'align' => 'left',
-                'resizable' => true,
-                'type' => 'button',
-                'empty_background' => $red,
-                'filled_background' => $green,
-                'width' => '130px',
-                'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
-                'button' => [
-                    'type' => 'danger',
-                    'plain' => true,
-                    'size' => 'mini',
-                    'text' => 'Recieved',
-                    'show_value' => true,
-                    'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
-                    'hide_if_value' => true
-                ],
-                'action' => [
-                    'type' => 'api',
-                    'set' => 'content.data.$[content_name=Delivery Information].content.invoice',
-                    'value' => now()->format('d-m-Y')
-                ],
-                'api' => [
-                    'method' => 'put',
-                    'path' => 'orders/${id}'
-                ]
-            ],
+            // 'Delivery Invoice' => [
+            //     'prop' => 'Delivery_invoice',
+            //     'sortable' => true,
+            //     'label' => 'Delivery Invoice',
+            //     'align' => 'left',
+            //     'resizable' => true,
+            //     'type' => 'button',
+            //     'empty_background' => $red,
+            //     'filled_background' => $green,
+            //     'width' => '130px',
+            //     'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
+            //     'button' => [
+            //         'type' => 'danger',
+            //         'plain' => true,
+            //         'size' => 'mini',
+            //         'text' => 'Recieved',
+            //         'show_value' => true,
+            //         'value' => 'content.data.$[content_name=Delivery Information].content.invoice',
+            //         'hide_if_value' => true
+            //     ],
+            //     'action' => [
+            //         'type' => 'api',
+            //         'set' => 'content.data.$[content_name=Delivery Information].content.invoice',
+            //         'value' => now()->format('d-m-Y')
+            //     ],
+            //     'api' => [
+            //         'method' => 'put',
+            //         'path' => 'orders/${id}'
+            //     ]
+            // ],
           ]
         ],
         'col_colours' => [
@@ -296,17 +298,20 @@ return [
   ],
 
   'default_content' => [
-
-      'orders' => [],
-
+      'orders' => [
+          ['content_name' => 'Delivery Information', 'content' => ['Totals Multi' => null, 'invoice' => ''], 'type' => 'json', 'order' => 1],
+          ['content_name' => 'In Production', 'content' => ['date' => '', 'notes' => ''], 'type' => 'json', 'order' => 2],
+          ['content_name' => 'Delivery Date', 'content' => ['date' => ''], 'type' => 'json', 'order' => 3],
+          ['content_name' => 'Spec Completed', 'content' => ['date' => ''], 'type' => 'json', 'order' => 4],
+          ['content_name' => 'Materials Ordered', 'content' => ['date' => ''], 'type' => 'json', 'order' => 5],
+          ['content_name' => 'Notes', 'content' => ['materials' => '', 'delivery' => '', 'completed checkbox' => false], 'type' => 'json', 'order' => 6],
+      ],
       'products' => [
           ['content_name' => 'Main Content', 'content' => '', 'type' => 'quill'],
           ['content_name' => 'Snippet', 'content' => '', 'type' => 'text']
       ],
-
-      'pages' => [
+      'collection_types' => [
           ['content_name' => 'Main Content', 'content' => '', 'type' => 'quill'],
-          ['content_name' => 'Snippet', 'content' => '', 'type' => 'text']
       ],
   ],
 

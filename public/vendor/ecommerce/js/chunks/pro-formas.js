@@ -1,4 +1,4 @@
-webpackJsonp([21],{
+webpackJsonp([19],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/pro-formas/ProFormas.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([21],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
@@ -16,6 +16,20 @@ var _apiService2 = _interopRequireDefault(_apiService);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js"); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -75,181 +89,179 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
-var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 exports.default = {
 
-    name: 'ProFormas',
+  name: 'ProFormas',
 
-    components: {
-        DataTable: function DataTable() {
-            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
-        }
-    },
-
-    props: {},
-
-    data: function data() {
-        var h = this.$createElement;
-
-        return {
-            loading: false,
-            errors: {},
-            tableOptions: {
-                collumns: [{
-                    prop: 'ref_number',
-                    sortable: true,
-                    label: 'Ref',
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'name',
-                    sortable: true,
-                    label: 'Customer',
-                    formatter: function (row, column, cellValue) {
-                        var _this = this;
-
-                        var lines = [];
-                        var address = [];
-                        forEach(row.shipping_address, function (line, key) {
-                            if (line) {
-                                address.push(line);
-                            }
-                            lines.push(h('li', [line]));
-                        });
-                        return h(
-                            'el-popover',
-                            {
-                                attrs: { trigger: 'hover', placement: 'top' }
-                            },
-                            [h(
-                                'ul',
-                                { 'class': 'order_address_list table_col_list' },
-                                [lines]
-                            ), h(
-                                'el-button',
-                                {
-                                    attrs: { size: 'mini', plain: true },
-                                    on: {
-                                        'click': function click() {
-                                            return _this.copy(address.join(', '));
-                                        }
-                                    }
-                                },
-                                ['Copy']
-                            ), h(
-                                'div',
-                                { slot: 'reference' },
-                                [h('strong', [row.customer.first_name, ' ', row.customer.last_name])]
-                            )]
-                        );
-                        // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
-                    }.bind(this),
-                    align: 'left',
-                    resizable: false
-                }, {
-                    prop: 'created_at.date',
-                    sortable: true,
-                    label: 'Created',
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'items',
-                    sortable: true,
-                    label: 'Summary',
-                    align: 'left',
-                    resizable: false,
-                    formatter: function formatter(row, column, cellValue) {
-                        var items = [];
-                        var total = [];
-                        forEach(row.items, function (item) {
-                            var real_quantity = Array(item.quantity).fill().map(function (_, i) {
-                                return i * i;
-                            });
-                            real_quantity.forEach(function () {
-                                total.push(item.name);
-                            });
-                            items.push(h('li', [item.quantity + ' * ' + item.name]));
-                        });
-
-                        return h(
-                            'el-popover',
-                            {
-                                attrs: { trigger: 'hover', placement: 'top' }
-                            },
-                            [h(
-                                'ul',
-                                { 'class': 'order_items_list table_col_list' },
-                                [items]
-                            ), h(
-                                'div',
-                                { slot: 'reference' },
-                                [h('strong', [total.length, ' items'])]
-                            )]
-                        );
-                    }
-                }, {
-                    prop: 'amount',
-                    sortable: true,
-                    label: 'Total',
-                    formatter: function formatter(row, column, cellValue) {
-                        return row.cart.currency ? row.cart.currency + row.cart.totals.Total : '-';
-                    },
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'invoice',
-                    sortable: true,
-                    label: 'Create Invoice',
-                    formatter: function (row, column, cellValue) {
-                        var _this2 = this;
-
-                        return h(
-                            'el-button',
-                            {
-                                on: {
-                                    'click': function click() {
-                                        return _this2.createInvoice(row);
-                                    }
-                                },
-                                attrs: { type: 'success', size: 'mini', plain: true },
-                                'class': 'action_btn' },
-                            ['Create Invoice']
-                        );
-                    }.bind(this),
-                    align: 'left',
-                    resizable: true
-                }]
-            }
-        };
-    },
-
-
-    computed: {},
-
-    watch: {},
-
-    mounted: function mounted() {
-        console.log('ProFormas.vue mounted!');
-    },
-
-
-    methods: {
-        createInvoice: function createInvoice(val) {
-            var _this3 = this;
-
-            var status = window.ecommerceConfig.orders.statuses;
-            val.status = status.STATUS_PROCESSING;
-            _apiService2.default.persist("put", {
-                path: "orders/" + val.id,
-                object: val
-            }).then(function (data) {
-                _this3.$router.push({ name: 'orders' });
-            }).catch(function (error) {
-                // this.loading = false;
-                // this.errors = error;
-            });
-        }
+  components: {
+    DataTable: function DataTable() {
+      return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
     }
+  },
+
+  props: {},
+
+  data: function data() {
+    var h = this.$createElement;
+
+    return {
+      loading: false,
+      errors: {},
+      tableOptions: {
+        collumns: [{
+          prop: 'ref_number',
+          sortable: true,
+          label: 'Ref',
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'name',
+          sortable: true,
+          label: 'Customer',
+          formatter: function (row, column, cellValue) {
+            var _this = this;
+
+            var lines = [];
+            var address = [];
+            forEach(row.shipping_address, function (line, key) {
+              if (line) {
+                address.push(line);
+              }
+              lines.push(h('li', [line]));
+            });
+            return h(
+              'el-popover',
+              {
+                attrs: { trigger: 'hover', placement: 'top' }
+              },
+              [h(
+                'ul',
+                { 'class': 'order_address_list table_col_list' },
+                [lines]
+              ), h(
+                'el-button',
+                {
+                  attrs: { size: 'mini', plain: true },
+                  on: {
+                    'click': function click() {
+                      return _this.copy(address.join(', '));
+                    }
+                  }
+                },
+                ['Copy']
+              ), h(
+                'div',
+                { slot: 'reference' },
+                [h('strong', [row.customer.first_name, ' ', row.customer.last_name])]
+              )]
+            );
+            // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
+          }.bind(this),
+          align: 'left',
+          resizable: false
+        }, {
+          prop: 'created_at.date',
+          sortable: true,
+          label: 'Created',
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'items',
+          sortable: true,
+          label: 'Summary',
+          align: 'left',
+          resizable: false,
+          formatter: function formatter(row, column, cellValue) {
+            var items = [];
+            var total = [];
+            forEach(row.items, function (item) {
+              var realQuantity = Array(item.quantity).fill().map(function (_, i) {
+                return i * i;
+              });
+              realQuantity.forEach(function () {
+                total.push(item.name);
+              });
+              items.push(h('li', [item.quantity + ' * ' + item.name]));
+            });
+
+            return h(
+              'el-popover',
+              {
+                attrs: { trigger: 'hover', placement: 'top' }
+              },
+              [h(
+                'ul',
+                { 'class': 'order_items_list table_col_list' },
+                [items]
+              ), h(
+                'div',
+                { slot: 'reference' },
+                [h('strong', [total.length, ' items'])]
+              )]
+            );
+          }
+        }, {
+          prop: 'amount',
+          sortable: true,
+          label: 'Total',
+          formatter: function formatter(row, column, cellValue) {
+            return row.cart.currency ? row.cart.currency + row.cart.totals.Total : '-';
+          },
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'invoice',
+          sortable: true,
+          label: 'Create Invoice',
+          formatter: function (row, column, cellValue) {
+            var _this2 = this;
+
+            return h(
+              'el-button',
+              {
+                on: {
+                  'click': function click() {
+                    return _this2.createInvoice(row);
+                  }
+                },
+                attrs: { type: 'success', size: 'mini', plain: true },
+                'class': 'action_btn' },
+              ['Create Invoice']
+            );
+          }.bind(this),
+          align: 'left',
+          resizable: true
+        }]
+      }
+    };
+  },
+
+
+  computed: {},
+
+  watch: {},
+
+  mounted: function mounted() {
+    console.log('ProFormas.vue mounted!');
+  },
+
+
+  methods: {
+    createInvoice: function createInvoice(val) {
+      var _this3 = this;
+
+      var status = window.ecommerceConfig.orders.statuses;
+      val.status = status.STATUS_PROCESSING;
+      _apiService2.default.persist('put', {
+        path: 'orders/' + val.id,
+        object: val
+      }).then(function (data) {
+        _this3.$router.push({ name: 'orders' });
+      }).catch(function (error) {
+        _this3.errors = error;
+      });
+    }
+  }
 
 };
 
@@ -263,7 +275,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -281,10 +293,6 @@ var render = function() {
     "data-table",
     {
       attrs: {
-        "type-name": "pro-forma",
-        "base-url": "orders",
-        "edit-path": "orders",
-        "bulk-update-url": "orders/bulk",
         "with-params": {
           withStatus: [
             "STATUS_PROFORMA",
@@ -294,10 +302,14 @@ var render = function() {
             "STATUS_PAYMENT_FAILED"
           ]
         },
-        "request-with": "content",
         "table-options": _vm.tableOptions,
         "request-includes": ["created_at"],
-        "create-form": {}
+        "create-form": {},
+        "type-name": "Pro Forma Order",
+        "base-url": "orders",
+        "edit-path": "orders",
+        "bulk-update-url": "orders/bulk",
+        "request-with": "content"
       },
       scopedSlots: _vm._u([
         {
@@ -324,7 +336,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", type: "success" }
                         },
-                        [_vm._v("View\n                ")]
+                        [_vm._v("View\n        ")]
                       )
                     ],
                     1
@@ -351,7 +363,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", plain: "" }
                         },
-                        [_vm._v("Email Customer\n                ")]
+                        [_vm._v("Email Customer\n        ")]
                       )
                     ],
                     1
@@ -374,7 +386,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", plain: "" }
                         },
-                        [_vm._v("Download PDF\n                ")]
+                        [_vm._v("Download PDF\n        ")]
                       )
                     ],
                     1
@@ -391,7 +403,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Delete\n            ")]
+                    [_vm._v("Delete\n      ")]
                   ),
                   _vm._v(" "),
                   _c(

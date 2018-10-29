@@ -1,4 +1,4 @@
-webpackJsonp([25],{
+webpackJsonp([24],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/NewEstimate.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([25],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _order = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
@@ -124,84 +124,140 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
 
-    name: 'NewEstimate',
+  name: 'NewEstimate',
 
-    components: {
-        ProductForm: function ProductForm() {
-            return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
-        },
-        ProductTable: function ProductTable() {
-            return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
-        },
-        AddressForm: function AddressForm() {
-            return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
-        },
-        Errors: function Errors() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
-        }
+  components: {
+    ProductForm: function ProductForm() {
+      return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
     },
-
-    data: function data() {
-        return {
-            loading: false,
-            errors: {},
-            order: {
-                status: 'Estimate',
-                customer: {},
-                shipping_rate: 60,
-                discount_rate: 0,
-                billing_address: {},
-                shipping_address: {},
-                items: [],
-                cart: {
-                    totals: {
-                        Shipping: 60,
-                        Discount: 0
-                    }
-                },
-                use_billing_for_shipping: false,
-                needs_address: 'No Address'
-            }
-        };
+    ProductTable: function ProductTable() {
+      return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
     },
-
-
-    computed: {
-        orderTotals: function orderTotals() {
-            return _order2.default.totals(this.order.items, this.order.cart.totals['Shipping'], this.order.cart.totals['Discount']);
-        }
+    AddressForm: function AddressForm() {
+      return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/AddressForm.vue"));
     },
-
-    mounted: function mounted() {
-        console.log('NewEstimate.vue mounted!');
-    },
-
-
-    methods: {
-        addProductToTable: function addProductToTable(product) {
-            this.order.items.push(product);
-        },
-        processSubmit: function processSubmit() {
-            var _this = this;
-
-            this.loading = true;
-            this.errors = {};
-
-            _apiService2.default.persist("post", {
-                path: "orders",
-                object: this.order
-            }).then(function (data) {
-                _this.loading = false;
-                _this.$router.push({ name: 'orders.view', params: { orderId: data.data.id.toString() } });
-            }).catch(function (error) {
-                _this.loading = false;
-                _this.errors = error;
-            });
-        }
+    Errors: function Errors() {
+      return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
+  },
+
+  data: function data() {
+    return {
+      loading: false,
+      errors: {},
+      order: {
+        status: 'Estimate',
+        customer: {},
+        shipping_rate: 60,
+        discount_rate: 0,
+        billing_address: {},
+        shipping_address: {},
+        items: [],
+        cart: {
+          totals: {
+            Shipping: 60,
+            Discount: 0
+          }
+        },
+        use_billing_for_shipping: false,
+        needs_address: 'No Address'
+      }
+    };
+  },
+
+
+  computed: {
+    orderTotals: function orderTotals() {
+      return _order2.default.totals(this.order.items, this.order.cart.totals['Shipping'], this.order.cart.totals['Discount']);
+    }
+  },
+
+  mounted: function mounted() {
+    console.log('NewEstimate.vue mounted!');
+  },
+
+
+  methods: {
+    addProductToTable: function addProductToTable(product) {
+      this.order.items.push(product);
+    },
+    processSubmit: function processSubmit() {
+      var _this = this;
+
+      this.loading = true;
+      this.errors = {};
+
+      _apiService2.default.persist('post', {
+        path: 'orders',
+        object: this.order
+      }).then(function (data) {
+        _this.loading = false;
+        _this.$router.push({ name: 'orders.view', params: { orderId: data.data.id.toString() } });
+      }).catch(function (error) {
+        _this.loading = false;
+        _this.errors = error;
+      });
+    }
+  }
 };
 
 /***/ }),
@@ -214,7 +270,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -278,7 +334,7 @@ var render = function() {
         "el-form",
         {
           ref: "orderForm",
-          attrs: { "label-position": "top", model: _vm.order },
+          attrs: { model: _vm.order, "label-position": "top" },
           nativeOn: {
             submit: function($event) {
               $event.preventDefault()

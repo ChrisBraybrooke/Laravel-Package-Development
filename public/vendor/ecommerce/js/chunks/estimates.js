@@ -1,4 +1,4 @@
-webpackJsonp([26],{
+webpackJsonp([25],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([26],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
@@ -74,181 +74,212 @@ var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js"); //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
 
-    name: 'Estimates',
+  name: 'Estimates',
 
-    components: {
-        DataTable: function DataTable() {
-            return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
-        }
-    },
-
-    props: {},
-
-    data: function data() {
-        var h = this.$createElement;
-
-        return {
-            loading: false,
-            errors: {},
-            tableOptions: {
-                collumns: [{
-                    prop: 'ref_number',
-                    sortable: true,
-                    label: 'Ref',
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'name',
-                    sortable: true,
-                    label: 'Customer',
-                    formatter: function (row, column, cellValue) {
-                        var _this = this;
-
-                        var lines = [];
-                        var address = [];
-                        forEach(row.shipping_address, function (line, key) {
-                            if (line) {
-                                address.push(line);
-                            }
-                            lines.push(h('li', [line]));
-                        });
-                        return h(
-                            'el-popover',
-                            {
-                                attrs: { trigger: 'hover', placement: 'top' }
-                            },
-                            [h(
-                                'ul',
-                                { 'class': 'order_address_list table_col_list' },
-                                [lines]
-                            ), h(
-                                'el-button',
-                                {
-                                    attrs: { size: 'mini', plain: true },
-                                    on: {
-                                        'click': function click() {
-                                            return _this.copy(address.join(', '));
-                                        }
-                                    }
-                                },
-                                ['Copy']
-                            ), h(
-                                'div',
-                                { slot: 'reference' },
-                                [h('strong', [row.customer.first_name, ' ', row.customer.last_name])]
-                            )]
-                        );
-                        // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
-                    }.bind(this),
-                    align: 'left',
-                    resizable: false
-                }, {
-                    prop: 'created_at.date',
-                    sortable: true,
-                    label: 'Created',
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'items',
-                    sortable: true,
-                    label: 'Summary',
-                    align: 'left',
-                    resizable: false,
-                    formatter: function formatter(row, column, cellValue) {
-                        var items = [];
-                        var total = [];
-                        forEach(row.items, function (item) {
-                            var real_quantity = Array(item.quantity).fill().map(function (_, i) {
-                                return i * i;
-                            });
-                            real_quantity.forEach(function () {
-                                total.push(item.name);
-                            });
-                            items.push(h('li', [item.quantity + ' * ' + item.name]));
-                        });
-
-                        return h(
-                            'el-popover',
-                            {
-                                attrs: { trigger: 'hover', placement: 'top' }
-                            },
-                            [h(
-                                'ul',
-                                { 'class': 'order_items_list table_col_list' },
-                                [items]
-                            ), h(
-                                'div',
-                                { slot: 'reference' },
-                                [h('strong', [total.length, ' items'])]
-                            )]
-                        );
-                    }
-                }, {
-                    prop: 'amount',
-                    sortable: true,
-                    label: 'Total',
-                    formatter: function formatter(row, column, cellValue) {
-                        return row.cart.currency ? row.cart.currency + row.cart.totals.Total : '-';
-                    },
-                    align: 'left',
-                    resizable: true
-                }, {
-                    prop: 'invoice',
-                    sortable: true,
-                    label: 'Create Invoice',
-                    formatter: function (row, column, cellValue) {
-                        var _this2 = this;
-
-                        return h(
-                            'el-button',
-                            {
-                                on: {
-                                    'click': function click() {
-                                        return _this2.createInvoice(row);
-                                    }
-                                },
-                                attrs: { type: 'success', size: 'mini', plain: true },
-                                'class': 'action_btn' },
-                            ['Create Invoice']
-                        );
-                    }.bind(this),
-                    align: 'left',
-                    resizable: true
-                }]
-            }
-        };
-    },
-
-
-    computed: {},
-
-    watch: {},
-
-    mounted: function mounted() {
-        console.log('Estimates.vue mounted.');
-    },
-
-
-    methods: {
-        createInvoice: function createInvoice(val) {
-            var _this3 = this;
-
-            var status = window.ecommerceConfig.orders.statuses;
-            val.status = status.STATUS_AWAITING_PAYMENT;
-            _apiService2.default.persist("put", {
-                path: "orders/" + val.id,
-                object: val
-            }).then(function (data) {
-                _this3.$router.push({ name: 'orders' });
-            }).catch(function (error) {
-                // this.loading = false;
-                // this.errors = error;
-            });
-        }
+  components: {
+    DataTable: function DataTable() {
+      return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
     }
+  },
+
+  props: {},
+
+  data: function data() {
+    var h = this.$createElement;
+
+    return {
+      loading: false,
+      errors: {},
+      tableOptions: {
+        collumns: [{
+          prop: 'ref_number',
+          sortable: true,
+          label: 'Ref',
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'name',
+          sortable: true,
+          label: 'Customer',
+          formatter: function (row, column, cellValue) {
+            var _this = this;
+
+            var lines = [];
+            var address = [];
+            forEach(row.shipping_address, function (line, key) {
+              if (line) {
+                address.push(line);
+              }
+              lines.push(h('li', [line]));
+            });
+            return h(
+              'el-popover',
+              {
+                attrs: { trigger: 'hover', placement: 'top' }
+              },
+              [h(
+                'ul',
+                { 'class': 'order_address_list table_col_list' },
+                [lines]
+              ), h(
+                'el-button',
+                {
+                  attrs: { size: 'mini', plain: true },
+                  on: {
+                    'click': function click() {
+                      return _this.copy(address.join(', '));
+                    }
+                  }
+                },
+                ['Copy']
+              ), h(
+                'div',
+                { slot: 'reference' },
+                [h('strong', [row.customer.first_name, ' ', row.customer.last_name])]
+              )]
+            );
+            // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
+          }.bind(this),
+          align: 'left',
+          resizable: false
+        }, {
+          prop: 'created_at.date',
+          sortable: true,
+          label: 'Created',
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'items',
+          sortable: true,
+          label: 'Summary',
+          align: 'left',
+          resizable: false,
+          formatter: function formatter(row, column, cellValue) {
+            var items = [];
+            var total = [];
+            forEach(row.items, function (item) {
+              var realQty = Array(item.quantity).fill().map(function (_, i) {
+                return i * i;
+              });
+              realQty.forEach(function () {
+                total.push(item.name);
+              });
+              items.push(h('li', [item.quantity + ' * ' + item.name]));
+            });
+
+            return h(
+              'el-popover',
+              {
+                attrs: { trigger: 'hover', placement: 'top' }
+              },
+              [h(
+                'ul',
+                { 'class': 'order_items_list table_col_list' },
+                [items]
+              ), h(
+                'div',
+                { slot: 'reference' },
+                [h('strong', [total.length, ' items'])]
+              )]
+            );
+          }
+        }, {
+          prop: 'amount',
+          sortable: true,
+          label: 'Total',
+          formatter: function formatter(row, column, cellValue) {
+            return row.cart.currency ? row.cart.currency + row.cart.totals.Total : '-';
+          },
+          align: 'left',
+          resizable: true
+        }, {
+          prop: 'invoice',
+          sortable: true,
+          label: 'Create Invoice',
+          formatter: function (row, column, cellValue) {
+            var _this2 = this;
+
+            return h('div', [h(
+              'el-button',
+              {
+                on: {
+                  'click': function click() {
+                    return _this2.createInvoice(row, true);
+                  }
+                },
+                attrs: { type: 'success', size: 'mini' },
+                'class': 'action_btn' },
+              ['Create Pro-Forma']
+            ), h(
+              'el-button',
+              {
+                on: {
+                  'click': function click() {
+                    return _this2.createInvoice(row);
+                  }
+                },
+                attrs: { type: 'success', size: 'mini', plain: true },
+                'class': 'action_btn' },
+              ['Create Invoice']
+            )]);
+          }.bind(this),
+          align: 'left',
+          resizable: true
+        }]
+      }
+    };
+  },
+
+
+  computed: {},
+
+  watch: {},
+
+  mounted: function mounted() {
+    console.log('Estimates.vue mounted.');
+  },
+
+
+  methods: {
+    createInvoice: function createInvoice(val) {
+      var _this3 = this;
+
+      var proForma = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      var status = window.ecommerceConfig.orders.statuses;
+      if (proForma) {
+        val.status = status.STATUS_PROFORMA;
+      } else {
+        val.status = status.STATUS_AWAITING_PAYMENT;
+      }
+      _apiService2.default.persist('put', {
+        path: 'orders/' + val.id,
+        object: val
+      }).then(function (data) {
+        _this3.$router.push({ name: 'orders.view', params: { orderId: '' + val.id } });
+      }).catch(function () {
+        // this.loading = false;
+        // this.errors = error;
+      });
+    }
+  }
 
 };
 
@@ -280,15 +311,15 @@ var render = function() {
     "data-table",
     {
       attrs: {
+        "with-params": { withStatus: "estimate" },
+        "table-options": _vm.tableOptions,
+        "request-includes": ["created_at"],
+        "create-form": {},
         "type-name": "estimate",
         "base-url": "orders",
         "edit-path": "estimates",
         "bulk-update-url": "orders/bulk",
-        "with-params": { withStatus: "estimate" },
-        "request-with": "content",
-        "table-options": _vm.tableOptions,
-        "request-includes": ["created_at"],
-        "create-form": {}
+        "request-with": "content"
       },
       scopedSlots: _vm._u([
         {
@@ -315,7 +346,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", type: "success" }
                         },
-                        [_vm._v("View\n                ")]
+                        [_vm._v("View\n        ")]
                       )
                     ],
                     1
@@ -342,7 +373,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", plain: "" }
                         },
-                        [_vm._v("Email Customer\n                ")]
+                        [_vm._v("Email Customer\n        ")]
                       )
                     ],
                     1
@@ -365,7 +396,7 @@ var render = function() {
                           staticClass: "action_btn view_btn",
                           attrs: { size: "mini", plain: "" }
                         },
-                        [_vm._v("Download PDF\n                ")]
+                        [_vm._v("Download PDF\n        ")]
                       )
                     ],
                     1
@@ -382,7 +413,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Delete\n            ")]
+                    [_vm._v("Delete\n      ")]
                   ),
                   _vm._v(" "),
                   _c(

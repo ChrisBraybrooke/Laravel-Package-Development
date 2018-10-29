@@ -7,7 +7,7 @@ webpackJsonp([28],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
@@ -50,45 +50,59 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 exports.default = {
 
-    name: 'Dashboard',
+  name: 'Dashboard',
 
-    components: {
-        Errors: function Errors() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
-        }
-    },
+  components: {
+    Errors: function Errors() {
+      return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
+    }
+  },
 
-    props: {},
+  props: {},
 
-    data: function data() {
-        return {
-            loading: false
-        };
-    },
-
-
-    computed: _extends({}, (0, _vuex.mapGetters)(['user', 'userErrors'])),
-
-    watch: {},
-
-    mounted: function mounted() {
-        console.log('Dashboard.vue mounted');
-        this.getUser();
-    },
+  data: function data() {
+    return {
+      loading: false
+    };
+  },
 
 
-    methods: _extends({}, (0, _vuex.mapActions)(['getUser']))
+  computed: _extends({}, (0, _vuex.mapGetters)(['user', 'userErrors'])),
+
+  watch: {},
+
+  mounted: function mounted() {
+    console.log('Dashboard.vue mounted');
+    this.getUser();
+  },
+
+
+  methods: _extends({}, (0, _vuex.mapActions)(['getUser']))
 
 };
 

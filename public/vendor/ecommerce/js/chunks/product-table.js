@@ -7,10 +7,121 @@ webpackJsonp([35,36],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -209,287 +320,324 @@ var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 var range = __webpack_require__("./node_modules/lodash.range/index.js");
 
 var orderFormTemplate = {
-    sections: {
-        data: [{
-            fields: {
-                data: []
-            }
-        }]
-    }
+  sections: {
+    data: [{
+      fields: {
+        data: []
+      }
+    }]
+  }
 };
 
 var productTemplate = {
-    quantity: 1,
-    order_form: orderFormTemplate,
-    options: {},
-    product: {
-        quantity: 1,
-        options: {}
-    },
-    variants: {
-        data: [],
-        order_form: orderFormTemplate
-    }
+  quantity: 1,
+  order_form: orderFormTemplate,
+  options: {},
+  product: {
+    quantity: 5,
+    options: {}
+  },
+  variants: {
+    data: [],
+    order_form: orderFormTemplate
+  }
 };
 
 exports.default = {
 
-    name: 'ProductForm',
+  name: 'ProductForm',
 
-    components: {
-        Errors: function Errors() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
-        }
-    },
-
-    props: {
-        editForm: {
-            type: Boolean,
-            required: false,
-            default: function _default() {
-                return false;
-            }
-        },
-        product: {
-            type: Object,
-            required: false,
-            default: function _default() {
-                return {};
-            }
-        },
-        onProductAdd: {
-            type: Function,
-            required: false,
-            default: function _default() {
-                return function (product) {};
-            }
-        },
-        button: {
-            type: Object,
-            required: false,
-            default: function _default() {
-                return {};
-            }
-        }
-    },
-
-    data: function data() {
-        return {
-            loading: true,
-            showModal: false,
-            errors: {},
-            tempProduct: {},
-            form: {
-                product: productTemplate
-            },
-            productCategory: '',
-            productFirst: '',
-            collectionToShow: {
-                types: {
-                    data: []
-                }
-            },
-            defaultButton: {
-                text: 'Add Product',
-                loading: 'Loading Products',
-                type: 'success',
-                size: 'large',
-                plain: false,
-                class: ''
-            },
-            editPrice: false,
-            clonedPrice: '0.00'
-        };
-    },
-
-
-    computed: _extends({}, (0, _vuex.mapGetters)(['shopData']), {
-        quantityRange: function quantityRange() {
-            return range(1, 250);
-        },
-        productsToShow: function productsToShow() {
-            if (this.productCategory) {
-                return this.productCategory.products.data;
-            }
-            return [];
-        },
-        productVariantsToShow: function productVariantsToShow() {
-            if (this.productFirst) {
-                return this.productFirst.variants.data;
-            }
-            return [];
-        },
-        orderForm: function orderForm() {
-            return this.objectHas(this.form, 'product.order_form.sections.data') ? (0, _lodash4.default)(this.form.product.order_form.sections.data, ['order'], ['asc']) : [];
-        },
-        mergedButton: function mergedButton() {
-            return _extends({}, this.defaultButton, this.button);
-        }
-    }),
-
-    watch: {
-
-        'form.product': function formProduct(val) {
-            if (!this.objectHas(this.form, 'product.options')) {
-                this.$set(this.form.product, 'options', {});
-            }
-            this.$set(this.form.product, 'quantity', 1);
-            this.clonedPrice = (0, _lodash2.default)(this.form.product.price);
-        },
-
-        productCategory: function productCategory() {
-            this.productFirst = '';
-        },
-
-        productFirst: function productFirst(value) {
-            if (this.objectHas(value, 'variants.data')) {
-                if (value.variants.data.length >= 1) {
-                    this.form.product = {
-                        quantity: 1,
-                        options: {}
-                    };
-                } else {
-                    this.form.product.quantity = 1;
-                    this.form.product = value;
-                    this.clonedPrice = (0, _lodash2.default)(this.form.product.price);
-                }
-            } else {
-                this.form.product = {
-                    quantity: 1,
-                    options: {}
-                };
-            }
-        }
-    },
-
-    mounted: function mounted() {
-        console.log('ProductForm.vue Mounted');
-
-        this.clearAll();
-
-        Object.assign(this.mergedButton, this.defaultButton, this.button);
-
-        if (!this.editForm) {
-            this.getProductCollection();
-        } else {
-            this.loading = false;
-            this.form.product = this.product;
-        }
-    },
-
-
-    methods: {
-        getProductCollection: function getProductCollection() {
-            if (this.shopData.collection_mappings_values) {
-                var product_category_id = this.shopData.collection_mappings_values['Product Categories Collection'];
-                this.loading = true;
-                _apiService2.default.get({
-                    path: "collections/" + product_category_id,
-                    params: {
-                        include: ['type', 'options', 'price', 'effects_price', 'no_shop_data', 'description', 'order'],
-                        with: ['types.products.variants.orderForm.sections.fields', 'types.products.variants.variant', 'types.products.orderForm.sections.fields']
-                    }
-                }).then(function (data) {
-                    this.collectionToShow = data.data;
-                    this.loading = false;
-                }.bind(this)).catch(function (error) {
-                    this.loading = false;
-                    this.errors = error;
-                }.bind(this));
-            }
-        },
-        adjustPrice: function adjustPrice(val) {
-            this.form.product.price = val;
-        },
-        handleEditPrice: function handleEditPrice() {
-            if (this.editPrice) {
-                this.form.product.price = (0, _lodash2.default)(this.clonedPrice);
-            }
-            this.editPrice = !this.editPrice;
-        },
-        openModal: function openModal() {
-            if (this.editForm) {
-                this.form.product = this.product;
-            }
-            this.showModal = true;
-        },
-        closeAndClearModal: function closeAndClearModal() {
-            var _this = this;
-
-            this.$confirm('Are you sure to close the product selector?').then(function (_) {
-                _this.clearAll();
-                _this.showModal = false;
-            }).catch(function (_) {});
-        },
-        optionLabel: function optionLabel(option) {
-            if (option) {
-                if (option.price_mutator && option.price_value) {
-                    return option.name + ' (' + option.price_mutator + ' £' + option.price_value + ')';
-                }
-                return option.name;
-            }
-            return '';
-        },
-        formattedPrice: function formattedPrice(product) {
-            var base_price = this.simplePrice(product.price);
-            var base_with_extras = base_price;
-            var extras = 0;
-            if (product.options) {
-                forEach(product.options, function (option) {
-                    if (option) {
-                        if (option.price_mutator && option.price_value) {
-                            base_with_extras = _operators.operators[option.price_mutator](base_with_extras, option.price_value);
-                            extras = _operators.operators[option.price_mutator](extras, option.price_value);
-                        }
-                    }
-                });
-            }
-
-            var quantity = product.quantity ? product.quantity : 1;
-            var total = base_with_extras * quantity;
-            extras = extras * quantity;
-            return {
-                'Base Price': this.formatPrice(base_price),
-                'Sub-Total': this.formatPrice(base_price * quantity),
-                'Extras': this.formatPrice(extras),
-                'Total': this.formatPrice(total)
-            };
-        },
-        clearAll: function clearAll() {
-            this.errors = {};
-            this.form = {
-                product: {}
-            };
-            this.form.product = productTemplate;
-
-            this.productCategory = null;
-            this.productFirst = null;
-        },
-        addProduct: function addProduct() {
-            var addAnother = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
-            if (this.objectHas(this.form, 'product.id') && this.objectHas(this.form, 'product.quantity')) {
-                this.onProductAdd(this.form.product);
-                if (!addAnother) {
-                    this.showModal = false;
-                    this.clearAll();
-                }
-                this.$message({
-                    message: 'Product Added!',
-                    type: 'success'
-                });
-            } else {
-                this.$message({
-                    message: 'Please choose a product and quantity!',
-                    type: 'error'
-                });
-            }
-        },
-        saveProduct: function saveProduct() {
-            this.clearAll();
-            this.showModal = false;
-        }
+  components: {
+    Errors: function Errors() {
+      return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
+  },
+
+  props: {
+    editForm: {
+      type: Boolean,
+      required: false,
+      default: function _default() {
+        return false;
+      }
+    },
+    product: {
+      type: Object,
+      required: false,
+      default: function _default() {
+        return {};
+      }
+    },
+    onProductAdd: {
+      type: Function,
+      required: false,
+      default: function _default() {
+        return function (product) {};
+      }
+    },
+    button: {
+      type: Object,
+      required: false,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+
+  data: function data() {
+    return {
+      loading: true,
+      showModal: false,
+      errors: {},
+      tempProduct: {},
+      form: {
+        product: productTemplate
+      },
+      productCategory: '',
+      productFirst: '',
+      collectionToShow: {
+        types: {
+          data: []
+        }
+      },
+      defaultButton: {
+        text: 'Add Product',
+        loading: 'Loading Products',
+        type: 'success',
+        size: 'large',
+        plain: false,
+        class: ''
+      },
+      editPrice: false,
+      clonedPrice: '0.00'
+    };
+  },
+
+
+  computed: _extends({}, (0, _vuex.mapGetters)(['shopData']), {
+    quantityRange: function quantityRange() {
+      return range(1, 250);
+    },
+    productsToShow: function productsToShow() {
+      if (this.productCategory) {
+        return this.productCategory.products.data;
+      }
+      return [];
+    },
+    productVariantsToShow: function productVariantsToShow() {
+      if (this.productFirst) {
+        return this.productFirst.variants.data;
+      }
+      return [];
+    },
+    orderForm: function orderForm() {
+      return this.objectHas(this.form, 'product.order_form.sections.data') ? (0, _lodash4.default)(this.form.product.order_form.sections.data, ['order'], ['asc']) : [];
+    },
+    mergedButton: function mergedButton() {
+      return _extends({}, this.defaultButton, this.button);
+    }
+  }),
+
+  watch: {
+
+    'form.product': function formProduct(val) {
+      if (!this.objectHas(this.form, 'product.options')) {
+        this.$set(this.form.product, 'options', {});
+      }
+      if (!this.objectHas(this.form, 'product.quantity')) {
+        this.$set(this.form.product, 'quantity', 1);
+      }
+      this.clonedPrice = (0, _lodash2.default)(this.form.product.price);
+    },
+
+    productCategory: function productCategory() {
+      this.productFirst = '';
+    },
+
+    productFirst: function productFirst(value) {
+      if (this.objectHas(value, 'variants.data')) {
+        if (value.variants.data.length >= 1) {
+          this.form.product.quantity = 1;
+          this.form.product.options = {};
+        } else {
+          this.form.product = value;
+          this.form.product.quantity = 1;
+          this.clonedPrice = (0, _lodash2.default)(this.form.product.price);
+        }
+      } else {
+        this.form.product = {
+          quantity: 1,
+          options: {}
+        };
+      }
+      console.log('Quantity 2: ' + this.form.product.quantity);
+    }
+  },
+
+  mounted: function mounted() {
+    console.log('ProductForm.vue Mounted');
+
+    this.clearAll();
+
+    Object.assign(this.mergedButton, this.defaultButton, this.button);
+
+    if (!this.editForm) {
+      this.getProductCollection();
+    } else {
+      this.loading = false;
+      this.form.product = this.product;
+    }
+  },
+
+
+  methods: {
+    getProductCollection: function getProductCollection() {
+      if (this.shopData.collection_mappings_values) {
+        var productCatId = this.shopData.collection_mappings_values['Product Categories Collection'];
+        this.loading = true;
+        _apiService2.default.get({
+          path: 'collections/' + productCatId,
+          params: {
+            include: ['type', 'options', 'price', 'effects_price', 'no_shop_data', 'description', 'order', 'rules'],
+            with: ['types.products.variants.orderForm.sections.fields', 'types.products.variants.variant', 'types.products.orderForm.sections.fields']
+          }
+        }).then(function (data) {
+          this.collectionToShow = data.data;
+          this.loading = false;
+        }.bind(this)).catch(function (error) {
+          this.loading = false;
+          this.errors = error;
+        }.bind(this));
+      }
+    },
+    adjustPrice: function adjustPrice(val) {
+      this.form.product.price = val;
+    },
+    handleEditPrice: function handleEditPrice() {
+      if (this.editPrice) {
+        this.form.product.price = (0, _lodash2.default)(this.clonedPrice);
+      }
+      this.editPrice = !this.editPrice;
+    },
+    openModal: function openModal() {
+      if (this.editForm) {
+        this.form.product = this.product;
+      }
+      this.showModal = true;
+    },
+    closeAndClearModal: function closeAndClearModal() {
+      var _this = this;
+
+      this.$confirm('Are you sure to close the product selector?').then(function (_) {
+        _this.clearAll();
+        _this.showModal = false;
+      }).catch(function (_) {});
+    },
+    optionLabel: function optionLabel(option) {
+      if (option) {
+        if (option.price_mutator && option.price_value) {
+          return option.name + ' (' + option.price_mutator + ' £' + option.price_value + ')';
+        }
+        return option.name;
+      }
+      return '';
+    },
+    formattedPrice: function formattedPrice(product) {
+      var basePrice = this.simplePrice(product.price);
+      var baseWithExtras = basePrice;
+      var extras = 0;
+      if (product.options) {
+        forEach(product.options, function (option) {
+          if (option) {
+            if (option.price_mutator && option.price_value) {
+              baseWithExtras = _operators.operators[option.price_mutator](baseWithExtras, option.price_value);
+              extras = _operators.operators[option.price_mutator](extras, option.price_value);
+            }
+          }
+        });
+      }
+
+      var quantity = product.quantity ? product.quantity : 1;
+      var total = baseWithExtras * quantity;
+      extras = extras * quantity;
+      return {
+        'Base Price': this.formatPrice(basePrice),
+        'Sub-Total': this.formatPrice(basePrice * quantity),
+        'Extras': this.formatPrice(extras),
+        'Total': this.formatPrice(total)
+      };
+    },
+    clearAll: function clearAll() {
+      this.errors = {};
+      this.form = {
+        product: {}
+      };
+      this.form.product = productTemplate;
+
+      this.productCategory = null;
+      this.productFirst = null;
+    },
+    addProduct: function addProduct() {
+      var addAnother = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      if (this.objectHas(this.form, 'product.id') && this.objectHas(this.form, 'product.quantity')) {
+        console.log(this.form.product.quantity);
+        this.onProductAdd(this.form.product);
+        if (!addAnother) {
+          this.showModal = false;
+          this.clearAll();
+        }
+        this.$message({
+          message: 'Product Added!',
+          type: 'success'
+        });
+      } else {
+        this.$message({
+          message: 'Please choose a product and quantity!',
+          type: 'error'
+        });
+      }
+    },
+    saveProduct: function saveProduct() {
+      this.clearAll();
+      this.showModal = false;
+    },
+    calculateDynamicVisible: function calculateDynamicVisible(rules) {
+      if (rules.dynamic) {
+        var optionKey = null;
+        this.orderForm.forEach(function (section) {
+          section.fields.data.forEach(function (field) {
+            if (field.id === rules.show_if_att) {
+              optionKey = field.name;
+            }
+          });
+        });
+        if (this.form.product.options[optionKey]) {
+          if (this.form.product.options[optionKey].value) {
+            return this.form.product.options[optionKey].value === rules.show_if_value;
+          }
+          return this.form.product.options[optionKey] === rules.show_if_value;
+        }
+        return false;
+      }
+      return true;
+    },
+    orderedFields: function orderedFields(fields) {
+      return fields.length >= 1 ? (0, _lodash4.default)(fields, ['order'], ['asc']) : [];
+    },
+    calculateFieldCol: function calculateFieldCol(key, field) {
+      if (field.type === 'number' || field.type === 'select') {
+        return {
+          span: 4,
+          offset: key === 0 || key === 4 ? 4 : 0
+        };
+      }
+      return {
+        span: 16,
+        offset: 4
+      };
+    }
+  }
 };
 
 /***/ }),
@@ -501,7 +649,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _babelHelperVueJsxMergeProps = __webpack_require__("./node_modules/babel-helper-vue-jsx-merge-props/index.js");
@@ -511,6 +659,8 @@ var _babelHelperVueJsxMergeProps2 = _interopRequireDefault(_babelHelperVueJsxMer
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
 //
 //
 //
@@ -558,322 +708,326 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var clone = __webpack_require__("./node_modules/lodash.clone/index.js");
 var range = __webpack_require__("./node_modules/lodash.range/index.js");
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
 exports.default = {
 
-    name: 'ProductTable',
+  name: 'ProductTable',
 
-    components: {
-        Errors: function Errors() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
-        },
-        ProductForm: _ProductForm2.default
+  components: {
+    Errors: function Errors() {
+      return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     },
+    ProductForm: _ProductForm2.default
+  },
 
-    props: {
-        editable: {
-            type: Boolean,
-            required: false,
-            default: function _default() {
-                return false;
-            }
-        },
-        order: {
-            type: Object,
-            required: true
-        },
-        orderTotals: {
-            type: Array,
-            required: false,
-            default: function _default() {
-                return [];
-            }
-        },
-        setCollumns: {
-            type: Array,
-            required: false,
-            default: function _default() {
-                return [];
-            }
-        },
-        setOptions: {
-            type: Object,
-            required: false,
-            default: function _default() {
-                return this.defaultOptions;
-            }
-        }
+  props: {
+    editable: {
+      type: Boolean,
+      required: false,
+      default: function _default() {
+        return false;
+      }
     },
-
-    data: function data() {
-        return {
-            loading: false,
-            mergedOptions: {},
-            options: {},
-            collumns: [],
-            discount_rate: 0,
-            shipping_rate: 0
-        };
+    order: {
+      type: Object,
+      required: true
     },
-
-
-    computed: _extends({}, (0, _vuex.mapGetters)(['shopData']), {
-        totals: function totals() {
-            return order.totals(this.order.items);
-        },
-        totalSpan: function totalSpan() {
-            var numberOfCollumns = this.collumns ? this.collumns.length : 0;
-            numberOfCollumns = numberOfCollumns > 2 ? numberOfCollumns - (this.editable ? 3 : 2) : 0;
-            return [].concat(_toConsumableArray(Array(parseInt(numberOfCollumns)).keys()));
-        },
-        defaultCollumns: function defaultCollumns() {
-            var cols = [{
-                prop: 'name',
-                label: 'Product',
-                formatter: function (row, column, cellValue) {
-                    return this.itemRowNameFormatter(row, column, cellValue);
-                }.bind(this)
-            }, {
-                prop: 'price',
-                label: 'Price',
-                formatter: function (row, column, cellValue) {
-                    return this.formatPrice(row.price, this.shopData.currency);
-                }.bind(this)
-            }, {
-                prop: 'quantity',
-                label: 'Quantity',
-                formatter: function (row, column, cellValue) {
-                    return row.quantity ? row.quantity : 1;
-                }.bind(this)
-            }, {
-                prop: 'subtotal',
-                label: 'Sub-Total',
-                formatter: function (row, column, cellValue) {
-                    return this.formatPrice(_order2.default.productSubTotal(row), this.shopData.currency);
-                }.bind(this)
-            }, {
-                prop: 'extras',
-                label: 'Extras',
-                formatter: function (row, column, cellValue) {
-                    return this.formatPrice(_order2.default.productExtras(row), this.shopData.currency);
-                }.bind(this)
-            }, {
-                prop: 'total',
-                label: 'Total',
-                formatter: function (row, column, cellValue) {
-                    return this.formatPrice(_order2.default.productTotal(row), this.shopData.currency);
-                }.bind(this)
-            }];
-
-            if (this.editable) {
-                cols.push({
-                    prop: 'actions',
-                    label: 'Actions',
-                    formatter: function (row, column, cellValue) {
-                        return this.itemRowActionsFormatter(row, column, cellValue);
-                    }.bind(this)
-                });
-            }
-
-            return cols;
-        },
-        defaultOptions: function defaultOptions() {
-            return {};
-        }
-    }),
-
-    watch: {
-        //
+    orderTotals: {
+      type: Array,
+      required: false,
+      default: function _default() {
+        return [];
+      }
     },
-
-    mounted: function mounted() {
-        console.log('ProductTable.vue Mounted');
-
-        // this.shipping_rate = this.order.cart.totals.Shipping;
-        // this.discount_rate = this.order.discount_rate;
-
-        if (this.setCollumns.length == 0) {
-            this.collumns = this.defaultCollumns;
-        } else {
-            this.collumns = this.setCollumns;
-        }
-
-        if (!this.setOptions) {
-            this.options = this.defaultOptions;
-        } else {
-            this.options = this.setOptions;
-        }
-
-        Object.assign(this.mergedOptions, this.defaultOptions, this.options);
+    setCollumns: {
+      type: Array,
+      required: false,
+      default: function _default() {
+        return [];
+      }
     },
-
-
-    methods: {
-        itemRowNameFormatter: function itemRowNameFormatter(row, column, cellValue) {
-            var _this = this;
-
-            var h = this.$createElement;
-
-            if (this.objectHas(row, 'variant.name')) {
-                var row_name = h('p', [h('strong', [row.variant.name + ' / ']), row.name]);
-            } else {
-                var row_name = h('p', [h('strong', [row.name])]);
-            }
-
-            if (row.options) {
-                var items = [];
-                forEach(row.options, function (value, key) {
-
-                    var new_value = value;
-
-                    if (new_value) {
-                        if (value.value && _typeof(value.value) === 'object') {
-                            new_value = _this.loopOverItemOptions(value.value);
-                        } else if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-                            new_value = _this.loopOverItemOptions(value);
-                        } else {
-                            new_value = value.name ? value.name : value;
-                        }
-                    }
-
-                    var extra = '';
-                    if (value) {
-                        var price_mutator = value.price_mutator ? value.price_mutator : '';
-                        var price_value = value.price_value ? _this.formatPrice(value.price_value, _this.shopData.currency) : '';
-                        if (price_mutator && price_value) {
-                            extra = h(
-                                'span',
-                                { style: 'font-size: 11px;' },
-                                ['(', price_mutator, ' ', price_value, ')']
-                            );
-                        }
-                    }
-                    items.push(h('li', [key, ': ', new_value, ' ', extra]));
-                });
-
-                return h('div', [row_name, ' ', h(
-                    'ul',
-                    { 'class': 'order_item_options' },
-                    [items]
-                )]);
-            }
-            return h('div', [row_name]);
-        },
-        loopOverItemOptions: function loopOverItemOptions(options) {
-            var h = this.$createElement;
-
-            var new_value = [];
-            forEach(options, function (value, key) {
-                new_value.push(h('li', [key, ': ', value]));
-            });
-            return h('ul', [new_value]);
-        },
-        itemRowActionsFormatter: function itemRowActionsFormatter(row, column, cellValue) {
-            var _this2 = this;
-
-            var h = this.$createElement;
-
-            return h('span', [h('product-form', {
-                attrs: { 'edit-form': true, product: row, button: { text: 'Edit Product', size: 'mini' } }
-            }), h(
-                'el-button',
-                {
-                    attrs: { size: 'mini', type: 'danger' },
-                    on: {
-                        'click': function click() {
-                            return _this2.deleteRow(row);
-                        }
-                    }
-                },
-                ['Delete']
-            )]);
-        },
-        shippingRowFormatter: function shippingRowFormatter(value) {
-            var _this3 = this;
-
-            var h = this.$createElement;
-
-            var options = [];
-            forEach(range(0, 250, 10), function (range) {
-                options.push(h('el-option', { key: range, attrs: { value: range, label: this.formatPrice(range, this.shopData.currency) }
-                }));
-            }.bind(this));
-
-            return this.editable ? h(
-                'el-select',
-                (0, _babelHelperVueJsxMergeProps2.default)([{
-                    attrs: {
-                        value: _this3.order.cart.totals.Shipping
-                    },
-                    on: {
-                        'input': function input($$v) {
-                            _this3.order.cart.totals.Shipping = $$v;
-                        }
-                    }
-                }, {
-                    directives: [{
-                        name: 'model',
-                        value: _this3.order.cart.totals.Shipping
-                    }]
-                }, {
-                    attrs: { size: 'mini' },
-                    style: 'max-width: 100px;' }]),
-                [options]
-            ) : this.formatPrice(this.order.cart.totals.Shipping, this.shopData.currency);
-        },
-        discountRowFormatter: function discountRowFormatter(value) {
-            var _this4 = this;
-
-            var h = this.$createElement;
-
-            var options = [];
-            forEach(range(0, 101), function (range) {
-                var label = value + '%';
-                options.push(h('el-option', { key: range, attrs: { value: range, label: range + '%' }
-                }));
-            }.bind(this));
-
-            return this.editable ? h(
-                'el-select',
-                (0, _babelHelperVueJsxMergeProps2.default)([{
-                    attrs: {
-                        value: _this4.order.cart.totals.Discount
-                    },
-                    on: {
-                        'input': function input($$v) {
-                            _this4.order.cart.totals.Discount = $$v;
-                        }
-                    }
-                }, {
-                    directives: [{
-                        name: 'model',
-                        value: _this4.order.cart.totals.Discount
-                    }]
-                }, {
-                    attrs: { size: 'mini' },
-                    style: 'max-width: 100px;' }]),
-                [options]
-            ) : this.order.cart.totals.Discount + '%';
-        },
-        deleteRow: function deleteRow(row) {
-            this.order.items.splice(this.order.items.indexOf(row), 1);
-        },
-        totalValueFormatter: function totalValueFormatter(row, col, value) {
-            switch (row.total) {
-                case 'Shipping':
-                    return this.shippingRowFormatter(value);
-                    break;
-                case 'Discount':
-                    return this.discountRowFormatter(value);
-                    break;
-                default:
-                    return this.formatPrice(value, this.shopData.currency);
-            }
-        }
+    setOptions: {
+      type: Object,
+      required: false,
+      default: function _default() {
+        return this.defaultOptions;
+      }
     }
+  },
+
+  data: function data() {
+    return {
+      loading: false,
+      mergedOptions: {},
+      options: {},
+      collumns: [],
+      discount_rate: 0,
+      shipping_rate: 0
+    };
+  },
+
+
+  computed: _extends({}, (0, _vuex.mapGetters)(['shopData']), {
+    totals: function totals() {
+      return this.order.totals(this.order.items);
+    },
+    totalSpan: function totalSpan() {
+      var numberOfCollumns = this.collumns ? this.collumns.length : 0;
+      numberOfCollumns = numberOfCollumns > 2 ? numberOfCollumns - (this.editable ? 3 : 2) : 0;
+      return [].concat(_toConsumableArray(Array(parseInt(numberOfCollumns)).keys()));
+    },
+    defaultCollumns: function defaultCollumns() {
+      var cols = [{
+        prop: 'name',
+        label: 'Product',
+        minWidth: 350,
+        formatter: function (row, column, cellValue) {
+          return this.itemRowNameFormatter(row, column, cellValue);
+        }.bind(this)
+      }, {
+        prop: 'price',
+        label: 'Price',
+        formatter: function (row, column, cellValue) {
+          return this.formatPrice(row.price, this.shopData.currency);
+        }.bind(this)
+      }, {
+        prop: 'quantity',
+        label: 'Quantity',
+        formatter: function formatter(row, column, cellValue) {
+          return row.quantity ? row.quantity : 1;
+        }
+      }, {
+        prop: 'subtotal',
+        label: 'Sub-Total',
+        formatter: function (row, column, cellValue) {
+          return this.formatPrice(_order2.default.productSubTotal(row), this.shopData.currency);
+        }.bind(this)
+      }, {
+        prop: 'extras',
+        label: 'Extras',
+        formatter: function (row, column, cellValue) {
+          return this.formatPrice(_order2.default.productExtras(row), this.shopData.currency);
+        }.bind(this)
+      }, {
+        prop: 'total',
+        label: 'Total',
+        formatter: function (row, column, cellValue) {
+          return this.formatPrice(_order2.default.productTotal(row), this.shopData.currency);
+        }.bind(this)
+      }];
+
+      if (this.editable) {
+        cols.push({
+          prop: 'actions',
+          label: 'Actions',
+          minWidth: 200,
+          formatter: function (row, column, cellValue) {
+            return this.itemRowActionsFormatter(row, column, cellValue);
+          }.bind(this)
+        });
+      }
+
+      return cols;
+    },
+    defaultOptions: function defaultOptions() {
+      return {};
+    }
+  }),
+
+  mounted: function mounted() {
+    console.log('ProductTable.vue Mounted');
+
+    // this.shipping_rate = this.order.cart.totals.Shipping;
+    // this.discount_rate = this.order.discount_rate;
+
+    if (this.setCollumns.length === 0) {
+      this.collumns = this.defaultCollumns;
+    } else {
+      this.collumns = this.setCollumns;
+    }
+
+    if (!this.setOptions) {
+      this.options = this.defaultOptions;
+    } else {
+      this.options = this.setOptions;
+    }
+
+    Object.assign(this.mergedOptions, this.defaultOptions, this.options);
+  },
+
+
+  methods: {
+    itemRowNameFormatter: function itemRowNameFormatter(row, column, cellValue) {
+      var _this = this;
+
+      var h = this.$createElement;
+
+      var rowName = null;
+      if (this.objectHas(row, 'variant.name')) {
+        rowName = h('p', [h('strong', [row.variant.name + ' / ']), row.name]);
+      } else {
+        rowName = h('p', [h('strong', [row.name])]);
+      }
+
+      if (row.options) {
+        var items = [];
+        forEach(row.options, function (value, key) {
+          var newValue = value;
+
+          if (newValue) {
+            if (value.value && _typeof(value.value) === 'object') {
+              newValue = _this.loopOverItemOptions(value.value);
+            } else if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value.value && value.name) {
+              newValue = value.value;
+            } else if (value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+              newValue = _this.loopOverItemOptions(value);
+            } else {
+              newValue = value.name ? value.name : value;
+            }
+          }
+
+          var extra = '';
+          if (value) {
+            var priceMutator = value.priceMutator ? value.priceMutator : '';
+            var priceValue = value.priceValue ? _this.formatPrice(value.priceValue, _this.shopData.currency) : '';
+            if (priceMutator && priceValue) {
+              extra = h(
+                'span',
+                { style: 'font-size: 11px;' },
+                ['(', priceMutator, ' ', priceValue, ')']
+              );
+            }
+          }
+          if (newValue) {
+            items.push(h('li', [key, ': ', newValue, ' ', extra]));
+          }
+        });
+
+        return h('div', [rowName, ' ', h(
+          'ul',
+          { 'class': 'order_item_options' },
+          [items]
+        )]);
+      }
+      return h('div', [rowName]);
+    },
+    loopOverItemOptions: function loopOverItemOptions(options) {
+      var h = this.$createElement;
+
+      var newValue = [];
+      forEach(options, function (value, key) {
+        if (value) {
+          newValue.push(h('li', [key, ': ', value]));
+        }
+      });
+      return h('ul', [newValue]);
+    },
+    itemRowActionsFormatter: function itemRowActionsFormatter(row, column, cellValue) {
+      var _this2 = this;
+
+      var h = this.$createElement;
+
+      return h('span', [h('product-form', {
+        attrs: { 'edit-form': true, product: row, button: { text: 'Edit Product', size: 'mini' } }
+      }), h(
+        'el-button',
+        {
+          attrs: { size: 'mini', type: 'danger' },
+          on: {
+            'click': function click() {
+              return _this2.deleteRow(row);
+            }
+          }
+        },
+        ['Delete']
+      )]);
+    },
+    shippingRowFormatter: function shippingRowFormatter(value) {
+      var _this3 = this;
+
+      var h = this.$createElement;
+
+      var options = [];
+      forEach(range(0, 250, 10), function (range) {
+        options.push(h('el-option', { key: range, attrs: { value: range, label: this.formatPrice(range, this.shopData.currency) }
+        }));
+      }.bind(this));
+
+      return this.editable ? h(
+        'el-select',
+        (0, _babelHelperVueJsxMergeProps2.default)([{
+          attrs: {
+            value: _this3.order.cart.totals.Shipping
+          },
+          on: {
+            'input': function input($$v) {
+              _this3.order.cart.totals.Shipping = $$v;
+            }
+          }
+        }, {
+          directives: [{
+            name: 'model',
+            value: _this3.order.cart.totals.Shipping
+          }]
+        }, {
+          attrs: { size: 'mini' },
+          style: 'max-width: 100px;' }]),
+        [options]
+      ) : this.formatPrice(this.order.cart.totals.Shipping, this.shopData.currency);
+    },
+    discountRowFormatter: function discountRowFormatter(value) {
+      var _this4 = this;
+
+      var h = this.$createElement;
+
+      var options = [];
+      forEach(range(0, 101), function (range) {
+        options.push(h('el-option', { key: range, attrs: { value: range, label: range + '%' }
+        }));
+      });
+
+      return this.editable ? h(
+        'el-select',
+        (0, _babelHelperVueJsxMergeProps2.default)([{
+          attrs: {
+            value: _this4.order.cart.totals.Discount
+          },
+          on: {
+            'input': function input($$v) {
+              _this4.order.cart.totals.Discount = $$v;
+            }
+          }
+        }, {
+          directives: [{
+            name: 'model',
+            value: _this4.order.cart.totals.Discount
+          }]
+        }, {
+          attrs: { size: 'mini' },
+          style: 'max-width: 100px;' }]),
+        [options]
+      ) : this.order.cart.totals.Discount + '%';
+    },
+    deleteRow: function deleteRow(row) {
+      this.order.items.splice(this.order.items.indexOf(row), 1);
+    },
+    totalValueFormatter: function totalValueFormatter(row, col, value) {
+      var formatter = null;
+      switch (row.total) {
+        case 'Shipping':
+          formatter = this.shippingRowFormatter(value);
+          break;
+        case 'Discount':
+          formatter = this.discountRowFormatter(value);
+          break;
+        default:
+          formatter = this.formatPrice(value, this.shopData.currency);
+      }
+      return formatter;
+    }
+  }
 };
 
 /***/ }),
@@ -901,7 +1055,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -5702,7 +5856,7 @@ var render = function() {
                     "el-form",
                     {
                       ref: "addProductForm",
-                      attrs: { "label-position": "top", model: _vm.form },
+                      attrs: { model: _vm.form, "label-position": "top" },
                       nativeOn: {
                         submit: function($event) {
                           $event.preventDefault()
@@ -5834,49 +5988,45 @@ var render = function() {
                                                     expression: "productFirst"
                                                   }
                                                 },
-                                                [
-                                                  _vm._l(
-                                                    _vm.productsToShow,
-                                                    function(product) {
-                                                      return [
+                                                _vm._l(
+                                                  _vm.productsToShow,
+                                                  function(product) {
+                                                    return _c(
+                                                      "el-tooltip",
+                                                      {
+                                                        key: product.id,
+                                                        attrs: {
+                                                          content:
+                                                            _vm.shopData
+                                                              .currency +
+                                                            (product.price
+                                                              ? product.price
+                                                              : "0.00"),
+                                                          placement: "top",
+                                                          effect: "light"
+                                                        }
+                                                      },
+                                                      [
                                                         _c(
-                                                          "el-tooltip",
+                                                          "el-radio-button",
                                                           {
                                                             attrs: {
-                                                              content:
-                                                                _vm.shopData
-                                                                  .currency +
-                                                                (product.price
-                                                                  ? product.price
-                                                                  : "0.00"),
-                                                              placement: "top",
-                                                              effect: "light"
+                                                              label: product
                                                             }
                                                           },
                                                           [
-                                                            _c(
-                                                              "el-radio-button",
-                                                              {
-                                                                attrs: {
-                                                                  label: product
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  _vm._s(
-                                                                    product.name
-                                                                  )
-                                                                )
-                                                              ]
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                product.name
+                                                              )
                                                             )
-                                                          ],
-                                                          1
+                                                          ]
                                                         )
-                                                      ]
-                                                    }
-                                                  )
-                                                ],
-                                                2
+                                                      ],
+                                                      1
+                                                    )
+                                                  }
+                                                )
                                               )
                                             ],
                                             1
@@ -5945,51 +6095,45 @@ var render = function() {
                                                           "form.product"
                                                       }
                                                     },
-                                                    [
-                                                      _vm._l(
-                                                        _vm.productVariantsToShow,
-                                                        function(variant) {
-                                                          return [
+                                                    _vm._l(
+                                                      _vm.productVariantsToShow,
+                                                      function(variant) {
+                                                        return _c(
+                                                          "el-tooltip",
+                                                          {
+                                                            key: variant.id,
+                                                            attrs: {
+                                                              content:
+                                                                _vm.shopData
+                                                                  .currency +
+                                                                (variant.price
+                                                                  ? variant.price
+                                                                  : "0.00"),
+                                                              placement: "top",
+                                                              effect: "light"
+                                                            }
+                                                          },
+                                                          [
                                                             _c(
-                                                              "el-tooltip",
+                                                              "el-radio-button",
                                                               {
                                                                 attrs: {
-                                                                  content:
-                                                                    _vm.shopData
-                                                                      .currency +
-                                                                    (variant.price
-                                                                      ? variant.price
-                                                                      : "0.00"),
-                                                                  placement:
-                                                                    "top",
-                                                                  effect:
-                                                                    "light"
+                                                                  label: variant
                                                                 }
                                                               },
                                                               [
-                                                                _c(
-                                                                  "el-radio-button",
-                                                                  {
-                                                                    attrs: {
-                                                                      label: variant
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      _vm._s(
-                                                                        variant.name
-                                                                      )
-                                                                    )
-                                                                  ]
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    variant.name
+                                                                  )
                                                                 )
-                                                              ],
-                                                              1
+                                                              ]
                                                             )
-                                                          ]
-                                                        }
-                                                      )
-                                                    ],
-                                                    2
+                                                          ],
+                                                          1
+                                                        )
+                                                      }
+                                                    )
                                                   )
                                                 : _c(
                                                     "el-select",
@@ -6085,232 +6229,409 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _vm._l(_vm.orderForm, function(section) {
-                            return [
-                              _c(
-                                "el-row",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: section.fields.data.length > 0,
-                                      expression:
-                                        "section.fields.data.length > 0"
-                                    }
+                          _vm._l(_vm.orderForm, function(section, key) {
+                            return _c(
+                              "div",
+                              { key: key },
+                              [
+                                _c(
+                                  "el-row",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: section.fields.data.length > 0,
+                                        expression:
+                                          "section.fields.data.length > 0"
+                                      }
+                                    ],
+                                    attrs: { gutter: 20 }
+                                  },
+                                  [
+                                    _c("el-col", { attrs: { md: 12 } }, [
+                                      _c("h5", [_vm._v(_vm._s(section.name))])
+                                    ])
                                   ],
-                                  attrs: { gutter: 20 }
-                                },
-                                [
-                                  _c("el-col", { attrs: { md: 12 } }, [
-                                    _c("h5", [_vm._v(_vm._s(section.name))])
-                                  ])
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: section.fields.data.length > 0,
-                                      expression:
-                                        "section.fields.data.length > 0"
-                                    }
-                                  ],
-                                  staticClass: "form_option_section"
-                                },
-                                _vm._l(section.fields.data, function(field) {
-                                  return _c(
-                                    "el-row",
-                                    { key: field.id, attrs: { gutter: 20 } },
-                                    [
-                                      _c(
-                                        "el-col",
-                                        {
-                                          attrs: { md: { span: 16, offset: 4 } }
-                                        },
-                                        [
-                                          _c(
-                                            "el-form-item",
-                                            {
-                                              attrs: {
-                                                label: field.name,
-                                                size: "small",
-                                                prop:
-                                                  "product.options[" +
-                                                  field.name +
-                                                  "]"
-                                              }
-                                            },
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: section.fields.data.length > 0,
+                                        expression:
+                                          "section.fields.data.length > 0"
+                                      }
+                                    ],
+                                    staticClass: "form_option_section"
+                                  },
+                                  [
+                                    _c(
+                                      "el-row",
+                                      { attrs: { gutter: 20 } },
+                                      _vm._l(
+                                        _vm.orderedFields(section.fields.data),
+                                        function(field, key) {
+                                          return _c(
+                                            "div",
+                                            { key: field.id },
                                             [
-                                              field.type === "text"
-                                                ? _c("el-input", {
-                                                    model: {
-                                                      value:
-                                                        _vm.form.product
-                                                          .options[field.name],
-                                                      callback: function($$v) {
-                                                        _vm.$set(
-                                                          _vm.form.product
-                                                            .options,
-                                                          field.name,
-                                                          $$v
-                                                        )
-                                                      },
-                                                      expression:
-                                                        "form.product.options[field.name]"
-                                                    }
-                                                  })
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              field.type === "number"
-                                                ? _c("el-input-number", {
-                                                    model: {
-                                                      value:
-                                                        _vm.form.product
-                                                          .options[field.name],
-                                                      callback: function($$v) {
-                                                        _vm.$set(
-                                                          _vm.form.product
-                                                            .options,
-                                                          field.name,
-                                                          $$v
-                                                        )
-                                                      },
-                                                      expression:
-                                                        "form.product.options[field.name]"
-                                                    }
-                                                  })
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              field.type === "select"
+                                              _vm.calculateDynamicVisible(
+                                                field.rules
+                                              )
                                                 ? _c(
-                                                    "el-select",
+                                                    "el-col",
                                                     {
-                                                      attrs: { filterable: "" },
-                                                      model: {
-                                                        value:
-                                                          _vm.form.product
-                                                            .options[
-                                                            field.name
-                                                          ],
-                                                        callback: function(
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.form.product
-                                                              .options,
-                                                            field.name,
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "form.product.options[field.name]"
+                                                      attrs: {
+                                                        md: _vm.calculateFieldCol(
+                                                          key,
+                                                          field
+                                                        )
                                                       }
                                                     },
-                                                    _vm._l(
-                                                      field.options,
-                                                      function(option) {
-                                                        return _c("el-option", {
-                                                          key: option.id,
-                                                          attrs: {
-                                                            value: option,
-                                                            label: _vm.optionLabel(
-                                                              option
-                                                            )
-                                                          }
-                                                        })
-                                                      }
-                                                    )
-                                                  )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              field.type === "radio"
-                                                ? _c(
-                                                    "div",
                                                     [
                                                       _c(
-                                                        "el-radio-group",
+                                                        "el-form-item",
                                                         {
-                                                          staticClass:
-                                                            "product_form_radio",
-                                                          model: {
-                                                            value:
-                                                              _vm.form.product
-                                                                .options[
-                                                                field.name
-                                                              ],
-                                                            callback: function(
-                                                              $$v
-                                                            ) {
-                                                              _vm.$set(
-                                                                _vm.form.product
-                                                                  .options,
-                                                                field.name,
-                                                                $$v
-                                                              )
-                                                            },
-                                                            expression:
-                                                              "form.product.options[field.name]"
+                                                          attrs: {
+                                                            label: field.name,
+                                                            prop:
+                                                              "product.options[" +
+                                                              field.name +
+                                                              "]",
+                                                            size: "small"
                                                           }
                                                         },
-                                                        _vm._l(
-                                                          field.options,
-                                                          function(option) {
-                                                            return _c(
-                                                              "el-radio-button",
-                                                              {
-                                                                key: option.id,
-                                                                attrs: {
-                                                                  label: option
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  _vm._s(
-                                                                    _vm.optionLabel(
-                                                                      option
+                                                        [
+                                                          field.type ===
+                                                            "text" ||
+                                                          field.type ===
+                                                            "textarea"
+                                                            ? [
+                                                                typeof _vm.form
+                                                                  .product
+                                                                  .options[
+                                                                  field.name
+                                                                ] === "object"
+                                                                  ? _c(
+                                                                      "el-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          type:
+                                                                            field.type ===
+                                                                            "textarea"
+                                                                              ? "textarea"
+                                                                              : null
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .form
+                                                                              .product
+                                                                              .options[
+                                                                              field
+                                                                                .name
+                                                                            ]
+                                                                              .value,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .form
+                                                                                .product
+                                                                                .options[
+                                                                                field
+                                                                                  .name
+                                                                              ],
+                                                                              "value",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "form.product.options[field.name].value"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  : _c(
+                                                                      "el-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          type:
+                                                                            field.type ===
+                                                                            "textarea"
+                                                                              ? "textarea"
+                                                                              : null
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .form
+                                                                              .product
+                                                                              .options[
+                                                                              field
+                                                                                .name
+                                                                            ],
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .form
+                                                                                .product
+                                                                                .options,
+                                                                              field.name,
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "form.product.options[field.name]"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                              ]
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          field.type ===
+                                                          "number"
+                                                            ? [
+                                                                typeof _vm.form
+                                                                  .product
+                                                                  .options[
+                                                                  field.name
+                                                                ] === "object"
+                                                                  ? _c(
+                                                                      "el-input-number",
+                                                                      {
+                                                                        attrs: {
+                                                                          "controls-position":
+                                                                            "right"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .form
+                                                                              .product
+                                                                              .options[
+                                                                              field
+                                                                                .name
+                                                                            ]
+                                                                              .value,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .form
+                                                                                .product
+                                                                                .options[
+                                                                                field
+                                                                                  .name
+                                                                              ],
+                                                                              "value",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "form.product.options[field.name].value"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  : _c(
+                                                                      "el-input-number",
+                                                                      {
+                                                                        attrs: {
+                                                                          "controls-position":
+                                                                            "right"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .form
+                                                                              .product
+                                                                              .options[
+                                                                              field
+                                                                                .name
+                                                                            ],
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .form
+                                                                                .product
+                                                                                .options,
+                                                                              field.name,
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "form.product.options[field.name]"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                              ]
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          field.type ===
+                                                          "select"
+                                                            ? _c(
+                                                                "el-select",
+                                                                {
+                                                                  attrs: {
+                                                                    filterable:
+                                                                      ""
+                                                                  },
+                                                                  model: {
+                                                                    value:
+                                                                      _vm.form
+                                                                        .product
+                                                                        .options[
+                                                                        field
+                                                                          .name
+                                                                      ],
+                                                                    callback: function(
+                                                                      $$v
+                                                                    ) {
+                                                                      _vm.$set(
+                                                                        _vm.form
+                                                                          .product
+                                                                          .options,
+                                                                        field.name,
+                                                                        $$v
+                                                                      )
+                                                                    },
+                                                                    expression:
+                                                                      "form.product.options[field.name]"
+                                                                  }
+                                                                },
+                                                                _vm._l(
+                                                                  field.options,
+                                                                  function(
+                                                                    option
+                                                                  ) {
+                                                                    return _c(
+                                                                      "el-option",
+                                                                      {
+                                                                        key:
+                                                                          option.id,
+                                                                        attrs: {
+                                                                          value: option,
+                                                                          label: _vm.optionLabel(
+                                                                            option
+                                                                          )
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  }
+                                                                )
+                                                              )
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          field.type === "radio"
+                                                            ? _c(
+                                                                "div",
+                                                                [
+                                                                  _c(
+                                                                    "el-radio-group",
+                                                                    {
+                                                                      staticClass:
+                                                                        "product_form_radio",
+                                                                      model: {
+                                                                        value:
+                                                                          _vm
+                                                                            .form
+                                                                            .product
+                                                                            .options[
+                                                                            field
+                                                                              .name
+                                                                          ],
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.$set(
+                                                                            _vm
+                                                                              .form
+                                                                              .product
+                                                                              .options,
+                                                                            field.name,
+                                                                            $$v
+                                                                          )
+                                                                        },
+                                                                        expression:
+                                                                          "form.product.options[field.name]"
+                                                                      }
+                                                                    },
+                                                                    _vm._l(
+                                                                      field.options,
+                                                                      function(
+                                                                        option
+                                                                      ) {
+                                                                        return _c(
+                                                                          "el-radio-button",
+                                                                          {
+                                                                            key:
+                                                                              option.id,
+                                                                            attrs: {
+                                                                              label: option
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                _vm.optionLabel(
+                                                                                  option
+                                                                                )
+                                                                              )
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      }
                                                                     )
                                                                   )
+                                                                ],
+                                                                1
+                                                              )
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "form_item_description"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  field.description
                                                                 )
-                                                              ]
-                                                            )
-                                                          }
-                                                        )
+                                                              )
+                                                            ]
+                                                          )
+                                                        ],
+                                                        2
                                                       )
                                                     ],
                                                     1
                                                   )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              _c(
-                                                "p",
-                                                {
-                                                  staticClass:
-                                                    "form_item_description"
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(field.description)
-                                                  )
-                                                ]
-                                              )
+                                                : _vm._e()
                                             ],
                                             1
                                           )
-                                        ],
-                                        1
+                                        }
                                       )
-                                    ],
-                                    1
-                                  )
-                                })
-                              )
-                            ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
                           }),
                           _vm._v(" "),
                           _c(
@@ -6390,10 +6711,10 @@ var render = function() {
                                     "el-button",
                                     {
                                       attrs: {
-                                        size: "mini",
                                         type: _vm.editPrice
                                           ? "warning"
                                           : "primary",
+                                        size: "mini",
                                         plain: ""
                                       },
                                       on: { click: _vm.handleEditPrice }
@@ -6418,93 +6739,87 @@ var render = function() {
                           _c(
                             "el-row",
                             { attrs: { gutter: 20 } },
-                            [
-                              _c(
-                                "el-col",
-                                { attrs: { md: { span: 16, offset: 4 } } },
-                                [
-                                  _vm._l(
-                                    _vm.formattedPrice(_vm.form.product),
-                                    function(value, key) {
-                                      return [
-                                        _c("p", [
-                                          _c("strong", [
-                                            _vm._v(_vm._s(key) + ":")
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
+                            _vm._l(
+                              _vm.formattedPrice(_vm.form.product),
+                              function(value, key) {
+                                return _c(
+                                  "el-col",
+                                  {
+                                    key: key,
+                                    attrs: { md: { span: 16, offset: 4 } }
+                                  },
+                                  [
+                                    _c("p", [
+                                      _c("strong", [_vm._v(_vm._s(key) + ":")]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "span",
+                                        {
+                                          directives: [
                                             {
-                                              directives: [
-                                                {
-                                                  name: "show",
-                                                  rawName: "v-show",
-                                                  value:
-                                                    key !== "Base Price" ||
-                                                    (!_vm.editPrice &&
-                                                      key === "Base Price"),
-                                                  expression:
-                                                    "key !== 'Base Price' || !editPrice && key === 'Base Price'"
-                                                }
-                                              ]
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(_vm.shopData.currency) +
-                                                  _vm._s(value)
-                                              )
-                                            ]
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value:
+                                                key !== "Base Price" ||
+                                                (!_vm.editPrice &&
+                                                  key === "Base Price"),
+                                              expression:
+                                                "key !== 'Base Price' || !editPrice && key === 'Base Price'"
+                                            }
+                                          ]
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.shopData.currency) +
+                                              _vm._s(value)
                                           )
-                                        ]),
-                                        _c(
-                                          "div",
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        directives: [
                                           {
-                                            directives: [
-                                              {
-                                                name: "show",
-                                                rawName: "v-show",
-                                                value:
-                                                  _vm.editPrice &&
-                                                  key === "Base Price",
-                                                expression:
-                                                  "editPrice && key === 'Base Price'"
-                                              }
-                                            ],
-                                            staticClass: "price_changer"
-                                          },
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value:
+                                              _vm.editPrice &&
+                                              key === "Base Price",
+                                            expression:
+                                              "editPrice && key === 'Base Price'"
+                                          }
+                                        ],
+                                        staticClass: "price_changer"
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "currency" },
                                           [
-                                            _c(
-                                              "span",
-                                              { staticClass: "currency" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(_vm.shopData.currency)
-                                                )
-                                              ]
-                                            ),
-                                            _c("el-input-number", {
-                                              attrs: {
-                                                size: "mini",
-                                                value: _vm.simplePrice(
-                                                  _vm.form.product.price
-                                                ),
-                                                "controls-position": "right"
-                                              },
-                                              on: { change: _vm.adjustPrice }
-                                            })
-                                          ],
-                                          1
+                                            _vm._v(
+                                              _vm._s(_vm.shopData.currency)
+                                            )
+                                          ]
                                         ),
-                                        _vm._v(" "),
-                                        _c("p")
-                                      ]
-                                    }
-                                  )
-                                ],
-                                2
-                              )
-                            ],
-                            1
+                                        _c("el-input-number", {
+                                          attrs: {
+                                            value: _vm.simplePrice(
+                                              _vm.form.product.price
+                                            ),
+                                            size: "mini",
+                                            "controls-position": "right"
+                                          },
+                                          on: { change: _vm.adjustPrice }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              }
+                            )
                           )
                         ],
                         2
@@ -6643,6 +6958,7 @@ var render = function() {
           return _c("el-table-column", {
             key: key,
             attrs: {
+              "min-width": collumn.minWidth,
               prop: collumn.prop,
               label: collumn.label,
               formatter: collumn.formatter ? collumn.formatter : null
@@ -6674,9 +6990,9 @@ var render = function() {
           _vm._v(" "),
           _c("el-table-column", {
             attrs: {
+              formatter: _vm.totalValueFormatter,
               prop: "value",
-              label: "",
-              formatter: _vm.totalValueFormatter
+              label: ""
             }
           }),
           _vm._v(" "),

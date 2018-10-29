@@ -7,7 +7,7 @@ webpackJsonp([8],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
@@ -91,135 +91,187 @@ var orderBy = __webpack_require__("./node_modules/lodash.orderby/index.js"); //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var formWith = ['sections.fields'];
 var formInclude = ['order', 'rules', 'type', 'options', 'is_order_form', 'effects_price', 'description', 'append', 'prepend'];
 
 exports.default = {
 
-    name: 'ViewForm',
+  name: 'ViewForm',
 
-    components: {
-        Errors: function Errors() {
-            return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
-        },
-        FormSectionComponent: function FormSectionComponent() {
-            return __webpack_require__.e/* import() */(47).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FormSectionComponent.vue"));
-        }
+  components: {
+    Errors: function Errors() {
+      return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     },
-
-    props: {
-        formId: {
-            type: [String, Number],
-            required: true
-        }
-    },
-
-    data: function data() {
-        return {
-            loading: false,
-            form: {},
-            formErrors: {}
-        };
-    },
-
-
-    computed: {},
-
-    watch: {},
-
-    mounted: function mounted() {
-        console.log('ViewForm.vue mounted');
-        this.getForm();
-    },
-
-
-    methods: {
-
-        /**
-         * Get the form object from the server
-         *
-         * @return void
-         */
-        getForm: function getForm() {
-            this.loading = true;
-            this.pageErrors = {};
-
-            _apiService2.default.get({
-                path: "forms/" + this.formId,
-                params: {
-                    with: formWith,
-                    include: formInclude
-                }
-            }).then(function (data) {
-                this.loading = false;
-                this.form = data.data;
-            }.bind(this)).catch(function (error) {
-                this.loading = false;
-                this.formErrors = error;
-            }.bind(this));
-        },
-
-
-        /**
-         * Uddate the form and send the data to the server
-         *
-         * @param String formName
-         * @return void
-         */
-        submitForm: function submitForm(formName) {
-            var _this = this;
-
-            this.$refs[formName].validate(function (valid) {
-                if (valid) {
-                    _this.loading = true;
-                    _this.formErrors = {};
-                    _this.form.with = formWith;
-                    _this.form.include = formInclude;
-
-                    _apiService2.default.persist("put", {
-                        path: "forms/" + _this.formId,
-                        object: _this.form
-                    }).then(function (data) {
-                        this.loading = false;
-                        this.form = data.data;
-
-                        this.$message({
-                            message: 'Form updated',
-                            type: 'success',
-                            showClose: true
-                        });
-                    }.bind(_this)).catch(function (error) {
-                        this.loading = false;
-                        this.formErrors = error;
-                    }.bind(_this));
-                }
-            });
-        },
-        addSection: function addSection() {
-            this.form.sections.data.push({
-                name: 'New Section',
-                order: 1,
-                minimise: true,
-                fields: {
-                    data: []
-                }
-            });
-        },
-        orderedSections: function orderedSections() {
-            return this.form.sections.data.length >= 1 ? orderBy(this.form.sections.data, ['order'], ['asc']) : [];
-        },
-        minimiseSectionCard: function minimiseSectionCard(section) {
-            var index = this.form.sections.data.indexOf(section);
-
-            var value = this.form.sections.data[index].minimise ? false : true;
-
-            this.$set(this.form.sections.data[index], 'minimise', value);
-        },
-        deleteSection: function deleteSection(section) {
-            this.form.sections.data.splice(this.form.sections.data.indexOf(section), 1);
-        }
+    FormSectionComponent: function FormSectionComponent() {
+      return __webpack_require__.e/* import() */(49).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FormSectionComponent.vue"));
     }
+  },
+
+  props: {
+    formId: {
+      type: [String, Number],
+      required: true
+    }
+  },
+
+  data: function data() {
+    return {
+      loading: false,
+      form: {},
+      formErrors: {}
+    };
+  },
+
+
+  computed: {},
+
+  watch: {},
+
+  mounted: function mounted() {
+    console.log('ViewForm.vue mounted');
+    this.getForm();
+  },
+
+
+  methods: {
+
+    /**
+           * Get the form object from the server
+           *
+           * @return void
+           */
+    getForm: function getForm() {
+      this.loading = true;
+      this.pageErrors = {};
+
+      _apiService2.default.get({
+        path: 'forms/' + this.formId,
+        params: {
+          with: formWith,
+          include: formInclude
+        }
+      }).then(function (data) {
+        this.loading = false;
+        this.form = data.data;
+      }.bind(this)).catch(function (error) {
+        this.loading = false;
+        this.formErrors = error;
+      }.bind(this));
+    },
+
+
+    /**
+           * Uddate the form and send the data to the server
+           *
+           * @param String formName
+           * @return void
+           */
+    submitForm: function submitForm(formName) {
+      var _this = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this.loading = true;
+          _this.formErrors = {};
+          _this.form.with = formWith;
+          _this.form.include = formInclude;
+
+          _apiService2.default.persist('put', {
+            path: 'forms/' + _this.formId,
+            object: _this.form
+          }).then(function (data) {
+            this.loading = false;
+            this.form = data.data;
+
+            this.$message({
+              message: 'Form updated',
+              type: 'success',
+              showClose: true
+            });
+          }.bind(_this)).catch(function (error) {
+            this.loading = false;
+            this.formErrors = error;
+          }.bind(_this));
+        }
+      });
+    },
+    addSection: function addSection() {
+      this.form.sections.data.push({
+        name: 'New Section',
+        order: 1,
+        minimise: true,
+        fields: {
+          data: []
+        }
+      });
+    },
+    orderedSections: function orderedSections() {
+      return this.form.sections.data.length >= 1 ? orderBy(this.form.sections.data, ['order'], ['asc']) : [];
+    },
+    minimiseSectionCard: function minimiseSectionCard(section) {
+      var index = this.form.sections.data.indexOf(section);
+
+      var value = !this.form.sections.data[index].minimise;
+
+      this.$set(this.form.sections.data[index], 'minimise', value);
+    },
+    deleteSection: function deleteSection(section) {
+      this.form.sections.data.splice(this.form.sections.data.indexOf(section), 1);
+    }
+  }
 
 };
 
@@ -2887,12 +2939,12 @@ var render = function() {
                     "el-form-item",
                     {
                       attrs: {
-                        label: "Form Name",
-                        size: "small",
-                        prop: "name",
                         rules: [
                           { required: true, message: "Form name is required" }
-                        ]
+                        ],
+                        label: "Form Name",
+                        size: "small",
+                        prop: "name"
                       }
                     },
                     [
@@ -2937,7 +2989,7 @@ var render = function() {
                       [
                         _c("el-input", {
                           staticStyle: { width: "200px" },
-                          attrs: { size: "mini", autofocus: true },
+                          attrs: { autofocus: true, size: "mini" },
                           model: {
                             value: section.name,
                             callback: function($$v) {
@@ -2964,7 +3016,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                  " +
+                              "\n            " +
                                 _vm._s(
                                   section.minimise ? "Minimise" : "Maximise"
                                 )
@@ -3046,9 +3098,9 @@ var render = function() {
                     "el-button",
                     {
                       attrs: {
+                        loading: _vm.loading,
                         plain: "",
-                        type: "success",
-                        loading: _vm.loading
+                        type: "success"
                       },
                       on: {
                         click: function($event) {

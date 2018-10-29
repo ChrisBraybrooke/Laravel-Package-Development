@@ -7,7 +7,7 @@ webpackJsonp([29],{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _MainLayout = __webpack_require__("./resources/assets/admin-spa/layouts/MainLayout.vue");
@@ -17,23 +17,23 @@ var _MainLayout2 = _interopRequireDefault(_MainLayout);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    name: 'Admin',
-    components: { Layout: _MainLayout2.default },
-    mounted: function mounted() {
-        document.title = this.$route.meta.title ? this.$route.meta.title : 'Admin: ' + this.$route.name;
-        console.log('Admin.vue mounted.');
-    },
-
-    watch: {
-        $route: function $route(value) {
-            document.title = value.meta.title ? value.meta.title : 'Admin: ' + this.capitalizeFirstLetter(value.name);
-        }
-    },
-    methods: {
-        capitalizeFirstLetter: function capitalizeFirstLetter(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-        }
+  name: 'Admin',
+  components: { Layout: _MainLayout2.default },
+  watch: {
+    $route: function $route(value) {
+      document.title = value.meta.title ? value.meta.title : 'Admin: ' + this.capitalizeFirstLetter(value.name);
     }
+  },
+  mounted: function mounted() {
+    document.title = this.$route.meta.title ? this.$route.meta.title : 'Admin: ' + this.$route.name;
+    console.log('Admin.vue mounted.');
+  },
+
+  methods: {
+    capitalizeFirstLetter: function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+  }
 };
 
 /***/ }),
@@ -45,197 +45,343 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _elementUi = __webpack_require__("./node_modules/element-ui/lib/element-ui.common.js");
-
-var _elementUi2 = _interopRequireDefault(_elementUi);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 var startsWith = __webpack_require__("./node_modules/lodash.startswith/index.js");
-
 var throttle = __webpack_require__("./node_modules/lodash.throttle/index.js");
+
 exports.default = {
-    components: {},
+  components: {},
 
-    data: function data() {
-        return {
-            width: 100,
-            currentPage: null
-        };
-    },
-
-
-    watch: {
-        $route: function $route(value) {
-            console.log(value);
-            var path = value.path;
-
-            if (startsWith(value.path, '/collections')) {
-                path = '/collections';
-            }
-            if (startsWith(value.path, '/products')) {
-                path = '/products';
-            }
-            if (startsWith(value.path, '/pages')) {
-                path = '/pages';
-            }
-            if (startsWith(value.path, '/users')) {
-                path = '/users';
-            }
-            if (startsWith(value.path, '/orders')) {
-                path = '/orders';
-            }
-            if (startsWith(value.path, '/forms')) {
-                path = '/forms';
-            }
-            this.currentPage = path;
-        }
-    },
-
-    mounted: function mounted() {
-        window.addEventListener('resize', this.getWindowWidth);
-
-        this.getWindowWidth();
-
-        this.currentPage = this.$route.path;
-    },
+  data: function data() {
+    return {
+      width: 100,
+      currentPage: null
+    };
+  },
 
 
-    computed: _extends({}, (0, _vuex.mapGetters)(['user', 'userErrors', 'shopData']), {
-        config: function config() {
-            return ecommerceConfig;
-        }
-    }),
+  computed: _extends({}, (0, _vuex.mapGetters)(['user', 'userErrors', 'shopData']), {
+    config: function config() {
+      return this.ecommerceConfig;
+    }
+  }),
 
-    methods: _extends({}, (0, _vuex.mapActions)(['getUser', 'updateUser', 'updateUserModel']), {
+  watch: {
+    $route: function $route(value) {
+      console.log(value);
+      var path = value.path;
 
-        getWindowWidth: throttle(function (evt) {
-            this.width = document.documentElement.clientWidth;
-        }, 500)
-    })
+      if (startsWith(value.path, '/collections')) {
+        path = '/collections';
+      }
+      if (startsWith(value.path, '/products')) {
+        path = '/products';
+      }
+      if (startsWith(value.path, '/pages')) {
+        path = '/pages';
+      }
+      if (startsWith(value.path, '/users')) {
+        path = '/users';
+      }
+      if (startsWith(value.path, '/orders')) {
+        path = '/orders';
+      }
+      if (startsWith(value.path, '/forms')) {
+        path = '/forms';
+      }
+      this.currentPage = path;
+    }
+  },
+
+  mounted: function mounted() {
+    window.addEventListener('resize', this.getWindowWidth);
+
+    this.getWindowWidth();
+
+    this.currentPage = this.$route.path;
+  },
+
+
+  methods: _extends({}, (0, _vuex.mapActions)(['getUser', 'updateUser', 'updateUserModel']), {
+
+    getWindowWidth: throttle(function (evt) {
+      this.width = document.documentElement.clientWidth;
+    }, 500)
+  })
 
 };
 
@@ -12095,7 +12241,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/* Element Chalk Variables */\n/* Transition\n-------------------------- */\n/* Colors\n-------------------------- */\n/* 53a8ff */\n/* 66b1ff */\n/* 79bbff */\n/* 8cc5ff */\n/* a0cfff */\n/* b3d8ff */\n/* c6e2ff */\n/* d9ecff */\n/* ecf5ff */\n/* Link\n-------------------------- */\n/* Background\n-------------------------- */\n/* Border\n-------------------------- */\n/* Box-shadow\n-------------------------- */\n/* Fill\n-------------------------- */\n/* Font\n-------------------------- */\n/* Size\n-------------------------- */\n/* z-index\n-------------------------- */\n/* Disable base\n-------------------------- */\n/* Icon\n-------------------------- */\n/* Checkbox\n-------------------------- */\n/* Radio\n-------------------------- */\n/* Select\n-------------------------- */\n/* Alert\n-------------------------- */\n/* Message Box\n-------------------------- */\n/* Message\n-------------------------- */\n/* Notification\n-------------------------- */\n/* Input\n-------------------------- */\n/* Cascader\n-------------------------- */\n/* Group\n-------------------------- */\n/* Tab\n-------------------------- */\n/* Button\n-------------------------- */\n/* cascader\n-------------------------- */\n/* Switch\n-------------------------- */\n/* Dialog\n-------------------------- */\n/* Table\n-------------------------- */\n/* Pagination\n-------------------------- */\n/* Popover\n-------------------------- */\n/* Tooltip\n-------------------------- */\n/* Tag\n-------------------------- */\n/* Tree\n-------------------------- */\n/* Dropdown\n-------------------------- */\n/* Badge\n-------------------------- */\n/* Card\n--------------------------*/\n/* Slider\n--------------------------*/\n/* Steps\n--------------------------*/\n/* Menu\n--------------------------*/\n/* Rate\n--------------------------*/\n/* DatePicker\n--------------------------*/\n/* Loading\n--------------------------*/\n/* Scrollbar\n--------------------------*/\n/* Carousel\n--------------------------*/\n/* Collapse\n--------------------------*/\n/* Transfer\n--------------------------*/\n/* Header\n  --------------------------*/\n/* Footer\n--------------------------*/\n/* Main\n--------------------------*/\n/* Break-point\n--------------------------*/\n/* Custom */\n/* Menu\n-------------------------- */\n", ""]);
+exports.push([module.i, "/* Element Chalk Variables */\n/* Transition\n-------------------------- */\n/* Colors\n-------------------------- */\n/* 53a8ff */\n/* 66b1ff */\n/* 79bbff */\n/* 8cc5ff */\n/* a0cfff */\n/* b3d8ff */\n/* c6e2ff */\n/* d9ecff */\n/* ecf5ff */\n/* Link\n-------------------------- */\n/* Background\n-------------------------- */\n/* Border\n-------------------------- */\n/* Box-shadow\n-------------------------- */\n/* Fill\n-------------------------- */\n/* Font\n-------------------------- */\n/* Size\n-------------------------- */\n/* z-index\n-------------------------- */\n/* Disable base\n-------------------------- */\n/* Icon\n-------------------------- */\n/* Checkbox\n-------------------------- */\n/* Radio\n-------------------------- */\n/* Select\n-------------------------- */\n/* Alert\n-------------------------- */\n/* Message Box\n-------------------------- */\n/* Message\n-------------------------- */\n/* Notification\n-------------------------- */\n/* Input\n-------------------------- */\n/* Cascader\n-------------------------- */\n/* Group\n-------------------------- */\n/* Tab\n-------------------------- */\n/* Button\n-------------------------- */\n/* cascader\n-------------------------- */\n/* Switch\n-------------------------- */\n/* Dialog\n-------------------------- */\n/* Table\n-------------------------- */\n/* Pagination\n-------------------------- */\n/* Popover\n-------------------------- */\n/* Tooltip\n-------------------------- */\n/* Tag\n-------------------------- */\n/* Tree\n-------------------------- */\n/* Dropdown\n-------------------------- */\n/* Badge\n-------------------------- */\n/* Card\n--------------------------*/\n/* Slider\n--------------------------*/\n/* Steps\n--------------------------*/\n/* Menu\n--------------------------*/\n/* Rate\n--------------------------*/\n/* DatePicker\n--------------------------*/\n/* Loading\n--------------------------*/\n/* Scrollbar\n--------------------------*/\n/* Carousel\n--------------------------*/\n/* Collapse\n--------------------------*/\n/* Transfer\n--------------------------*/\n/* Header\n  --------------------------*/\n/* Footer\n--------------------------*/\n/* Main\n--------------------------*/\n/* Break-point\n--------------------------*/\n/* Custom */\n/* Menu\n-------------------------- */\n.admin_logo[data-v-25684bb6] {\n  max-width: 90px;\n}\n", ""]);
 
 // exports
 
@@ -16064,12 +16210,19 @@ var render = function() {
               {
                 staticClass: "cb_menu_horizontal",
                 attrs: {
-                  mode: "horizontal",
                   "default-active": _vm.currentPage,
-                  router: true
+                  router: true,
+                  mode: "horizontal"
                 }
               },
               [
+                _c("el-menu-item", { attrs: { index: "/" } }, [
+                  _c("img", {
+                    staticClass: "admin_logo",
+                    attrs: { src: _vm.config.site_logo, alt: "Logo" }
+                  })
+                ]),
+                _vm._v(" "),
                 _vm.user.name
                   ? _c(
                       "el-menu-item",
@@ -16109,7 +16262,6 @@ var render = function() {
                     {
                       staticClass: "cb_menu_vertical",
                       attrs: {
-                        "default-active": "2",
                         router: true,
                         "default-active": _vm.currentPage,
                         collapse: _vm.width < 990
@@ -16573,7 +16725,7 @@ var render = function() {
                                   attrs: {
                                     fill: "#000000",
                                     d:
-                                      "M23,1H1C0.448,1,0,1.447,0,2v20c0,0.553,0.448,1,1,1h22c0.552,0,1-0.447,1-1V2C24,1.447,23.552,1,23,1z\n          \t M22,3v12l-5-5l-6,7l-5-4l-4,4V3H22z"
+                                      "M23,1H1C0.448,1,0,1.447,0,2v20c0,0.553,0.448,1,1,1h22c0.552,0,1-0.447,1-1V2C24,1.447,23.552,1,23,1zM22,3v12l-5-5l-6,7l-5-4l-4,4V3H22z"
                                   }
                                 })
                               ]
@@ -17186,8 +17338,6 @@ var _en = __webpack_require__("./node_modules/element-ui/lib/locale/lang/en.js")
 
 var _en2 = _interopRequireDefault(_en);
 
-var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-
 var _vueClipboard = __webpack_require__("./node_modules/vue-clipboard2/vue-clipboard.js");
 
 var _vueClipboard2 = _interopRequireDefault(_vueClipboard);
@@ -17196,20 +17346,18 @@ var _currency = __webpack_require__("./resources/assets/admin-spa/utils/currency
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.ecommerceConfig.web_version = '0.0.49';
+window.ecommerceConfig.web_version = '0.0.60';
 
 var bugsnag = __webpack_require__("./node_modules/bugsnag-js/dist/bugsnag.js");
-var bugsnagClient = bugsnag({ apiKey: window.bugsnag.key, appVersion: ecommerceConfig.web_version, releaseStage: window.bugsnag.env });
-
+var bugsnagClient = bugsnag({ apiKey: window.bugsnag.key, appVersion: window.ecommerceConfig.web_version, releaseStage: window.bugsnag.env });
 window.has = __webpack_require__("./node_modules/lodash.has/index.js");
 var numeral = __webpack_require__("./node_modules/numeral/numeral.js");
 
-
 if (window.bugsnag.active) {
-    var bugsnagVue = __webpack_require__("./node_modules/bugsnag-vue/dist/bugsnag-vue.js");
-    bugsnagClient.use(bugsnagVue(_vue2.default));
+  var bugsnagVue = __webpack_require__("./node_modules/bugsnag-vue/dist/bugsnag-vue.js");
+  bugsnagClient.use(bugsnagVue(_vue2.default));
 
-    bugsnagClient.user = window.bugsnag.user;
+  bugsnagClient.user = window.bugsnag.user;
 }
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
@@ -17219,68 +17367,69 @@ _vue2.default.use(_elementUi2.default, { locale: _en2.default });
 _vue2.default.use(_vueClipboard2.default);
 
 _vue2.default.mixin({
-    computed: {
-        getSiteBaseURL: function getSiteBaseURL(value) {
-            return ecommerceConfig.site_url + '/';
-        },
-        ecommerceConfig: function ecommerceConfig() {
-            return window.ecommerceConfig;
-        }
+  computed: {
+    getSiteBaseURL: function getSiteBaseURL(value) {
+      return window.ecommerceConfig.site_url + '/';
     },
-    methods: {
-        currencyCodeToSymbol: function currencyCodeToSymbol(code) {
-            var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-            return (0, _currency.code_converter)(code, fallback);
-        },
-        objectHas: function objectHas(object, value) {
-            return has(object, value);
-        },
-        copy: function copy(val) {
-            var _this = this;
-
-            this.$copyText(val).then(function (e) {
-                _this.$message({
-                    message: 'Successfully copied text!',
-                    type: 'success',
-                    showClose: true
-                });
-            }, function (e) {
-                _this.$message({
-                    message: 'Cannot copy text.',
-                    type: 'error',
-                    showClose: true
-                });
-            });
-        },
-        capitalize: function capitalize(str) {
-            var lower = str.toLowerCase();
-            return lower.replace(/(^| )(\w)/g, function (x) {
-                return x.toUpperCase();
-            });
-        },
-        simplePrice: function simplePrice(price) {
-            price = String(price);
-            return parseFloat(price.replace(/,/g, ''));
-        },
-        formatPrice: function formatPrice(price) {
-            var prepend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-            var append = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-            var number = this.simplePrice(price);
-            return prepend + numeral(number).format('0,0.00') + append;
-        }
+    ecommerceConfig: function ecommerceConfig() {
+      return window.ecommerceConfig;
     }
+  },
+  methods: {
+    currencyCodeToSymbol: function currencyCodeToSymbol(code) {
+      var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      return (0, _currency.codeConverter)(code, fallback);
+    },
+    objectHas: function objectHas(object, value) {
+      return window.has(object, value);
+    },
+    copy: function copy(val) {
+      var _this = this;
+
+      this.$copyText(val).then(function (e) {
+        _this.$message({
+          message: 'Successfully copied text!',
+          type: 'success',
+          showClose: true
+        });
+      }, function (e) {
+        _this.$message({
+          message: 'Cannot copy text.',
+          type: 'error',
+          showClose: true
+        });
+      });
+    },
+    capitalize: function capitalize(str) {
+      var lower = str.toLowerCase();
+      return lower.replace(/(^| )(\w)/g, function (x) {
+        return x.toUpperCase();
+      });
+    },
+    simplePrice: function simplePrice(price) {
+      price = String(price);
+      return parseFloat(price.replace(/,/g, ''));
+    },
+    formatPrice: function formatPrice(price) {
+      var prepend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var append = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+      var number = this.simplePrice(price);
+      return prepend + numeral(number).format('0,0.00') + append;
+    }
+  }
 });
 
 _vue2.default.config.productionTip = false;
 
-var app = new _vue2.default({
-    router: _router2.default,
-    store: _index2.default,
-    render: function render(h) {
-        return h(_admin2.default);
-    }
+// eslint-disable-next-line no-new
+new _vue2.default({
+  router: _router2.default,
+  store: _index2.default,
+  render: function render(h) {
+    return h(_admin2.default);
+  }
 }).$mount('#app');
 
 /***/ }),
@@ -17396,7 +17545,7 @@ module.exports = Component.exports
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _vue = __webpack_require__("./node_modules/vue/dist/vue.runtime.esm.js");
@@ -17413,308 +17562,308 @@ _vue2.default.use(_vueRouter2.default);
 
 // Pages
 var Dashboard = function Dashboard() {
-    return __webpack_require__.e/* import() */(28).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Dashboard.vue"));
+  return __webpack_require__.e/* import() */(28).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Dashboard.vue"));
 };
 var Account = function Account() {
-    return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Account.vue"));
+  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/Account.vue"));
 };
 var Orders = function Orders() {
-    return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/Orders.vue"));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/Orders.vue"));
 };
 var ProFormas = function ProFormas() {
-    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pro-formas/ProFormas.vue"));
+  return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pro-formas/ProFormas.vue"));
 };
 var Quotes = function Quotes() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/quotes/Quotes.vue"));
+  return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/quotes/Quotes.vue"));
 };
 var Estimates = function Estimates() {
-    return __webpack_require__.e/* import() */(26).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/Estimates.vue"));
+  return __webpack_require__.e/* import() */(25).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/Estimates.vue"));
 };
 var NewEstimate = function NewEstimate() {
-    return __webpack_require__.e/* import() */(25).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/NewEstimate.vue"));
+  return __webpack_require__.e/* import() */(24).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/NewEstimate.vue"));
 };
 var ViewEstimate = function ViewEstimate() {
-    return __webpack_require__.e/* import() */(24).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue"));
+  return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue"));
 };
 var NewOrderStepOne = function NewOrderStepOne() {
-    return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepOne.vue"));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepOne.vue"));
 };
 var NewOrderStepTwo = function NewOrderStepTwo() {
-    return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepTwo.vue"));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepTwo.vue"));
 };
 var NewOrderStepThree = function NewOrderStepThree() {
-    return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepThree.vue"));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/NewOrderStepThree.vue"));
 };
 var ViewOrder = function ViewOrder() {
-    return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/ViewOrder.vue"));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/orders/ViewOrder.vue"));
 };
 var Collections = function Collections() {
-    return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collections/Collections.vue"));
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collections/Collections.vue"));
 };
 var ViewCollection = function ViewCollection() {
-    return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collections/ViewCollection.vue"));
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collections/ViewCollection.vue"));
 };
 var ViewCollectionType = function ViewCollectionType() {
-    return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collection-types/ViewCollectionType.vue"));
+  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/collection-types/ViewCollectionType.vue"));
 };
 var Products = function Products() {
-    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/Products.vue"));
+  return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/Products.vue"));
 };
 var ViewProduct = function ViewProduct() {
-    return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProduct.vue"));
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProduct.vue"));
 };
 var ViewProductCustomisations = function ViewProductCustomisations() {
-    return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue"));
+  return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue"));
 };
 var ViewProductImages = function ViewProductImages() {
-    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductImages.vue"));
+  return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductImages.vue"));
 };
 var ViewProductPricing = function ViewProductPricing() {
-    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductPricing.vue"));
+  return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductPricing.vue"));
 };
 var ViewProductVariants = function ViewProductVariants() {
-    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductVariants.vue"));
+  return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductVariants.vue"));
 };
 var ViewProductOrdering = function ViewProductOrdering() {
-    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductOrdering.vue"));
+  return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ViewProductOrdering.vue"));
 };
 var Galleries = function Galleries() {
-    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/galleries/Galleries.vue"));
+  return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/galleries/Galleries.vue"));
 };
 var Pages = function Pages() {
-    return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pages/Pages.vue"));
+  return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pages/Pages.vue"));
 };
 var ViewPage = function ViewPage() {
-    return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pages/ViewPage.vue"));
+  return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/pages/ViewPage.vue"));
 };
 var ViewUser = function ViewUser() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/users/ViewUser.vue"));
+  return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/users/ViewUser.vue"));
 };
 var Users = function Users() {
-    return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/users/Users.vue"));
+  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/users/Users.vue"));
 };
 var Customers = function Customers() {
-    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/customers/Customers.vue"));
+  return __webpack_require__.e/* import() */(26).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/customers/Customers.vue"));
 };
 var Config = function Config() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/config/Config.vue"));
+  return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/config/Config.vue"));
 };
 var Forms = function Forms() {
-    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/forms/Forms.vue"));
+  return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/forms/Forms.vue"));
 };
 var ViewForm = function ViewForm() {
-    return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/forms/ViewForm.vue"));
+  return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/forms/ViewForm.vue"));
 };
 var Menus = function Menus() {
-    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/menus/Menus.vue"));
+  return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/menus/Menus.vue"));
 };
 var ViewMenu = function ViewMenu() {
-    return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/menus/ViewMenu.vue"));
+  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/menus/ViewMenu.vue"));
 };
 var NotFound = function NotFound() {
-    return __webpack_require__.e/* import() */(27).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/NotFound.vue"));
+  return __webpack_require__.e/* import() */(27).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/NotFound.vue"));
 };
 var ImportExport = function ImportExport() {
-    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/reports/ImportExport.vue"));
+  return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/reports/ImportExport.vue"));
 };
 
 var router = new _vueRouter2.default({
-    mode: 'history',
-    base: '/admin/',
-    routes: [{
-        path: '/',
-        component: Dashboard,
-        name: 'dashboard',
-        meta: { title: 'Admin: Dashboard' }
-    }, {
-        path: '/account',
-        component: Account,
-        name: 'user',
-        meta: { title: 'Admin: Account' }
-    }, {
-        path: '/orders',
-        component: Orders,
-        name: 'orders',
-        meta: { title: 'Admin: Orders' }
-    }, {
-        path: '/pro-formas',
-        component: ProFormas,
-        name: 'pro-formas',
-        meta: { title: 'Admin: ProFormas' }
-    }, {
-        path: '/orders/new',
-        component: NewOrderStepOne,
-        name: 'orders.step1',
-        meta: { title: 'Admin: New Order - Step 1' }
-    }, {
-        path: '/orders/new/products',
-        component: NewOrderStepTwo,
-        name: 'orders.step2',
-        meta: { title: 'Admin: New Order - Step 2' }
-    }, {
-        path: '/orders/new/payment',
-        component: NewOrderStepThree,
-        name: 'orders.step3',
-        meta: { title: 'Admin: New Order - Step 3' }
-    }, {
-        path: '/orders/:orderId',
-        component: ViewOrder,
-        props: true,
-        name: 'orders.view',
-        meta: { title: 'Admin: Orders' }
-    }, {
-        path: '/quotes',
-        component: Quotes,
-        name: 'quotes',
-        meta: { title: 'Admin: Quotes' }
-    }, {
-        path: '/estimates',
-        component: Estimates,
-        name: 'estimates',
-        meta: { title: 'Admin: Estimates' }
-    }, {
-        path: '/new-estimate',
-        component: NewEstimate,
-        name: 'estimates.new',
-        meta: { title: 'Admin: New Estimate' }
-    }, {
-        path: '/estimates/:estimateId',
-        component: ViewEstimate,
-        props: true,
-        name: 'estimates.view',
-        meta: { title: 'Admin: Estimate' }
-    }, {
-        path: '/collections',
-        component: Collections,
-        name: 'collections',
-        meta: { title: 'Admin: Collections' }
-    }, {
-        path: '/collections/:collectionId',
-        component: ViewCollection,
-        props: true,
-        name: 'collections.view',
-        meta: { title: 'Admin: Collection' }
-    }, {
-        path: '/collections/:collectionId/types/:typeId',
-        component: ViewCollectionType,
-        props: true,
-        name: 'collection.types.view',
-        meta: { title: 'Admin: Collection Type' }
-    }, {
-        path: '/products',
-        component: Products,
-        name: 'products',
-        meta: { title: 'Admin: Products' }
-    }, {
-        path: '/products/:productId',
-        component: ViewProduct,
-        props: true,
-        name: 'products.view',
-        meta: { title: 'Admin: Product' }
-    }, {
-        path: '/products/:productId/pricing',
-        component: ViewProductPricing,
-        props: true,
-        name: 'products.view.pricing',
-        meta: { title: 'Admin: Product Pricing' }
-    }, {
-        path: '/products/:productId/images',
-        component: ViewProductImages,
-        props: true,
-        name: 'products.view.images',
-        meta: { title: 'Admin: Product Images' }
-    }, {
-        path: '/products/:productId/customisations',
-        component: ViewProductCustomisations,
-        props: true,
-        name: 'products.view.customisations',
-        meta: { title: 'Admin: Product Customisations' }
-    }, {
-        path: '/products/:productId/variants',
-        component: ViewProductVariants,
-        props: true,
-        name: 'products.view.variants',
-        meta: { title: 'Admin: Product Variants' }
-    }, {
-        path: '/products/:productId/ordering',
-        component: ViewProductOrdering,
-        props: true,
-        name: 'products.view.ordering',
-        meta: { title: 'Admin: Product Ordering' }
-    }, {
-        path: '/galleries',
-        component: Galleries,
-        name: 'galleries',
-        meta: { title: 'Admin: Galleries' }
-    }, {
-        path: '/pages',
-        component: Pages,
-        name: 'pages',
-        meta: { title: 'Admin: Pages' }
-    }, {
-        path: '/pages/:pageId',
-        component: ViewPage,
-        props: true,
-        name: 'pages.view',
-        meta: { title: 'Admin: Page' }
-    }, {
-        path: '/users',
-        component: Users,
-        name: 'users',
-        meta: { title: 'Admin: Users' }
-    }, {
-        path: '/users/:userId',
-        component: ViewUser,
-        props: true,
-        name: 'users.view',
-        meta: { title: 'Admin: Users' }
-    }, {
-        path: '/customers',
-        component: Customers,
-        name: 'customers',
-        meta: { title: 'Admin: Customers' }
-    }, {
-        path: '/forms',
-        component: Forms,
-        name: 'forms',
-        meta: { title: 'Admin: Forms' }
-    }, {
-        path: '/forms/:formId',
-        component: ViewForm,
-        props: true,
-        name: 'forms.view',
-        meta: { title: 'Admin: Forms' }
-    }, {
-        path: '/menus',
-        component: Menus,
-        name: 'menus',
-        meta: { title: 'Admin: Menus' }
-    }, {
-        path: '/menus/:menuId',
-        component: ViewMenu,
-        props: true,
-        name: 'menus.view',
-        meta: { title: 'Admin: Menus' }
-    }, {
-        path: '/config',
-        component: Config,
-        name: 'config',
-        meta: { title: 'Admin: Config' }
-    }, {
-        path: '/import-export',
-        component: ImportExport,
-        name: 'import-export',
-        meta: { title: 'Admin: Import / Export' }
-    }, {
-        path: '*',
-        component: NotFound,
-        name: 'not-found',
-        meta: { title: 'Admin: Not Found' }
-    }]
+  mode: 'history',
+  base: '/admin/',
+  routes: [{
+    path: '/',
+    component: Dashboard,
+    name: 'dashboard',
+    meta: { title: 'Admin: Dashboard' }
+  }, {
+    path: '/account',
+    component: Account,
+    name: 'user',
+    meta: { title: 'Admin: Account' }
+  }, {
+    path: '/orders',
+    component: Orders,
+    name: 'orders',
+    meta: { title: 'Admin: Orders' }
+  }, {
+    path: '/pro-formas',
+    component: ProFormas,
+    name: 'pro-formas',
+    meta: { title: 'Admin: ProFormas' }
+  }, {
+    path: '/orders/new',
+    component: NewOrderStepOne,
+    name: 'orders.step1',
+    meta: { title: 'Admin: New Order - Step 1' }
+  }, {
+    path: '/orders/new/products',
+    component: NewOrderStepTwo,
+    name: 'orders.step2',
+    meta: { title: 'Admin: New Order - Step 2' }
+  }, {
+    path: '/orders/new/payment',
+    component: NewOrderStepThree,
+    name: 'orders.step3',
+    meta: { title: 'Admin: New Order - Step 3' }
+  }, {
+    path: '/orders/:orderId',
+    component: ViewOrder,
+    props: true,
+    name: 'orders.view',
+    meta: { title: 'Admin: Orders' }
+  }, {
+    path: '/quotes',
+    component: Quotes,
+    name: 'quotes',
+    meta: { title: 'Admin: Quotes' }
+  }, {
+    path: '/estimates',
+    component: Estimates,
+    name: 'estimates',
+    meta: { title: 'Admin: Estimates' }
+  }, {
+    path: '/new-estimate',
+    component: NewEstimate,
+    name: 'estimates.new',
+    meta: { title: 'Admin: New Estimate' }
+  }, {
+    path: '/estimates/:estimateId',
+    component: ViewEstimate,
+    props: true,
+    name: 'estimates.view',
+    meta: { title: 'Admin: Estimate' }
+  }, {
+    path: '/collections',
+    component: Collections,
+    name: 'collections',
+    meta: { title: 'Admin: Collections' }
+  }, {
+    path: '/collections/:collectionId',
+    component: ViewCollection,
+    props: true,
+    name: 'collections.view',
+    meta: { title: 'Admin: Collection' }
+  }, {
+    path: '/collections/:collectionId/types/:typeId',
+    component: ViewCollectionType,
+    props: true,
+    name: 'collection.types.view',
+    meta: { title: 'Admin: Collection Type' }
+  }, {
+    path: '/products',
+    component: Products,
+    name: 'products',
+    meta: { title: 'Admin: Products' }
+  }, {
+    path: '/products/:productId',
+    component: ViewProduct,
+    props: true,
+    name: 'products.view',
+    meta: { title: 'Admin: Product' }
+  }, {
+    path: '/products/:productId/pricing',
+    component: ViewProductPricing,
+    props: true,
+    name: 'products.view.pricing',
+    meta: { title: 'Admin: Product Pricing' }
+  }, {
+    path: '/products/:productId/images',
+    component: ViewProductImages,
+    props: true,
+    name: 'products.view.images',
+    meta: { title: 'Admin: Product Images' }
+  }, {
+    path: '/products/:productId/customisations',
+    component: ViewProductCustomisations,
+    props: true,
+    name: 'products.view.customisations',
+    meta: { title: 'Admin: Product Customisations' }
+  }, {
+    path: '/products/:productId/variants',
+    component: ViewProductVariants,
+    props: true,
+    name: 'products.view.variants',
+    meta: { title: 'Admin: Product Variants' }
+  }, {
+    path: '/products/:productId/ordering',
+    component: ViewProductOrdering,
+    props: true,
+    name: 'products.view.ordering',
+    meta: { title: 'Admin: Product Ordering' }
+  }, {
+    path: '/galleries',
+    component: Galleries,
+    name: 'galleries',
+    meta: { title: 'Admin: Galleries' }
+  }, {
+    path: '/pages',
+    component: Pages,
+    name: 'pages',
+    meta: { title: 'Admin: Pages' }
+  }, {
+    path: '/pages/:pageId',
+    component: ViewPage,
+    props: true,
+    name: 'pages.view',
+    meta: { title: 'Admin: Page' }
+  }, {
+    path: '/users',
+    component: Users,
+    name: 'users',
+    meta: { title: 'Admin: Users' }
+  }, {
+    path: '/users/:userId',
+    component: ViewUser,
+    props: true,
+    name: 'users.view',
+    meta: { title: 'Admin: Users' }
+  }, {
+    path: '/customers',
+    component: Customers,
+    name: 'customers',
+    meta: { title: 'Admin: Customers' }
+  }, {
+    path: '/forms',
+    component: Forms,
+    name: 'forms',
+    meta: { title: 'Admin: Forms' }
+  }, {
+    path: '/forms/:formId',
+    component: ViewForm,
+    props: true,
+    name: 'forms.view',
+    meta: { title: 'Admin: Forms' }
+  }, {
+    path: '/menus',
+    component: Menus,
+    name: 'menus',
+    meta: { title: 'Admin: Menus' }
+  }, {
+    path: '/menus/:menuId',
+    component: ViewMenu,
+    props: true,
+    name: 'menus.view',
+    meta: { title: 'Admin: Menus' }
+  }, {
+    path: '/config',
+    component: Config,
+    name: 'config',
+    meta: { title: 'Admin: Config' }
+  }, {
+    path: '/import-export',
+    component: ImportExport,
+    name: 'import-export',
+    meta: { title: 'Admin: Import / Export' }
+  }, {
+    path: '*',
+    component: NotFound,
+    name: 'not-found',
+    meta: { title: 'Admin: Not Found' }
+  }]
 });
 
 router.beforeEach(function (to, from, next) {
-    next();
+  next();
 });
 
 exports.default = router;
@@ -17735,7 +17884,7 @@ exports.default = router;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -17749,127 +17898,127 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _axios2.default.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
-    _axios2.default.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-    _axios2.default.defaults.withCredentials = true;
+  _axios2.default.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  _axios2.default.defaults.withCredentials = true;
 } else {
-    console.error('CSRF token not found');
+  console.error('CSRF token not found');
 }
-var BASE_URL = ecommerceConfig.site_url + '/' + ecommerceConfig.api_prefix + '/';
-var SERVER_ERROR_MESSAGE = "We could not access the server at this time. Please try again. If the issue persists, please open a support ticket.";
-var SERVER_UNAUTH_MESSAGE = "We could not complete the request, because you are not authorised to do so.";
+var BASE_URL = window.ecommerceConfig.site_url + '/' + window.ecommerceConfig.api_prefix + '/';
+var SERVER_ERROR_MESSAGE = 'We could not access the server at this time. Please try again. If the issue persists, please open a support ticket.';
+var SERVER_UNAUTH_MESSAGE = 'We could not complete the request, because you are not authorised to do so.';
 
 exports.default = {
-    get: function get(data) {
-        if (!has(data, 'params')) {
-            data.params = {};
-        }
-
-        if (!has(data, 'url') || has(data, 'url') && !data.url) {
-            data.url = BASE_URL + data.path;
-        }
-
-        data.params.limit = has(data, 'params.limit') ? data.params.limit : 15;
-        data.params.ascending = has(data, 'params.ascending') ? data.params.ascending : 0;
-        data.params.orderBy = has(data, 'params.orderBy') ? data.params.orderBy : 'id';
-
-        console.log('API Get: ' + data.url);
-
-        return new Promise(function (resolve, reject) {
-            _axios2.default.get(data.url, { params: data.params }).then(function (response) {
-                resolve(response.data);
-            }.bind(this)).catch(function (error) {
-                reject(this.errorAdapter(error));
-            }.bind(this));
-        }.bind(this));
-    },
-
-
-    /**
-     * Delete data on the server.
-     *
-     * @param Object data
-     *
-     * @return Promise | resolve() or reject()
-     */
-    delete: function _delete(data) {
-        if (!has(data, 'url') || has(data, 'url') && !data.url) {
-            data.url = BASE_URL + data.path;
-        }
-
-        console.log('API Delete: ' + data.url);
-
-        return new Promise(function (resolve, reject) {
-            _axios2.default.delete(data.url, has(data, 'params') ? { params: data.params } : '').then(function (response) {
-                resolve(response.data);
-            }.bind(this)).catch(function (error) {
-                reject(this.errorAdapter(error));
-            }.bind(this));
-        }.bind(this));
-    },
-
-
-    /**
-     * Persist data to the server using the method supplied.
-     *
-     * @param String method
-     * @param Object data
-     *
-     * @return Promise | resolve() or reject()
-     */
-    persist: function persist(method, data) {
-        if (!has(data, 'params')) {
-            data.params = {};
-        }
-
-        if (!has(data, 'url') || has(data, 'url') && !data.url) {
-            data.url = BASE_URL + data.path;
-        }
-
-        console.log('API ' + method + ': ' + data.url);
-
-        return new Promise(function (resolve, reject) {
-            _axios2.default[method](data.url, data.object, data.params).then(function (response) {
-                resolve(response.data);
-            }.bind(this)).catch(function (error) {
-                reject(this.errorAdapter(error));
-            }.bind(this));
-        }.bind(this));
-    },
-
-
-    /**
-     * Turn the response from the server into something we can work with.
-     *
-     * @param Object error
-     *
-     * @return Object
-     */
-    errorAdapter: function errorAdapter(error) {
-        error = has(error, 'response.status') ? error.response : error;
-        var data = has(error, 'data') ? error.data : error.message;
-
-        console.error('API Error:');
-        console.log(error);
-        console.error('API Error Data');
-        console.log(data);
-
-        return error ? (typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object' && error.status === 422 ? data : error.status === 403 ? {
-            message: SERVER_UNAUTH_MESSAGE,
-            code: error.status
-        } : {
-            message: SERVER_ERROR_MESSAGE,
-            errors: {
-                'server': ['Please use this error code in any suppot queries. Error Code: ' + error.status]
-            },
-            code: error.status
-        } : {
-            message: SERVER_ERROR_MESSAGE,
-            errors: {
-                'server': error.message
-            },
-            code: error.status
-        };
+  get: function get(data) {
+    if (!data.params) {
+      data.params = {};
     }
+
+    if (!data.url) {
+      data.url = BASE_URL + data.path;
+    }
+
+    data.params.limit = window.has(data, 'params.limit') ? data.params.limit : 15;
+    data.params.ascending = window.has(data, 'params.ascending') ? data.params.ascending : 0;
+    data.params.orderBy = window.has(data, 'params.orderBy') ? data.params.orderBy : 'id';
+
+    console.log('API Get: ' + data.url);
+
+    return new Promise(function (resolve, reject) {
+      _axios2.default.get(data.url, { params: data.params }).then(function (response) {
+        resolve(response.data);
+      }).catch(function (error) {
+        reject(this.errorAdapter(error));
+      }.bind(this));
+    }.bind(this));
+  },
+
+
+  /**
+   * Delete data on the server.
+   *
+   * @param Object data
+   *
+   * @return Promise | resolve() or reject()
+   */
+  delete: function _delete(data) {
+    if (!data.url) {
+      data.url = BASE_URL + data.path;
+    }
+
+    console.log('API Delete: ' + data.url);
+
+    return new Promise(function (resolve, reject) {
+      _axios2.default.delete(data.url, window.has(data, 'params') ? { params: data.params } : '').then(function (response) {
+        resolve(response.data);
+      }).catch(function (error) {
+        reject(this.errorAdapter(error));
+      }.bind(this));
+    }.bind(this));
+  },
+
+
+  /**
+   * Persist data to the server using the method supplied.
+   *
+   * @param String method
+   * @param Object data
+   *
+   * @return Promise | resolve() or reject()
+   */
+  persist: function persist(method, data) {
+    if (!data.params) {
+      data.params = {};
+    }
+
+    if (!data.url) {
+      data.url = BASE_URL + data.path;
+    }
+
+    console.log('API ' + method + ': ' + data.url);
+
+    return new Promise(function (resolve, reject) {
+      _axios2.default[method](data.url, data.object, data.params).then(function (response) {
+        resolve(response.data);
+      }).catch(function (error) {
+        reject(this.errorAdapter(error));
+      }.bind(this));
+    }.bind(this));
+  },
+
+
+  /**
+   * Turn the response from the server into something we can work with.
+   *
+   * @param Object error
+   *
+   * @return Object
+   */
+  errorAdapter: function errorAdapter(error) {
+    error = window.has(error, 'response.status') ? error.response : error;
+    var data = window.has(error, 'data') ? error.data : error.message;
+
+    console.error('API Error:');
+    console.log(error);
+    console.error('API Error Data');
+    console.log(data);
+
+    return error ? (typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object' && error.status === 422 ? data : error.status === 403 ? {
+      message: SERVER_UNAUTH_MESSAGE,
+      code: error.status
+    } : {
+      message: SERVER_ERROR_MESSAGE,
+      errors: {
+        'server': ['Please use this error code in any suppot queries. Error Code: ' + error.status]
+      },
+      code: error.status
+    } : {
+      message: SERVER_ERROR_MESSAGE,
+      errors: {
+        'server': error.message
+      },
+      code: error.status
+    };
+  }
 };
 
 /***/ }),
@@ -17974,34 +18123,29 @@ var state = {
   // actions
 };var actions = {
   getCollections: function getCollections(_ref) {
-    var _this = this;
-
     var commit = _ref.commit,
         dispatch = _ref.dispatch;
     var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     console.log('Vuex: Get Collections');
 
-    data.path = _.has(data, 'path') ? data.path : 'collections';
+    data.path = window._.has(data, 'path') ? data.path : 'collections';
 
-    if (!_.has(data, 'params')) {
+    if (!window._.has(data, 'params')) {
       data.params = {};
     }
-    data.params.orderBy = _.has(data, 'params.orderBy') ? data.params.orderBy : 'name';
-    data.params.ascending = _.has(data, 'params.ascending') ? data.params.ascending : 1;
+    data.params.orderBy = window._.has(data, 'params.orderBy') ? data.params.orderBy : 'name';
+    data.params.ascending = window._.has(data, 'params.ascending') ? data.params.ascending : 1;
 
     return new Promise(function (resolve, reject) {
-
       _apiService2.default.get(data).then(function (response) {
-
         commit(types.GET_COLLECTIONS, response.data);
         commit(types.GET_COLLECTION_ERRORS, []);
         resolve(response);
-      }.bind(_this)).catch(function (error) {
-
+      }).catch(function (error) {
         commit(types.GET_COLLECTION_ERRORS, error);
         reject(error);
-      }.bind(_this));
+      });
     });
   }
 };
@@ -18029,7 +18173,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _mutations;
@@ -18052,107 +18196,111 @@ var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
 // initial state
 var state = {
-    order: {
-        customer: {},
-        billing_address: {},
-        shipping_address: {},
-        items: [],
-        cart: {
-            totals: {
-                Shipping: 60,
-                Discount: 0
-            }
-        },
-        use_billing_for_shipping: true,
-        status: 'STATUS_DRAFT',
-        needs_address: 'Needs Address'
-    }
+  order: {
+    customer: {},
+    billing_address: {
+      country: 'United Kingdom'
+    },
+    shipping_address: {
+      country: 'United Kingdom'
+    },
+    items: [],
+    cart: {
+      totals: {
+        Shipping: 60,
+        Discount: 0
+      }
+    },
+    use_billing_for_shipping: true,
+    status: 'STATUS_DRAFT',
+    needs_address: 'Needs Address'
+  }
 
-    // getters
+  // getters
 };var getters = {
-    order: function order(state) {
-        return state.order;
-    },
-    orderTotals: function orderTotals(state) {
-        return _order2.default.totals(state.order.items, state.order.cart.totals['Shipping'], state.order.cart.totals['Discount']);
-    },
-    orderTotal: function orderTotal(state, getters) {
-        var grand_total = 0;
-        forEach(getters.orderTotals, function (total) {
-            if (total.total === 'Total') {
-                grand_total = total.value;
-            }
-        });
-        return grand_total;
-    }
+  order: function order(state) {
+    return state.order;
+  },
+  orderTotals: function orderTotals(state) {
+    return _order2.default.totals(state.order.items, state.order.cart.totals['Shipping'], state.order.cart.totals['Discount']);
+  },
+  orderTotal: function orderTotal(state, getters) {
+    var grandTotal = 0;
+    forEach(getters.orderTotals, function (total) {
+      if (total.total === 'Total') {
+        grandTotal = total.value;
+      }
+    });
+    return grandTotal;
+  }
 };
 
 // actions
 var actions = {
-    setOrder: function setOrder(_ref) {
-        var commit = _ref.commit,
-            dispatch = _ref.dispatch;
-        var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  setOrder: function setOrder(_ref) {
+    var commit = _ref.commit,
+        dispatch = _ref.dispatch;
+    var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        console.log('Vuex: Set Order');
-        commit(types.SET_ORDER, data);
-    },
-    resetOrder: function resetOrder(_ref2) {
-        var state = _ref2.state,
-            commit = _ref2.commit,
-            dispatch = _ref2.dispatch;
+    console.log('Vuex: Set Order');
+    commit(types.SET_ORDER, data);
+  },
+  resetOrder: function resetOrder(_ref2) {
+    var state = _ref2.state,
+        commit = _ref2.commit,
+        dispatch = _ref2.dispatch;
 
-        console.log('Vuex: Reset Order');
-        commit(types.RESET_ORDER);
-    },
-    deleteOrderItem: function deleteOrderItem(_ref3, item) {
-        var commit = _ref3.commit,
-            dispatch = _ref3.dispatch;
+    console.log('Vuex: Reset Order');
+    commit(types.RESET_ORDER);
+  },
+  deleteOrderItem: function deleteOrderItem(_ref3, item) {
+    var commit = _ref3.commit,
+        dispatch = _ref3.dispatch;
 
-        console.log('Vuex: Delete Order Item');
-        commit(types.DELETE_ITEM, item);
-    },
-    editOrderItem: function editOrderItem(_ref4, item) {
-        var state = _ref4.state,
-            commit = _ref4.commit,
-            dispatch = _ref4.dispatch;
+    console.log('Vuex: Delete Order Item');
+    commit(types.DELETE_ITEM, item);
+  },
+  editOrderItem: function editOrderItem(_ref4, item) {
+    var state = _ref4.state,
+        commit = _ref4.commit,
+        dispatch = _ref4.dispatch;
 
-        console.log('Vuex: Update Order Item');
-        var item_index = state.order.items.indexOf(item);
-        state.order.items[item_index] = item;
-    }
+    console.log('Vuex: Update Order Item');
+    var itemIndex = state.order.items.indexOf(item);
+    state.order.items[itemIndex] = item;
+  }
 };
 
 // mutations
 var mutations = (_mutations = {}, _defineProperty(_mutations, types.SET_ORDER, function (state, order) {
-    state.order = order;
+  state.order = order;
 }), _defineProperty(_mutations, types.RESET_ORDER, function (state) {
-    state.order = {
-        customer: {},
-        billing_address: {},
-        shipping_address: {},
-        items: [],
-        cart: {
-            totals: {
-                Shipping: 60,
-                Discount: 0
-            }
-        },
-        use_billing_for_shipping: true,
-        status: 'STATUS_DRAFT',
-        needs_address: 'Needs Address'
-    };
+  state.order = {
+    customer: {},
+    billing_address: {},
+    shipping_address: {},
+    items: [],
+    cart: {
+      totals: {
+        Shipping: 60,
+        Discount: 0
+      }
+    },
+    use_billing_for_shipping: true,
+    status: 'STATUS_DRAFT',
+    needs_address: 'Needs Address'
+  };
 }), _defineProperty(_mutations, types.ADD_PRODUCT_TO_ORDER, function (state, product) {
-    state.order.items.push(product);
+  state.order.items.push(product);
 }), _defineProperty(_mutations, types.DELETE_ITEM, function (state, item) {
-    state.order.items.splice(state.order.items.indexOf(item), 1);
+  state.order.items.splice(state.order.items.indexOf(item), 1);
 }), _mutations);
 
 exports.default = {
-    state: state,
-    getters: getters,
-    actions: actions,
-    mutations: mutations
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
 };
 
 /***/ }),
@@ -18200,34 +18348,29 @@ var state = {
   // actions
 };var actions = {
   getShopData: function getShopData(_ref) {
-    var _this = this;
-
     var commit = _ref.commit,
         dispatch = _ref.dispatch;
     var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     console.log('Vuex: Get Shop Data');
 
-    data.path = _.has(data, 'path') ? data.path : 'shop-data';
+    data.path = window._.has(data, 'path') ? data.path : 'shop-data';
 
-    if (!_.has(data, 'params')) {
+    if (!window._.has(data, 'params')) {
       data.params = {};
     }
-    data.params.orderBy = _.has(data, 'params.orderBy') ? data.params.orderBy : 'name';
-    data.params.ascending = _.has(data, 'params.ascending') ? data.params.ascending : 1;
+    data.params.orderBy = window._.has(data, 'params.orderBy') ? data.params.orderBy : 'name';
+    data.params.ascending = window._.has(data, 'params.ascending') ? data.params.ascending : 1;
 
     return new Promise(function (resolve, reject) {
-
       _apiService2.default.get(data).then(function (response) {
-
         commit(types.GET_SHOP_DATA, response.data);
         commit(types.GET_SHOP_DATA_ERRORS, []);
         resolve(response);
-      }.bind(_this)).catch(function (error) {
-
+      }).catch(function (error) {
         commit(types.GET_SHOP_DATA_ERRORS, error);
         reject(error);
-      }.bind(_this));
+      });
     });
   },
   setShopData: function setShopData(_ref2) {
@@ -18285,7 +18428,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var has = __webpack_require__("./node_modules/lodash.has/index.js");
 
-
 var FETCH_BUFFER = 60 * 5 * 1000; /* ms */
 
 // initial state
@@ -18308,8 +18450,6 @@ var state = {
   // actions
 };var actions = {
   getUser: function getUser(_ref) {
-    var _this = this;
-
     var state = _ref.state,
         commit = _ref.commit,
         dispatch = _ref.dispatch;
@@ -18330,18 +18470,16 @@ var state = {
           commit(types.UPDATE_USER, response.data);
           commit(types.UPDATE_USER_ERRORS, []);
           resolve(response.data);
-        }.bind(_this)).catch(function (error) {
+        }).catch(function (error) {
           commit(types.UPDATE_USER_ERRORS, error);
           reject(error);
-        }.bind(_this));
+        });
       } else {
         resolve(state.user);
       }
     });
   },
   updateUser: function updateUser(_ref2) {
-    var _this2 = this;
-
     var state = _ref2.state,
         commit = _ref2.commit,
         dispatch = _ref2.dispatch;
@@ -18364,10 +18502,10 @@ var state = {
         commit(types.UPDATE_USER, response.data);
         commit(types.UPDATE_USER_ERRORS, []);
         resolve(response.data);
-      }.bind(_this2)).catch(function (error) {
+      }).catch(function (error) {
         commit(types.UPDATE_USER_ERRORS, error);
         reject(error);
-      }.bind(_this2));
+      });
     });
   }
 };
@@ -18430,35 +18568,35 @@ var DELETE_ITEM = exports.DELETE_ITEM = 'DELETE_ITEM';
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-var currency_symbols = exports.currency_symbols = {
-    'USD': '$', // US Dollar
-    'EUR': '€', // Euro
-    'CRC': '₡', // Costa Rican Colón
-    'GBP': '£', // British Pound Sterling
-    'ILS': '₪', // Israeli New Sheqel
-    'INR': '₹', // Indian Rupee
-    'JPY': '¥', // Japanese Yen
-    'KRW': '₩', // South Korean Won
-    'NGN': '₦', // Nigerian Naira
-    'PHP': '₱', // Philippine Peso
-    'PLN': 'zł', // Polish Zloty
-    'PYG': '₲', // Paraguayan Guarani
-    'THB': '฿', // Thai Baht
-    'UAH': '₴', // Ukrainian Hryvnia
-    'VND': '₫' // Vietnamese Dong
+var currencySymbols = exports.currencySymbols = {
+  'USD': '$', // US Dollar
+  'EUR': '€', // Euro
+  'CRC': '₡', // Costa Rican Colón
+  'GBP': '£', // British Pound Sterling
+  'ILS': '₪', // Israeli New Sheqel
+  'INR': '₹', // Indian Rupee
+  'JPY': '¥', // Japanese Yen
+  'KRW': '₩', // South Korean Won
+  'NGN': '₦', // Nigerian Naira
+  'PHP': '₱', // Philippine Peso
+  'PLN': 'zł', // Polish Zloty
+  'PYG': '₲', // Paraguayan Guarani
+  'THB': '฿', // Thai Baht
+  'UAH': '₴', // Ukrainian Hryvnia
+  'VND': '₫' // Vietnamese Dong
 };
 
-var code_converter = exports.code_converter = function code_converter(currency_name) {
-    var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+var codeConverter = exports.codeConverter = function codeConverter(currencyName) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-    currency_name = currency_name.toUpperCase();
+  currencyName = currencyName.toUpperCase();
 
-    if (currency_symbols[currency_name] !== undefined) {
-        return currency_symbols[currency_name];
-    }
-    return fallback;
+  if (currencySymbols[currencyName] !== undefined) {
+    return currencySymbols[currencyName];
+  }
+  return fallback;
 };
 
 /***/ }),
@@ -18470,15 +18608,15 @@ var code_converter = exports.code_converter = function code_converter(currency_n
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 var operators = exports.operators = {
-    '+': function _(a, b) {
-        return parseFloat(a) + parseFloat(b);
-    },
-    '-': function _(a, b) {
-        return parseFloat(a) - parseFloat(b);
-    }
+  '+': function _(a, b) {
+    return parseFloat(a) + parseFloat(b);
+  },
+  '-': function _(a, b) {
+    return parseFloat(a) - parseFloat(b);
+  }
 };
 
 /***/ }),
@@ -18490,7 +18628,7 @@ var operators = exports.operators = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _operators = __webpack_require__("./resources/assets/admin-spa/utils/operators.js");
@@ -18504,93 +18642,93 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
 exports.default = {
-    productSubTotal: function productSubTotal(product) {
-        return _price2.default.normalise(product.price) * parseInt(product.quantity);
-    },
-    productExtras: function productExtras(product) {
-        var extras = 0;
-        if (product.options) {
-            forEach(product.options, function (option) {
-                if (option) {
-                    if (option.price_mutator && option.price_value) {
-                        extras = _operators.operators[option.price_mutator](extras, option.price_value);
-                    }
-                }
-            });
+  productSubTotal: function productSubTotal(product) {
+    return _price2.default.normalise(product.price) * parseInt(product.quantity);
+  },
+  productExtras: function productExtras(product) {
+    var extras = 0;
+    if (product.options) {
+      forEach(product.options, function (option) {
+        if (option) {
+          if (option.price_mutator && option.price_value) {
+            extras = _operators.operators[option.price_mutator](extras, option.price_value);
+          }
         }
-        return extras * product.quantity;
-    },
-    productTotal: function productTotal(product) {
-        return _price2.default.normalise(this.productExtras(product)) + _price2.default.normalise(this.productSubTotal(product));
-    },
-    paymentTotal: function paymentTotal(payments) {
-        var total = 0;
-        payments.forEach(function (payment) {
-            if (payment.refunded !== true) {
-                var amount = String(payment.amount);
-                amount = parseFloat(amount.replace(/,/g, ''));
-                total = total + amount;
-            }
-        });
-        return total;
-    },
-    totals: function totals(products) {
-        var shipping = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-        var discount = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-
-        var sub_total = 0;
-        var extras = 0;
-        forEach(products, function (product, key) {
-            var quantity = product.quantity ? product.quantity : 1;
-            sub_total = sub_total + _price2.default.normalise(product.price) * parseInt(quantity);
-
-            forEach(product.options ? product.options : [], function (option) {
-                if (option) {
-                    if (option.price_mutator && option.price_value) {
-                        extras = extras + _operators.operators[option.price_mutator](0, option.price_value) * parseInt(quantity);
-                    }
-                }
-            });
-        });
-
-        var total_ex_vat = _price2.default.normalise(sub_total) + _price2.default.normalise(extras) + _price2.default.normalise(shipping);
-        var discount_amount = total_ex_vat * (parseInt(discount) / 100);
-        total_ex_vat = total_ex_vat - discount_amount;
-        var vat = total_ex_vat * 0.2;
-        var total = total_ex_vat + vat;
-        return [{
-            total: 'Sub-Total',
-            value: _price2.default.normalise(sub_total)
-        }, {
-            total: 'Extras',
-            value: _price2.default.normalise(extras)
-        }, {
-            total: 'Shipping',
-            value: _price2.default.normalise(shipping)
-        }, {
-            total: 'Discount',
-            value: discount
-        }, {
-            total: 'VAT',
-            value: _price2.default.normalise(vat)
-        }, {
-            total: 'Total',
-            value: _price2.default.normalise(total)
-        }];
-    },
-    getStatusNameFromCode: function getStatusNameFromCode(status_code) {
-        var statuses = ecommerceConfig.orders.statuses;
-
-        var name = null;
-
-        forEach(statuses, function (status, key) {
-            if (key === status_code) {
-                name = status;
-            }
-        });
-
-        return name;
+      });
     }
+    return extras * product.quantity;
+  },
+  productTotal: function productTotal(product) {
+    return _price2.default.normalise(this.productExtras(product)) + _price2.default.normalise(this.productSubTotal(product));
+  },
+  paymentTotal: function paymentTotal(payments) {
+    var total = 0;
+    payments.forEach(function (payment) {
+      if (payment.refunded !== true) {
+        var amount = String(payment.amount);
+        amount = parseFloat(amount.replace(/,/g, ''));
+        total = total + amount;
+      }
+    });
+    return total;
+  },
+  totals: function totals(products) {
+    var shipping = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var discount = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+    var subTotal = 0;
+    var extras = 0;
+    forEach(products, function (product, key) {
+      var quantity = product.quantity ? product.quantity : 1;
+      subTotal = subTotal + _price2.default.normalise(product.price) * parseInt(quantity);
+
+      forEach(product.options ? product.options : [], function (option) {
+        if (option) {
+          if (option.price_mutator && option.price_value) {
+            extras = extras + _operators.operators[option.price_mutator](0, option.price_value) * parseInt(quantity);
+          }
+        }
+      });
+    });
+
+    var totalExVat = _price2.default.normalise(subTotal) + _price2.default.normalise(extras) + _price2.default.normalise(shipping);
+    var discountAmount = totalExVat * (parseInt(discount) / 100);
+    totalExVat = totalExVat - discountAmount;
+    var vat = totalExVat * 0.2;
+    var total = totalExVat + vat;
+    return [{
+      total: 'Sub-Total',
+      value: _price2.default.normalise(subTotal)
+    }, {
+      total: 'Extras',
+      value: _price2.default.normalise(extras)
+    }, {
+      total: 'Shipping',
+      value: _price2.default.normalise(shipping)
+    }, {
+      total: 'Discount',
+      value: discount
+    }, {
+      total: 'VAT',
+      value: _price2.default.normalise(vat)
+    }, {
+      total: 'Total',
+      value: _price2.default.normalise(total)
+    }];
+  },
+  getStatusNameFromCode: function getStatusNameFromCode(statusCode) {
+    var statuses = window.ecommerceConfig.orders.statuses;
+
+    var name = null;
+
+    forEach(statuses, function (status, key) {
+      if (key === statusCode) {
+        name = status;
+      }
+    });
+
+    return name;
+  }
 };
 
 /***/ }),
@@ -18602,13 +18740,13 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.default = {
-    normalise: function normalise(price) {
-        price = String(price);
-        return parseFloat(price.replace(/,/g, ''));
-    }
+  normalise: function normalise(price) {
+    price = String(price);
+    return parseFloat(price.replace(/,/g, ''));
+  }
 };
 
 /***/ }),
