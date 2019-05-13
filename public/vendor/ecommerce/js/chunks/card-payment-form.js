@@ -1,14 +1,10 @@
-webpackJsonp([50],{
+webpackJsonp([53],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/CardPaymentForm.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/CardPaymentForm.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -124,15 +120,10 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
 var stripe = window.Stripe(window.ecommerceConfig.stripe_public_key);
-
 var elements = stripe.elements();
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CardPaymentForm',
-
   props: {
     model: {
       type: Object,
@@ -141,26 +132,25 @@ exports.default = {
     onTokenCreation: {
       type: Function,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return function (hasError, tokenObject, errorObject) {};
       }
     },
     onFormSubmit: {
       type: Function,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return function () {};
       }
     },
     size: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return '';
       }
     }
   },
-
   data: function data() {
     return {
       cardErrors: {
@@ -174,12 +164,8 @@ exports.default = {
       cardCvcElement: undefined
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('CardPaymentForm.vue Mounted');
     this.setupStripe();
@@ -187,10 +173,7 @@ exports.default = {
   destroyed: function destroyed() {
     this.clearForm(true);
   },
-
-
   methods: {
-
     /**
          * Setup the stripe element on the page.
          *
@@ -202,7 +185,6 @@ exports.default = {
       var isMedium = this.size.includes('medium');
       var color = '#606266';
       var placeholderColor = '#c0c4cc';
-
       var style = {
         base: {
           fontSize: isMini ? '12px' : isSmall ? '13px' : isMedium ? '14px' : '14px',
@@ -215,29 +197,25 @@ exports.default = {
         },
         'invalid': {
           'color': color
-        }
+        } // Create the card number element.
 
-        // Create the card number element.
-      };this.cardNumberElement = elements.create('cardNumber', {
+      };
+      this.cardNumberElement = elements.create('cardNumber', {
         style: style
       });
-      this.cardNumberElement.mount(this.$refs.cardNumber);
+      this.cardNumberElement.mount(this.$refs.cardNumber); // Create the expiry date element.
 
-      // Create the expiry date element.
       this.cardExpiryElement = elements.create('cardExpiry', {
         style: style
       });
-      this.cardExpiryElement.mount(this.$refs.cardExpiry);
+      this.cardExpiryElement.mount(this.$refs.cardExpiry); // Create the cvc element.
 
-      // Create the cvc element.
       this.cardCvcElement = elements.create('cardCvc', {
         style: style
       });
       this.cardCvcElement.mount(this.$refs.cardCvc);
-
       this.listenForEvents();
     },
-
 
     /**
          * Listen for stripe events.
@@ -250,17 +228,16 @@ exports.default = {
         // Switch brand logo.
         if (event.brand) {
           this.setBrandIcon(event.brand);
-        }
+        } // Focus on next element.
 
-        // Focus on next element.
+
         if (event.complete) {
           this.cardExpiryElement.focus();
         }
 
         this.setOutcome(event, 'number_change');
-      }.bind(this));
+      }.bind(this)); // Card expiry change event.
 
-      // Card expiry change event.
       this.cardExpiryElement.on('change', function (event) {
         // Focus on next element.
         if (event.complete) {
@@ -268,19 +245,16 @@ exports.default = {
         }
 
         this.setOutcome(event, 'expiry_change');
-      }.bind(this));
+      }.bind(this)); // Card cvc change event.
 
-      // Card cvc change event.
       this.cardCvcElement.on('change', function (event) {
         // Focus on next element.
-        if (event.complete) {
-          // $payment_submit.focus();
+        if (event.complete) {// $payment_submit.focus();
         }
 
         this.setOutcome(event, 'cvc_change');
       }.bind(this));
     },
-
 
     /**
          * Set the card brand icon.
@@ -291,7 +265,6 @@ exports.default = {
     setBrandIcon: function setBrandIcon(brand) {
       console.log(brand);
     },
-
 
     /**
          * Determine what happens on events.
@@ -306,14 +279,14 @@ exports.default = {
       // Hide card number error elements.
       if (type === 'number_change') {
         this.cardErrors.number = null;
-      }
+      } // Hide card expiry error elements.
 
-      // Hide card expiry error elements.
+
       if (type === 'expiry_change') {
         this.cardErrors.date = null;
-      }
+      } // Hide card cvc error elements.
 
-      // Hide card cvc error elements.
+
       if (type === 'cvc_change') {
         this.cardErrors.cvc = null;
       }
@@ -322,23 +295,18 @@ exports.default = {
         // Tell the parent that a token has been created.
         this.onTokenCreation(false, result.token, {});
         this.$set(this.model, 'payment_token', result.token.id);
+        this.clearForm(); // Submit the form:
 
-        this.clearForm();
-
-        // Submit the form:
         this.loading = false;
       } else if (result.error) {
         // Tell the parent that a token hasn't been created.
-        this.onTokenCreation(true, {}, result.error);
+        this.onTokenCreation(true, {}, result.error); // Re-enable the submit button.
 
-        // Re-enable the submit button.
-        this.loading = false;
+        this.loading = false; // Display error
 
-        // Display error
         this.handleError(result.error);
       }
     },
-
 
     /**
          * Determine what happens on error.
@@ -349,34 +317,32 @@ exports.default = {
     handleError: function handleError(error) {
       // The error was a validation_error
       if (error.type === 'validation_error' && error.code) {
-        var code = error.code;
+        var code = error.code; // Card Number error has occured.
 
-        // Card Number error has occured.
         if (~code.indexOf('number')) {
           this.cardErrors.number = error.message;
-        }
+        } // Expiry error has occured.
 
-        // Expiry error has occured.
+
         if (~code.indexOf('expiry')) {
           this.cardErrors.date = error.message;
-        }
+        } // CVC error has occured.
 
-        // CVC error has occured.
+
         if (~code.indexOf('cvc')) {
           this.cardErrors.cvc = error.message;
         }
-      } else {
-        // Another type of error occured.
-
+      } else {// Another type of error occured.
       }
     },
     clearForm: function clearForm() {
       var destroy = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
       var method = 'clear';
+
       if (destroy) {
         method = 'destroy';
       }
+
       this.cardNumberElement[method](this.$refs.cardNumber);
       this.cardExpiryElement[method](this.$refs.cardExpiry);
       this.cardCvcElement[method](this.$refs.cardCvc);
@@ -385,12 +351,11 @@ exports.default = {
       this.onFormSubmit();
       this.loading = true;
       stripe.createToken(this.cardNumberElement, {
-        name: 'Christian Braybrooke'
+        name: this.model.cardholder_name
       }).then(this.setOutcome);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -750,7 +715,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/CardPaymentForm.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/CardPaymentForm.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-62bd92a4\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/CardPaymentForm.vue")
 /* template functional */

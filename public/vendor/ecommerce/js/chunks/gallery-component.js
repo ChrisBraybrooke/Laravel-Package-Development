@@ -1,194 +1,189 @@
-webpackJsonp([41],{
+webpackJsonp([42],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleryComponent.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleryComponent.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var chunk = __webpack_require__("./node_modules/lodash.chunk/index.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var chunk = __webpack_require__("./node_modules/lodash.chunk/index.js");
 
 var find = __webpack_require__("./node_modules/lodash.find/index.js");
+
 var last = __webpack_require__("./node_modules/lodash.last/index.js");
+
 var filter = __webpack_require__("./node_modules/lodash.filter/index.js");
+
 var union = __webpack_require__("./node_modules/lodash.union/index.js");
+
 var upperFirst = __webpack_require__("./node_modules/lodash.upperfirst/index.js");
+
 var debounce = __webpack_require__("./node_modules/lodash.debounce/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'GalleryComponent',
-
   components: {
     FileUploadComponent: function FileUploadComponent() {
-      return __webpack_require__.e/* import() */(43).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FileUploadComponent.vue"));
+      return __webpack_require__.e/* import() */(44).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FileUploadComponent.vue"));
     },
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
   },
-
   props: {
     galleryId: {
       type: Number,
@@ -197,40 +192,39 @@ exports.default = {
     inModal: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     },
     meta: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     getGalleryFiles: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return true;
       }
     },
     galleryFiles: {
       type: Array,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     selectable: {
       type: Number,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return null;
       }
     }
   },
-
   data: function data() {
     return {
       files: [],
@@ -245,24 +239,23 @@ exports.default = {
       search: ''
     };
   },
-
-
   computed: {
     galleryImageChunks: function galleryImageChunks() {
       return chunk(this.files, this.inModal ? 6 : 12);
     }
   },
-
   watch: {
     'galleryMeta.search': debounce(function (value) {
-      this.$emit('mediaSearch', { gallery: this.galleryId, value: value });
-
+      this.$emit('mediaSearch', {
+        gallery: this.galleryId,
+        value: value
+      });
       this.getFiles();
     }, 500)
   },
-
   mounted: function mounted() {
     console.log('GalleryCompnenent.vue: Mounted');
+
     if (this.getGalleryFiles) {
       this.getFiles();
     } else {
@@ -270,8 +263,6 @@ exports.default = {
       this.galleryMeta = this.meta;
     }
   },
-
-
   methods: {
     ucFirst: function ucFirst(str) {
       return upperFirst(str);
@@ -292,7 +283,6 @@ exports.default = {
       return file.response;
     },
 
-
     /**
            * Get the media from the gallery.
            *
@@ -311,10 +301,10 @@ exports.default = {
       if (load) {
         this.loading = true;
       }
+
       this.errors = {};
       var search = this.galleryMeta.search ? this.galleryMeta.search : '';
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'galleries/' + this.galleryId + '/media?page=' + page,
         params: {
           limit: limit,
@@ -325,9 +315,11 @@ exports.default = {
         if (load) {
           this.loading = false;
         }
+
         if (syncMeta) {
           this.galleryMeta = data.meta;
         }
+
         if (unshift) {
           data.data.forEach(function (file) {
             this.files.unshift(file);
@@ -340,10 +332,11 @@ exports.default = {
           this.files = data.data;
           this.$set(this.galleryMeta, 'search', search);
         }
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         if (load) {
           this.loading = false;
         }
+
         if (!silentErrors) {
           this.errors = error;
         }
@@ -352,8 +345,7 @@ exports.default = {
     deleteFile: function deleteFile(file) {
       this.loading = true;
       this.errors = {};
-
-      _apiService2.default.delete({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */]["delete"]({
         path: 'media/' + file.id
       }).then(function (data) {
         this.loading = false;
@@ -364,8 +356,11 @@ exports.default = {
           this.getFiles(true, false, this.galleryMeta.current_page, 1, 1, false, false, true);
         }
 
-        this.$emit('fileDeleted', { file: file, gallery: this.galleryId });
-      }.bind(this)).catch(function (error) {
+        this.$emit('fileDeleted', {
+          file: file,
+          gallery: this.galleryId
+        });
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.errors = error;
       }.bind(this));
@@ -377,9 +372,11 @@ exports.default = {
       if (file.percentage && file.percentage < 100) {
         return true;
       }
+
       if (file.status && file.status !== 'success') {
         return true;
       }
+
       return false;
     },
     handleIconClick: function handleIconClick(method, file) {
@@ -387,6 +384,7 @@ exports.default = {
         this.fileDialog.show = true;
         this.fileDialog.file = file;
       }
+
       if (method === 'cancel') {
         this.files.splice(this.files.indexOf(file), 1);
       }
@@ -395,10 +393,16 @@ exports.default = {
       this.$refs['delete_popover_' + file.id][0].doClose();
     },
     handlefileSelected: function handlefileSelected(file) {
-      this.$emit('fileSelected', { file: file, gallery: this.galleryId });
+      this.$emit('fileSelected', {
+        file: file,
+        gallery: this.galleryId
+      });
     },
     handleUploadSuccess: function handleUploadSuccess(data) {
-      this.$emit('fileUploadSuccess', { data: data, gallery: this.galleryId });
+      this.$emit('fileUploadSuccess', {
+        data: data,
+        gallery: this.galleryId
+      });
     },
     handleFileClick: function handleFileClick(file, e) {
       if (e.srcElement.id !== 'delete' && e.srcElement.id !== 'view' && (this.selectable > 0 || !this.selectable)) {
@@ -407,12 +411,18 @@ exports.default = {
         } else if (!this.fileInSelects(file) && !this.shouldShowProgress(file)) {
           this.selectedFiles = [];
           this.selectedFiles.push(file);
-
-          this.$emit('fileHighlighted', { file: file, gallery: this.galleryId, selectedFiles: this.selectedFiles });
+          this.$emit('fileHighlighted', {
+            file: file,
+            gallery: this.galleryId,
+            selectedFiles: this.selectedFiles
+          });
         } else {
           this.selectedFiles = [];
-
-          this.$emit('fileUnHighlighted', { file: file, gallery: this.galleryId, selectedFiles: this.selectedFiles });
+          this.$emit('fileUnHighlighted', {
+            file: file,
+            gallery: this.galleryId,
+            selectedFiles: this.selectedFiles
+          });
         }
       } else if (e.srcElement.id === 'view') {
         this.handleIconClick('view', file);
@@ -424,27 +434,35 @@ exports.default = {
       if (e.metaKey || e.ctrlKey) {
         if (this.fileInSelects(file) && !this.shouldShowProgress(file)) {
           this.selectedFiles.splice(this.selectedFiles.indexOf(file), 1);
-          this.$emit('fileUnHighlighted', { file: file, gallery: this.galleryId, selectedFiles: this.selectedFiles });
+          this.$emit('fileUnHighlighted', {
+            file: file,
+            gallery: this.galleryId,
+            selectedFiles: this.selectedFiles
+          });
         } else if (!this.shouldShowProgress(file)) {
           this.selectedFiles.push(file);
           this.selectedFiles = this.sliceSeletedFiles(this.selectedFiles);
-          this.$emit('fileHighlighted', { file: file, gallery: this.galleryId, selectedFiles: this.selectedFiles });
+          this.$emit('fileHighlighted', {
+            file: file,
+            gallery: this.galleryId,
+            selectedFiles: this.selectedFiles
+          });
         }
       } else if (e.shiftKey) {
         var multipleSelects = filter(this.files, function (o) {
           var currentIndex = this.files.indexOf(o);
           var selectedIndex = this.files.indexOf(file);
           var lastIndex = this.files.indexOf(last(this.selectedFiles));
-
           return currentIndex <= selectedIndex && currentIndex >= lastIndex && !this.shouldShowProgress(o);
         }.bind(this));
-
         var selectedFiles = union(this.selectedFiles, multipleSelects);
-
         this.selectedFiles = this.sliceSeletedFiles(selectedFiles);
-
         multipleSelects.forEach(function (file) {
-          _this.$emit('fileHighlighted', { file: file, gallery: _this.galleryId, selectedFiles: _this.selectedFiles });
+          _this.$emit('fileHighlighted', {
+            file: file,
+            gallery: _this.galleryId,
+            selectedFiles: _this.selectedFiles
+          });
         });
       }
     },
@@ -456,15 +474,13 @@ exports.default = {
     },
     fileInSelects: function fileInSelects(file) {
       var inSelects = find(this.selectedFiles, file);
-
       return !!inSelects;
     },
     handleRightClick: function handleRightClick(file) {
       console.log(file);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -7813,11 +7829,11 @@ var render = function() {
                     class: _vm.shouldShowProgress(file)
                       ? "gallery_file_wrap show_progress"
                       : _vm.fileInSelects(file)
-                        ? "gallery_file_wrap selected"
-                        : "gallery_file_wrap",
+                      ? "gallery_file_wrap selected"
+                      : "gallery_file_wrap",
                     on: {
                       click: function($event) {
-                        _vm.handleFileClick(file, $event)
+                        return _vm.handleFileClick(file, $event)
                       }
                     }
                   },
@@ -7837,8 +7853,8 @@ var render = function() {
                                   file.status === "fail"
                                     ? "exception"
                                     : file.status === "success"
-                                      ? "success"
-                                      : "",
+                                    ? "success"
+                                    : "",
                                 type: "circle"
                               }
                             })
@@ -7856,7 +7872,7 @@ var render = function() {
                               attrs: { id: "cancel" },
                               on: {
                                 click: function($event) {
-                                  _vm.handleIconClick("cancel", file)
+                                  return _vm.handleIconClick("cancel", file)
                                 }
                               }
                             },
@@ -7877,7 +7893,7 @@ var render = function() {
                                   attrs: { id: "view" },
                                   on: {
                                     click: function($event) {
-                                      _vm.handleIconClick("view", file)
+                                      return _vm.handleIconClick("view", file)
                                     }
                                   }
                                 })
@@ -7923,7 +7939,9 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                _vm.hideDeletePopover(file)
+                                                return _vm.hideDeletePopover(
+                                                  file
+                                                )
                                               }
                                             }
                                           },
@@ -7939,7 +7957,7 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                _vm.deleteFile(file)
+                                                return _vm.deleteFile(file)
                                               }
                                             }
                                           },
@@ -7958,7 +7976,10 @@ var render = function() {
                                       },
                                       on: {
                                         click: function($event) {
-                                          _vm.handleIconClick("delete", file)
+                                          return _vm.handleIconClick(
+                                            "delete",
+                                            file
+                                          )
                                         }
                                       },
                                       slot: "reference"
@@ -7983,7 +8004,8 @@ var render = function() {
                     })
                   ]
                 )
-              })
+              }),
+              0
             )
           }),
           _vm._v(" "),
@@ -8026,7 +8048,7 @@ var render = function() {
               },
               on: {
                 "update:visible": function($event) {
-                  _vm.$set(_vm.fileDialog, "show", $event)
+                  return _vm.$set(_vm.fileDialog, "show", $event)
                 }
               }
             },
@@ -8070,7 +8092,8 @@ var render = function() {
                           }
                         })
                       ])
-                    })
+                    }),
+                    0
                   )
                 ],
                 1
@@ -8134,7 +8157,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleryComponent.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleryComponent.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-78b2f407\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/GalleryComponent.vue")
 /* template functional */

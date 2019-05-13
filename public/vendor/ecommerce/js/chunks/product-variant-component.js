@@ -1,14 +1,10 @@
-webpackJsonp([45],{
+webpackJsonp([46],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -75,17 +71,13 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ProductVariantComponent',
-
   components: {
     FilePickerModal: function FilePickerModal() {
       return __webpack_require__.e/* import() */(33/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
     }
   },
-
   props: {
     model: {
       type: Object,
@@ -94,19 +86,18 @@ exports.default = {
     variants: {
       type: Array,
       required: true,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     onRemoveProduct: {
       type: Function,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return function (product) {};
       }
     }
   },
-
   data: function data() {
     return {
       productVariant: {
@@ -118,15 +109,13 @@ exports.default = {
     console.log('ProductVariantComponent.vue mounted');
     this.productVariant = this.model;
   },
-
-
   methods: {
     removeProduct: function removeProduct() {
       this.variants.splice(this.variants.indexOf(this.productVariant), 1);
       this.onRemoveProduct(this.productVariant);
     }
   }
-};
+});
 
 /***/ }),
 
@@ -345,7 +334,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f618e7b\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/ProductVariantComponent.vue")
 /* template functional */

@@ -1,291 +1,284 @@
 webpackJsonp([32],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/DataTable.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/DataTable.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_services_api_service_js__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_utils_collumn__ = __webpack_require__("./resources/assets/admin-spa/utils/collumn.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-var _collumn = __webpack_require__("./resources/assets/admin-spa/utils/collumn.js");
-
-var _collumn2 = _interopRequireDefault(_collumn);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var throttle = __webpack_require__("./node_modules/lodash.throttle/index.js");
+
 var findKey = __webpack_require__("./node_modules/lodash.findkey/index.js");
 
-exports.default = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DataTable',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
   },
-
   props: {
     typeName: {
       type: String,
@@ -294,83 +287,97 @@ exports.default = {
     typeNamePlural: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return this.typeName + 's';
       }
     },
     requestWith: {
       type: [String, Array],
       required: false,
-      default: function _default() {}
+      "default": function _default() {}
     },
     requestIncludes: {
       type: [String, Array],
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     baseUrl: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return this.typeNamePlural;
       }
     },
     bulkUpdateUrl: {
       type: String,
       required: false,
-      default: function _default() {}
+      "default": function _default() {}
     },
     editPath: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return null;
       }
     },
     fullModal: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     },
     tableOptions: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     withParams: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     createForm: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     createFormRules: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {
-          name: [{ required: true, message: this.typeName + ' name is required', trigger: 'blur' }, { min: 3, max: 200, message: this.typeName + ' length should be more than 3 characters', trigger: 'blur' }]
+          name: [{
+            required: true,
+            message: this.typeName + ' name is required',
+            trigger: 'blur'
+          }, {
+            min: 3,
+            max: 200,
+            message: this.typeName + ' length should be more than 3 characters',
+            trigger: 'blur'
+          }]
         };
+      }
+    },
+    basePaginationMeta: {
+      type: Object,
+      required: false,
+      "default": function _default() {
+        return {};
       }
     }
   },
-
   data: function data() {
     var h = this.$createElement;
-
     return {
       Data: [],
       createFormData: this.createForm,
@@ -419,7 +426,11 @@ exports.default = {
           label: 'Live',
           align: 'left',
           formatter: function formatter(row, column, cellValue) {
-            return row.live_at.live ? h('i', { 'class': 'el-icon-check' }) : h('i', { 'class': 'el-icon-close' });
+            return row.live_at.live ? h("i", {
+              "class": "el-icon-check"
+            }) : h("i", {
+              "class": "el-icon-close"
+            });
           },
           resizable: true
         }],
@@ -446,8 +457,6 @@ exports.default = {
       createErrors: {}
     };
   },
-
-
   computed: {
     perPages: function perPages() {
       var total = this.paginationMeta.total;
@@ -457,14 +466,14 @@ exports.default = {
       if (this.bulkSelected.length >= 1 && this.bulkOptionValue) {
         return false;
       }
+
       return true;
     },
     editPathFormated: function editPathFormated() {
       return this.editPath ? this.editPath : this.typeNamePlural;
     },
     queueModalTitle: function queueModalTitle() {
-      if (this.bulkOptionValue) {
-        // var str = this.bulkOptionValue;
+      if (this.bulkOptionValue) {// var str = this.bulkOptionValue;
         // str = str.replace(/_/g, ' ');
         // return this.capitalize(str);
       }
@@ -496,28 +505,34 @@ exports.default = {
       return this.capitalize(this.typeNamePlural);
     },
     colourRules: function colourRules() {
-      return this.objectHas(this.ecommerceConfig, 'col_colours.' + this.typeNamePlural) ? this.ecommerceConfig.col_colours[this.typeNamePlural] : [];
+      return this.objectHas(this.ecommerceConfig, "col_colours.".concat(this.typeNamePlural)) ? this.ecommerceConfig.col_colours[this.typeNamePlural] : [];
     },
     additonalCols: function additonalCols() {
-      return this.objectHas(this.ecommerceConfig, 'aditional_cols.' + this.typeNamePlural) ? this.ecommerceConfig.aditional_cols[this.typeNamePlural] : [];
+      return this.objectHas(this.ecommerceConfig, "aditional_cols.".concat(this.typeNamePlural)) ? this.ecommerceConfig.aditional_cols[this.typeNamePlural] : [];
+    },
+    tableDataFromStorage: function tableDataFromStorage() {
+      var tableData = window.localStorage.getItem('commerceTableData');
+      return tableData ? JSON.parse(tableData) : {};
+    },
+    thisTableDataFromStorage: function thisTableDataFromStorage() {
+      var newObj = {};
+      newObj[this.typeName] = {};
+      return this.tableDataFromStorage[this.typeName] ? this.tableDataFromStorage[this.typeName] : newObj;
     }
   },
-
   watch: {
     search: function search(value) {
       this.handleSearchChange(value);
     }
   },
-
   mounted: function mounted() {
     console.log('DataTable.vue Mounted.');
+    this.paginationMeta = _objectSpread({}, this.paginationMeta, this.basePaginationMeta);
     Object.assign(this.mergedTableOptions, this.defaultTableOptions, this.tableOptions);
+    this.paginationMeta.perPage = this.thisTableDataFromStorage.perPage;
     this.getData();
   },
-
-
-  methods: _extends({}, (0, _vuex.mapActions)(['setShopData']), {
-
+  methods: _objectSpread({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])(['setShopData']), {
     /**
      * Retrieve the data from the server.
      *
@@ -526,9 +541,8 @@ exports.default = {
     getData: throttle(function () {
       this.loading = true;
       this.dataErrors = {};
-
       var params = Object.assign(this.withParams, {
-        with: this.requestWith,
+        "with": this.requestWith,
         include: this.requestIncludes,
         limit: this.paginationMeta.perPage,
         ascending: this.paginationMeta.ascending,
@@ -536,8 +550,7 @@ exports.default = {
         page: this.paginationMeta.currentPage,
         search: this.search
       });
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_1_services_api_service_js__["a" /* default */].get({
         path: this.baseUrl ? this.baseUrl : this.typeName,
         params: params
       }).then(function (data) {
@@ -550,7 +563,7 @@ exports.default = {
           currentPage: data.meta.current_page
         };
         this.loading = false;
-      }.bind(this)).catch(function (errors) {
+      }.bind(this))["catch"](function (errors) {
         this.dataErrors = errors;
         this.loading = false;
       }.bind(this));
@@ -565,8 +578,7 @@ exports.default = {
      */
     updateData: function updateData(object, modal) {
       this.loading = true;
-
-      _apiService2.default.persist('post', {
+      __WEBPACK_IMPORTED_MODULE_1_services_api_service_js__["a" /* default */].persist('post', {
         path: this.bulkUpdateUrl ? this.bulkUpdateUrl : this.typeName + '/bulk',
         object: {
           data: object,
@@ -574,7 +586,6 @@ exports.default = {
         }
       }).then(function (data) {
         this.getData();
-
         this.$message({
           message: data.message,
           type: 'success',
@@ -586,12 +597,11 @@ exports.default = {
         }
 
         this.loading = false;
-      }.bind(this)).catch(function (errors) {
+      }.bind(this))["catch"](function (errors) {
         this.dataErrors = errors;
         this.loading = false;
       }.bind(this));
     },
-
 
     /**
      * Delete data on the server.
@@ -602,24 +612,21 @@ exports.default = {
      */
     deleteData: function deleteData(row) {
       this.dataErrors = {};
-
-      _apiService2.default.delete({
+      __WEBPACK_IMPORTED_MODULE_1_services_api_service_js__["a" /* default */]["delete"]({
         path: (this.baseUrl ? this.baseUrl : this.typeName) + '/' + row.id
       }).then(function () {
         this.Data.splice(this.Data.indexOf(row), 1);
         this.dataErrors = {};
         this.paginationMeta.total = this.paginationMeta.total - 1;
-
         this.$message({
           message: 'Successfully deleted ' + this.typeName + ': ' + row.name,
           type: 'success',
           showClose: true
         });
-      }.bind(this)).catch(function (errors) {
+      }.bind(this))["catch"](function (errors) {
         this.dataErrors = errors;
       }.bind(this));
     },
-
 
     /**
      * Clear the create form after submission or cancel.
@@ -632,7 +639,6 @@ exports.default = {
       this.$refs.createForm.resetFields();
     },
 
-
     /**
      * Send the creat form data to the server.
      *
@@ -643,29 +649,26 @@ exports.default = {
 
       this.$refs.createForm.validate(function (valid) {
         if (valid) {
-          _this.createFormData.with = _this.requestWith;
+          _this.createFormData["with"] = _this.requestWith;
           _this.createFormData.include = _this.requestIncludes;
-
-          _apiService2.default.persist('post', {
+          __WEBPACK_IMPORTED_MODULE_1_services_api_service_js__["a" /* default */].persist('post', {
             path: _this.baseUrl ? _this.baseUrl : _this.typeName,
             object: _this.createFormData
           }).then(function (data) {
             this.addModel(data);
             this.dialogVisible = false;
             this.clearCreateData();
-
             this.$message({
               message: 'Successfully created ' + this.typeName + ': ' + data.data.name,
               type: 'success',
               showClose: true
             });
-          }.bind(_this)).catch(function (errors) {
+          }.bind(_this))["catch"](function (errors) {
             this.createErrors = errors;
           }.bind(_this));
         } else {}
       });
     },
-
 
     /**
      * Add a modal to the table.
@@ -685,7 +688,6 @@ exports.default = {
       this.paginationMeta.total = this.paginationMeta.total + 1;
     },
 
-
     /**
      * Handle a selection event on the table.
      *
@@ -696,7 +698,6 @@ exports.default = {
       this.bulkSelected = evt;
     },
 
-
     /**
      * Handle a size change event on the table.
      *
@@ -705,10 +706,9 @@ exports.default = {
      */
     handleSizeChange: function handleSizeChange(perPage) {
       this.paginationMeta.perPage = perPage;
-
+      this.saveLocalData('perPage', perPage);
       this.getData();
     },
-
 
     /**
      * Handle a page change event on the table.
@@ -718,10 +718,8 @@ exports.default = {
      */
     handlePageChange: function handlePageChange(page) {
       this.paginationMeta.currentPage = page;
-
       this.getData();
     },
-
 
     /**
      * Handle a sort change event on the table.
@@ -733,10 +731,8 @@ exports.default = {
       console.log(change);
       this.paginationMeta.ascending = change.order === 'ascending' ? 1 : 0;
       this.paginationMeta.orderBy = change.prop ? change.prop : 'id';
-
       this.getData();
     },
-
 
     /**
      * Handle a search change event on the table.
@@ -745,9 +741,9 @@ exports.default = {
      * @return void
      */
     handleSearchChange: function handleSearchChange(value) {
+      this.paginationMeta.currentPage = 1;
       this.getData();
     },
-
 
     /**
      * Handle a bulk options apply event on the table.
@@ -764,14 +760,12 @@ exports.default = {
       }
     },
 
-
     /**
      * Handle a queue modal action.
      *
      * @return void
      */
     handleQueueModalAction: function handleQueueModalAction() {},
-
 
     /**
      * Handle when the user clicks on the "create" btn.
@@ -785,33 +779,63 @@ exports.default = {
     tableRowStyle: function tableRowStyle(_ref) {
       var row = _ref.row,
           rowIndex = _ref.rowIndex;
-
-      var rowColour = _collumn2.default.getRowColour(this.colourRules, row);
-
-      return 'background: ' + rowColour + '!important';
+      var rowColour = __WEBPACK_IMPORTED_MODULE_2_utils_collumn__["a" /* default */].getRowColour(this.colourRules, row);
+      return "background: ".concat(rowColour, "!important");
     },
     tableCellStyle: function tableCellStyle(_ref2) {
       var row = _ref2.row,
           column = _ref2.column,
           rowIndex = _ref2.rowIndex,
           columnIndex = _ref2.columnIndex;
-
-      var colour = _collumn2.default.getColColour(this.additonalCols, column, row);
-      return colour ? 'background: ' + colour + '!important' : null;
+      var colour = __WEBPACK_IMPORTED_MODULE_2_utils_collumn__["a" /* default */].getColColour(this.additonalCols, column, row);
+      return colour ? "background: ".concat(colour, "!important") : null;
     },
     tableRowClass: function tableRowClass(_ref3) {
       var row = _ref3.row,
           rowIndex = _ref3.rowIndex;
-
-      var rowHasColour = _collumn2.default.getRowColour(this.colourRules, row);
+      var rowHasColour = __WEBPACK_IMPORTED_MODULE_2_utils_collumn__["a" /* default */].getRowColour(this.colourRules, row);
 
       if (!rowHasColour) {
         return '';
       }
+
       return 'rowHasColour';
+    },
+    tableColWidthChanged: function tableColWidthChanged(newWidth, oldWidth, column, event) {
+      var thisTableData = this.thisTableDataFromStorage;
+      var newWidthColumn = {};
+      newWidthColumn[column.property] = newWidth;
+
+      if (!thisTableData.columns) {
+        thisTableData.columns = {};
+      }
+
+      thisTableData.columns = _objectSpread({}, thisTableData.columns, newWidthColumn);
+      this.saveLocalData('columns', thisTableData.columns);
+    },
+    saveLocalData: function saveLocalData(key, value) {
+      var tableData = this.tableDataFromStorage;
+
+      if (!tableData[this.typeName]) {
+        tableData[this.typeName] = {};
+      }
+
+      tableData[this.typeName][key] = value;
+      window.localStorage.setItem('commerceTableData', JSON.stringify(tableData));
+    },
+    getColumnWidth: function getColumnWidth(column) {
+      var thisTableData = this.thisTableDataFromStorage;
+
+      if (thisTableData.columns) {
+        if (thisTableData.columns[column.prop]) {
+          return thisTableData.columns[column.prop];
+        }
+      }
+
+      return column.width;
     }
   })
-};
+});
 
 /***/ }),
 
@@ -823,7 +847,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.el-table--striped .el-table__body tr.rowHasColour.el-table__row--striped td {\n    background-color: initial!important;\n}\n.el-table--enable-row-hover .el-table__body tr.rowHasColour:hover > td {\n    background-color: initial!important;\n}\n.table_col_list {\n    font-size: 12px;\n    line-height: 1.2;\n}\n", ""]);
+exports.push([module.i, "\n.el-table--striped .el-table__body tr.rowHasColour.el-table__row--striped td {\n    background-color: initial!important;\n}\n.el-table--enable-row-hover .el-table__body tr.rowHasColour:hover > td {\n    background-color: initial!important;\n}\n.table_col_list {\n    font-size: 12px;\n    line-height: 1.2;\n}\n.inline_col_list {\n    -webkit-margin-before: 0;\n            margin-block-start: 0;\n    -webkit-padding-start: 0px;\n            padding-inline-start: 0px;\n}\n.inline_col_list li:not(:first-child) {\n    border-top: dashed 0.5px;\n    padding-top: 5px;\n    margin-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -5704,7 +5728,8 @@ var render = function() {
                         key: item.value,
                         attrs: { label: item.label, value: item.value }
                       })
-                    })
+                    }),
+                    1
                   )
                 ],
                 1
@@ -5803,7 +5828,8 @@ var render = function() {
           },
           on: {
             "selection-change": _vm.handleSelectionChange,
-            "sort-change": _vm.handleSortChange
+            "sort-change": _vm.handleSortChange,
+            "header-dragend": _vm.tableColWidthChanged
           }
         },
         [
@@ -5814,7 +5840,7 @@ var render = function() {
               key: key,
               attrs: {
                 prop: col.prop,
-                width: col.width,
+                width: _vm.getColumnWidth(col),
                 formatter: col.formatter ? col.formatter : null,
                 label: col.label,
                 sortable: ""
@@ -5824,75 +5850,82 @@ var render = function() {
           _vm._v(" "),
           _c("el-table-column", {
             attrs: { label: "Actions" },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function(scope) {
-                  return [
-                    _vm._t(
-                      "actionButtons",
-                      [
-                        _vm.mergedTableOptions.viewText
-                          ? _c(
-                              "router-link",
-                              {
-                                attrs: {
-                                  to: {
-                                    path:
-                                      _vm.editPathFormated + "/" + scope.row.id
+            scopedSlots: _vm._u(
+              [
+                {
+                  key: "default",
+                  fn: function(scope) {
+                    return [
+                      _vm._t(
+                        "actionButtons",
+                        [
+                          _vm.mergedTableOptions.viewText
+                            ? _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      path:
+                                        _vm.editPathFormated +
+                                        "/" +
+                                        scope.row.id
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c(
-                                  "el-button",
-                                  {
-                                    staticClass: "action_btn view_btn",
-                                    attrs: { size: "mini" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(_vm.mergedTableOptions.viewText) +
-                                        "\n            "
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.mergedTableOptions.deleteText
-                          ? _c(
-                              "el-button",
-                              {
-                                staticClass: "action_btn delete_btn",
-                                attrs: { size: "mini", type: "danger" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.deleteData(scope.row)
+                                },
+                                [
+                                  _c(
+                                    "el-button",
+                                    {
+                                      staticClass: "action_btn view_btn",
+                                      attrs: { size: "mini" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.mergedTableOptions.viewText
+                                        ) + "\n            "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.mergedTableOptions.deleteText
+                            ? _c(
+                                "el-button",
+                                {
+                                  staticClass: "action_btn delete_btn",
+                                  attrs: { size: "mini", type: "danger" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteData(scope.row)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(_vm.mergedTableOptions.deleteText) +
-                                    "\n          "
-                                )
-                              ]
-                            )
-                          : _vm._e()
-                      ],
-                      {
-                        row: scope.row,
-                        delete: _vm.deleteData,
-                        editPathFormated: _vm.editPathFormated
-                      }
-                    )
-                  ]
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.mergedTableOptions.deleteText) +
+                                      "\n          "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        {
+                          row: scope.row,
+                          delete: _vm.deleteData,
+                          editPathFormated: _vm.editPathFormated
+                        }
+                      )
+                    ]
+                  }
                 }
-              }
-            ])
+              ],
+              null,
+              true
+            )
           })
         ],
         2
@@ -5959,7 +5992,7 @@ var render = function() {
                 },
                 keyup: function($event) {
                   if (
-                    !("button" in $event) &&
+                    !$event.type.indexOf("key") &&
                     _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
                   ) {
                     return null
@@ -6195,7 +6228,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/DataTable.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/DataTable.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4fd90a38\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/DataTable.vue")
 /* template functional */
@@ -6238,20 +6271,16 @@ module.exports = Component.exports
 /***/ }),
 
 /***/ "./resources/assets/admin-spa/utils/collumn.js":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var findIndex = __webpack_require__("./node_modules/lodash.findindex/index.js");
+
 var has = __webpack_require__("./node_modules/lodash.has/index.js");
+
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["a"] = ({
   /**
      * Replace the parts of the path that need to be subsituted for real data.
      *
@@ -6268,7 +6297,6 @@ exports.default = {
     return path;
   },
 
-
   /**
      * Replace a lookup for index in a dot syntax string.
      *
@@ -6281,24 +6309,24 @@ exports.default = {
       var string = set.replace(/\$\[(.+?)\]/g, function (x) {
         x = x.replace('$[', '');
         x = x.replace(']', '');
-
         var beforeEquals = x.split('=')[0];
         var afterEquals = x.split('=')[1];
         var lookup = set.split('.$[')[0];
         lookup = _this2.dotToObjectPath(lookup, object);
-
         return findIndex(lookup, function (o) {
           return o[beforeEquals] === afterEquals;
         });
       });
+
       if (has(object, string)) {
         return string;
       }
+
       return null;
     }
+
     return null;
   },
-
 
   /**
      * Turn a dot syntax string into an object path.
@@ -6310,7 +6338,6 @@ exports.default = {
       return has(o, i) ? o[i] : null;
     }, object) : null;
   },
-
 
   /**
      * Set a dynamic row value.
@@ -6335,7 +6362,8 @@ exports.default = {
 
     var rowColour = '';
     colourRules.forEach(function (rule) {
-      var ifPath = _this3.replaceWhereLookup(rule.if, row);
+      var ifPath = _this3.replaceWhereLookup(rule["if"], row);
+
       var ifValue = _this3.dotToObjectPath(ifPath, row);
 
       switch (rule.value) {
@@ -6343,11 +6371,14 @@ exports.default = {
           if (ifValue !== null && ifValue !== '' && ifValue !== 0) {
             rowColour = rule.colour;
           }
+
           break;
+
         default:
           if (ifValue === rule.value) {
             rowColour = rule.colour;
           }
+
       }
     });
     return rowColour;
@@ -6359,6 +6390,7 @@ exports.default = {
     forEach(additonalCols, function (col) {
       if (col.prop === collumn.property && (col.col_background || col.empty_background || col.filled_background)) {
         var dots = _this4.replaceWhereLookup(col.value, row);
+
         var value = _this4.dotToObjectPath(dots, row);
 
         if (col.col_background) {
@@ -6372,7 +6404,7 @@ exports.default = {
     });
     return colour;
   }
-};
+});
 
 /***/ })
 

@@ -14,16 +14,14 @@ let mix = require('laravel-mix');
 if (!mix.inProduction()) {
    mix.browserSync({
        open: 'external',
-       host: 'laravel-ecommerce.test',
-       proxy: 'laravel-ecommerce.test',
+       host: 'laravel-package-development.test',
+       proxy: 'laravel-package-development.test',
        browser: "google chrome",
        files: [
-           'resources/views/**/*.php',
-           'public/js/**/*.js',
-           'public/css/**/*.css',
-           'packages/**/public/js/**/*.js',
-           'packages/**/public/css/**/*.css',
-           'packages/**/**/**/*.php', 
+           // 'public/js/**/*.js',
+           // 'public/css/**/*.css',
+           'packages/laravel-ecommerce/public/js/**/*.js',
+           // 'packages/laravel-ecommerce/public/css/**/*.css'
        ]
    });
 }

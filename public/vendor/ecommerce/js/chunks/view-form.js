@@ -1,172 +1,160 @@
 webpackJsonp([8],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/forms/ViewForm.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/forms/ViewForm.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var orderBy = __webpack_require__("./node_modules/lodash.orderby/index.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var orderBy = __webpack_require__("./node_modules/lodash.orderby/index.js");
 
 var formWith = ['sections.fields'];
 var formInclude = ['order', 'rules', 'type', 'options', 'is_order_form', 'effects_price', 'description', 'append', 'prepend'];
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ViewForm',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     },
     FormSectionComponent: function FormSectionComponent() {
-      return __webpack_require__.e/* import() */(49).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FormSectionComponent.vue"));
+      return __webpack_require__.e/* import() */(51).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FormSectionComponent.vue"));
     }
   },
-
   props: {
     formId: {
       type: [String, Number],
       required: true
     }
   },
-
   data: function data() {
     return {
       loading: false,
@@ -174,20 +162,13 @@ exports.default = {
       formErrors: {}
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('ViewForm.vue mounted');
     this.getForm();
   },
-
-
   methods: {
-
     /**
            * Get the form object from the server
            *
@@ -196,22 +177,20 @@ exports.default = {
     getForm: function getForm() {
       this.loading = true;
       this.pageErrors = {};
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'forms/' + this.formId,
         params: {
-          with: formWith,
+          "with": formWith,
           include: formInclude
         }
       }).then(function (data) {
         this.loading = false;
         this.form = data.data;
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.formErrors = error;
       }.bind(this));
     },
-
 
     /**
            * Uddate the form and send the data to the server
@@ -226,22 +205,20 @@ exports.default = {
         if (valid) {
           _this.loading = true;
           _this.formErrors = {};
-          _this.form.with = formWith;
+          _this.form["with"] = formWith;
           _this.form.include = formInclude;
-
-          _apiService2.default.persist('put', {
+          __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('put', {
             path: 'forms/' + _this.formId,
             object: _this.form
           }).then(function (data) {
             this.loading = false;
             this.form = data.data;
-
             this.$message({
               message: 'Form updated',
               type: 'success',
               showClose: true
             });
-          }.bind(_this)).catch(function (error) {
+          }.bind(_this))["catch"](function (error) {
             this.loading = false;
             this.formErrors = error;
           }.bind(_this));
@@ -263,17 +240,14 @@ exports.default = {
     },
     minimiseSectionCard: function minimiseSectionCard(section) {
       var index = this.form.sections.data.indexOf(section);
-
       var value = !this.form.sections.data[index].minimise;
-
       this.$set(this.form.sections.data[index], 'minimise', value);
     },
     deleteSection: function deleteSection(section) {
       this.form.sections.data.splice(this.form.sections.data.indexOf(section), 1);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -3010,7 +2984,7 @@ var render = function() {
                             attrs: { type: "primary" },
                             on: {
                               click: function($event) {
-                                _vm.minimiseSectionCard(section)
+                                return _vm.minimiseSectionCard(section)
                               }
                             }
                           },
@@ -3031,7 +3005,7 @@ var render = function() {
                             attrs: { type: "danger" },
                             on: {
                               click: function($event) {
-                                _vm.deleteSection(section)
+                                return _vm.deleteSection(section)
                               }
                             }
                           },
@@ -3077,7 +3051,7 @@ var render = function() {
               },
               on: {
                 click: function($event) {
-                  _vm.addSection()
+                  return _vm.addSection()
                 }
               }
             },
@@ -3104,7 +3078,7 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.submitForm("formForm")
+                          return _vm.submitForm("formForm")
                         }
                       }
                     },
@@ -3201,7 +3175,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/forms/ViewForm.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/forms/ViewForm.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-23e31401\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/forms/ViewForm.vue")
 /* template functional */

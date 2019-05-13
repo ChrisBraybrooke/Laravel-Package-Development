@@ -1,14 +1,10 @@
 webpackJsonp([7],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -59,49 +55,35 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
 var orderBy = __webpack_require__("./node_modules/lodash.orderby/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ViewProductCustomisations',
-
   components: {
     ProductPageLayout: function ProductPageLayout() {
       return __webpack_require__.e/* import() */(34).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/products/ProductPageLayout.vue"));
     },
     ProductCustomisationComponent: function ProductCustomisationComponent() {
-      return __webpack_require__.e/* import() */(47).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductCustomisationComponent.vue"));
+      return __webpack_require__.e/* import() */(48).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductCustomisationComponent.vue"));
     }
   },
-
   props: {
     productId: {
       type: String,
       required: true
     }
   },
-
   data: function data() {
-    return {
-      //
+    return {//
     };
   },
-
-
-  computed: {
-    //
+  computed: {//
   },
-
   watch: {},
-
   mounted: function mounted() {
     console.log('ViewProductCustomisations.vue mounted');
   },
-
-
   methods: {
-
     /**
            * List the customisations in the order specified by the user
            *
@@ -111,7 +93,6 @@ exports.default = {
     orderedCusomisations: function orderedCusomisations(customisations) {
       return customisations.length >= 1 ? orderBy(customisations, ['order'], ['asc']) : [];
     },
-
 
     /**
            * Add a customisation to the customisations
@@ -127,7 +108,6 @@ exports.default = {
       });
     },
 
-
     /**
            * Delete a customisation from the customisations
            *
@@ -139,7 +119,6 @@ exports.default = {
       customisations.splice(customisations.indexOf(customisation), 1);
     },
 
-
     /**
            * Maximise or minimise the customisation card
            *
@@ -149,14 +128,11 @@ exports.default = {
            */
     minimiseCustomisationCard: function minimiseCustomisationCard(customisation, customisations) {
       var index = customisations.indexOf(customisation);
-
       var value = !customisations[index].minimise;
-
       this.$set(customisations[index], 'minimise', value);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -2734,7 +2710,7 @@ var render = function() {
                                     attrs: { type: "primary" },
                                     on: {
                                       click: function($event) {
-                                        _vm.minimiseCustomisationCard(
+                                        return _vm.minimiseCustomisationCard(
                                           customisation,
                                           props.productForm.customisations.data
                                         )
@@ -2763,7 +2739,7 @@ var render = function() {
                                     attrs: { type: "danger" },
                                     on: {
                                       click: function($event) {
-                                        _vm.deleteCustomisation(
+                                        return _vm.deleteCustomisation(
                                           customisation,
                                           props.productForm.customisations.data
                                         )
@@ -2811,7 +2787,7 @@ var render = function() {
                     attrs: { type: "primary", icon: "el-icon-plus", plain: "" },
                     on: {
                       click: function($event) {
-                        _vm.addCustomisation(
+                        return _vm.addCustomisation(
                           props.productForm.customisations.data
                         )
                       }
@@ -2906,7 +2882,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1b77bc60\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/products/ViewProductCustomisations.vue")
 /* template functional */

@@ -1,141 +1,178 @@
-webpackJsonp([12],{
+webpackJsonp([13],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/reports/ImportExport.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/reports/ImportExport.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var throttle = __webpack_require__("./node_modules/lodash.throttle/index.js");
 
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var throttle = __webpack_require__("./node_modules/lodash.throttle/index.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ImportExport',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
@@ -144,30 +181,50 @@ exports.default = {
       return __webpack_require__.e/* import() */(33/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
     }
   },
-
   props: {},
-
   data: function data() {
     return {
       loading: false,
       ImportExportErrors: {},
+      exportForm: {},
       currentTab: 'import',
       importForm: {},
-      imports: []
+      imports: [],
+      dateRangeOptions: {
+        shortcuts: [{
+          text: 'Last week',
+          onClick: function onClick(picker) {
+            var end = new Date();
+            var start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+            picker.$emit('pick', [start, end]);
+          }
+        }, {
+          text: 'Last month',
+          onClick: function onClick(picker) {
+            var end = new Date();
+            var start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+            picker.$emit('pick', [start, end]);
+          }
+        }, {
+          text: 'Last 3 months',
+          onClick: function onClick(picker) {
+            var end = new Date();
+            var start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+            picker.$emit('pick', [start, end]);
+          }
+        }]
+      }
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('ImportExport.vue Mounted.');
     this.getImports();
   },
-
-
   methods: {
     handleFilesChosen: function handleFilesChosen(data) {
       this.$set(this.importForm, data.id, data.files);
@@ -181,26 +238,24 @@ exports.default = {
       } else if (row.status === 'Pending') {
         return 'warning-row';
       }
+
       return '';
     },
     handleFilesUnChosen: function handleFilesUnChosen(data) {
       this.$set(this.importForm, data.id, data.files);
     },
-
-
     getImports: throttle(function () {
       this.loading = true;
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'imports'
       }).then(function (data) {
         this.loading = false;
         this.imports = data.data;
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.ImportExportErrors = error;
       }.bind(this));
     }),
-
     submitForm: function submitForm(ref, path) {
       var _this = this;
 
@@ -208,15 +263,23 @@ exports.default = {
         if (valid) {
           _this.loading = true;
           _this.ImportExportErrors = {};
-
-          _apiService2.default.persist('post', {
+          __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('post', {
             path: path,
-            object: _this.importForm
+            object: _this[ref]
           }).then(function (data) {
             this.loading = false;
             this.imports.unshift(data.data);
             this.importForm = {};
-          }.bind(_this)).catch(function (error) {
+
+            if (ref === 'exportForm') {
+              this.$alert('Click below to download the file.', 'Export Completed', {
+                confirmButtonText: 'Download',
+                callback: function callback(action) {
+                  window.location.replace(data.data.url);
+                }
+              });
+            }
+          }.bind(_this))["catch"](function (error) {
             this.loading = false;
             this.ImportExportErrors = error;
           }.bind(_this));
@@ -224,8 +287,7 @@ exports.default = {
       });
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -470,7 +532,7 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.submitForm("importForm", "imports")
+                          return _vm.submitForm("importForm", "imports")
                         }
                       }
                     },
@@ -483,7 +545,125 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("el-tab-pane", { attrs: { label: "Export", name: "export" } })
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Export", name: "export" } },
+            [
+              _c(
+                "el-form",
+                {
+                  ref: "exportForm",
+                  attrs: {
+                    model: _vm.exportForm,
+                    "label-position": "left",
+                    "label-width": "120px"
+                  }
+                },
+                [
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Export type field is required",
+                            trigger: "blur"
+                          }
+                        ],
+                        label: "Export Type",
+                        prop: "export_type"
+                      }
+                    },
+                    [
+                      _c(
+                        "el-select",
+                        {
+                          staticClass: "config_select",
+                          attrs: { placeholder: "Select", size: "small" },
+                          model: {
+                            value: _vm.exportForm.export_type,
+                            callback: function($$v) {
+                              _vm.$set(_vm.exportForm, "export_type", $$v)
+                            },
+                            expression: "exportForm.export_type"
+                          }
+                        },
+                        [
+                          _c("el-option", {
+                            attrs: { label: "Orders", value: "Order" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: {
+                        rules: [
+                          {
+                            required: true,
+                            message: "Export date range field is required",
+                            trigger: "blur"
+                          }
+                        ],
+                        label: "Export Date Range",
+                        prop: "export_date_range",
+                        size: "small"
+                      }
+                    },
+                    [
+                      _c("el-date-picker", {
+                        attrs: {
+                          "picker-options": _vm.dateRangeOptions,
+                          type: "daterange",
+                          align: "right",
+                          "unlink-panels": "",
+                          "range-separator": "To",
+                          "start-placeholder": "Start date",
+                          "end-placeholder": "End date",
+                          format: "dd/MM/yyyy",
+                          "value-format": "dd-MM-yyyy",
+                          placeholder: "dd/MM/yyyy"
+                        },
+                        model: {
+                          value: _vm.exportForm.export_date_range,
+                          callback: function($$v) {
+                            _vm.$set(_vm.exportForm, "export_date_range", $$v)
+                          },
+                          expression: "exportForm.export_date_range"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-button",
+                    {
+                      attrs: {
+                        loading: _vm.loading,
+                        plain: "",
+                        type: "success"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.submitForm("exportForm", "exports")
+                        }
+                      }
+                    },
+                    [_vm._v("Export")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
       )
@@ -540,7 +720,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/reports/ImportExport.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/reports/ImportExport.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-0abbb9be\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/reports/ImportExport.vue")
 /* template functional */

@@ -1,24 +1,15 @@
 webpackJsonp([23],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_utils_order__ = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-var _order = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
-
-var _order2 = _interopRequireDefault(_order);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
 //
@@ -70,11 +61,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
-exports.default = {
 
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ViewEstimate',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
@@ -82,48 +78,40 @@ exports.default = {
     ProductTable: function ProductTable() {
       return __webpack_require__.e/* import() */(35).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductTable.vue"));
     },
-    ProductForm: function ProductForm() {
-      return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/ProductForm.vue"));
+    NewProductForm: function NewProductForm() {
+      return __webpack_require__.e/* import() */(36).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/NewProductForm.vue"));
     },
     PrintDownloadButton: function PrintDownloadButton() {
-      return __webpack_require__.e/* import() */(39).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PrintDownloadButton.vue"));
+      return __webpack_require__.e/* import() */(49).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/PrintDownloadButton.vue"));
     }
   },
-
   props: {
     estimateId: {
       required: true,
       type: [String, Number]
     }
   },
-
   data: function data() {
     return {
       loading: false,
       estimate: {},
       errors: {}
-
     };
   },
-
-
   computed: {
     orderTotals: function orderTotals() {
       if (this.estimate.cart) {
-        return _order2.default.totals(this.estimate.items, this.estimate.cart.totals['Shipping'], this.estimate.cart.totals['Discount']);
+        return __WEBPACK_IMPORTED_MODULE_1_utils_order__["a" /* default */].totals(this.estimate.items, this.estimate.cart.totals['Shipping'], this.estimate.cart.totals['Discount']);
       }
+
       return [{}];
     }
   },
-
   watch: {},
-
   mounted: function mounted() {
     console.log('ViewEstimate.vue mounted!');
     this.getEstimate();
   },
-
-
   methods: {
     onProductAdd: function onProductAdd(product) {
       console.log(product);
@@ -133,13 +121,12 @@ exports.default = {
       var _this = this;
 
       this.loading = true;
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'orders/' + this.estimateId
       }).then(function (data) {
         _this.loading = false;
         _this.estimate = data.data;
-      }).catch(function (error) {
+      })["catch"](function (error) {
         _this.errors = error;
         _this.loading = false;
       });
@@ -148,21 +135,26 @@ exports.default = {
       var _this2 = this;
 
       this.loading = true;
-
-      _apiService2.default.persist('put', {
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('put', {
         path: 'orders/' + this.estimateId,
         object: this.estimate
       }).then(function (data) {
         _this2.loading = false;
         _this2.estimate = data.data;
-      }).catch(function (error) {
+      })["catch"](function (error) {
         _this2.errors = error;
         _this2.loading = false;
       });
+    },
+    handleProductUpdate: function handleProductUpdate(obj) {
+      var currentProduct = this.estimate.items[obj.index];
+
+      var product = _objectSpread({}, currentProduct, obj.product);
+
+      this.estimate.items.splice(obj.index, 1, product);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -174,7 +166,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -213,15 +205,31 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm.estimate.id
-            ? _c("el-breadcrumb-item", [
-                _vm._v(_vm._s(_vm.estimate.ref_number))
-              ])
+            ? _c("el-breadcrumb-item", [_vm._v(_vm._s(_vm.estimate.ref))])
             : _vm._e()
         ],
         1
       ),
       _vm._v(" "),
       _c("print-download-button", { attrs: { "order-id": _vm.estimateId } }),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          attrs: {
+            to: {
+              name: "orders.view",
+              params: { orderId: "" + _vm.estimate.id }
+            }
+          }
+        },
+        [
+          _c("el-button", { attrs: { type: "info", size: "mini" } }, [
+            _vm._v("Edit Order")
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
       Object.keys(_vm.errors).length > 0
         ? _c("errors", { attrs: { errors: _vm.errors } })
@@ -238,7 +246,7 @@ var render = function() {
             "el-col",
             { attrs: { sm: 24 } },
             [
-              _c("product-form", {
+              _c("new-product-form", {
                 attrs: { "on-product-add": _vm.onProductAdd }
               })
             ],
@@ -263,7 +271,8 @@ var render = function() {
                 attrs: {
                   editable: true,
                   order: _vm.estimate,
-                  "order-totals": _vm.orderTotals
+                  "order-totals": _vm.orderTotals,
+                  "on-product-update": _vm.handleProductUpdate
                 }
               })
             ],
@@ -289,7 +298,7 @@ var render = function() {
                   attrs: { loading: _vm.loading, plain: "", type: "success" },
                   on: {
                     click: function($event) {
-                      _vm.updateEstimate()
+                      return _vm.updateEstimate()
                     }
                   }
                 },
@@ -354,7 +363,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3e5f516e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/estimates/ViewEstimate.vue")
 /* template functional */

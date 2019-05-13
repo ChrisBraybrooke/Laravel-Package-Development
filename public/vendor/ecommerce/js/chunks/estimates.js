@@ -1,22 +1,15 @@
 webpackJsonp([25],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js"); //
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
 //
 //
 //
@@ -89,27 +82,26 @@ var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js"); //
 //
 //
 
-exports.default = {
 
+var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Estimates',
-
   components: {
     DataTable: function DataTable() {
       return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
     }
   },
-
-  props: {},
-
+  props: {//
+  },
   data: function data() {
     var h = this.$createElement;
-
     return {
       loading: false,
       errors: {},
       tableOptions: {
         collumns: [{
-          prop: 'ref_number',
+          prop: 'ref',
           sortable: true,
           label: 'Ref',
           align: 'left',
@@ -127,35 +119,29 @@ exports.default = {
               if (line) {
                 address.push(line);
               }
-              lines.push(h('li', [line]));
+
+              lines.push(h("li", [line]));
             });
-            return h(
-              'el-popover',
-              {
-                attrs: { trigger: 'hover', placement: 'top' }
+            return h("el-popover", {
+              "attrs": {
+                "trigger": "hover",
+                "placement": "top"
+              }
+            }, [h("ul", {
+              "class": "order_address_list table_col_list"
+            }, [lines]), h("el-button", {
+              "attrs": {
+                "size": "mini",
+                "plain": true
               },
-              [h(
-                'ul',
-                { 'class': 'order_address_list table_col_list' },
-                [lines]
-              ), h(
-                'el-button',
-                {
-                  attrs: { size: 'mini', plain: true },
-                  on: {
-                    'click': function click() {
-                      return _this.copy(address.join(', '));
-                    }
-                  }
-                },
-                ['Copy']
-              ), h(
-                'div',
-                { slot: 'reference' },
-                [h('strong', [row.customer.first_name, ' ', row.customer.last_name])]
-              )]
-            );
-            // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
+              "on": {
+                "click": function click() {
+                  return _this.copy(address.join(', '));
+                }
+              }
+            }, ["Copy"]), h("div", {
+              "slot": "reference"
+            }, [h("strong", [row.customer.first_name, " ", row.customer.last_name])])]); // return <div><ul class="order_address_list table_col_list">{lines}</ul><el-button size="mini" plain on-click={() => this.copy(address.join(', '))}>Copy</el-button></div>
           }.bind(this),
           align: 'left',
           resizable: false
@@ -181,24 +167,18 @@ exports.default = {
               realQty.forEach(function () {
                 total.push(item.name);
               });
-              items.push(h('li', [item.quantity + ' * ' + item.name]));
+              items.push(h("li", [item.quantity + ' * ' + item.name]));
             });
-
-            return h(
-              'el-popover',
-              {
-                attrs: { trigger: 'hover', placement: 'top' }
-              },
-              [h(
-                'ul',
-                { 'class': 'order_items_list table_col_list' },
-                [items]
-              ), h(
-                'div',
-                { slot: 'reference' },
-                [h('strong', [total.length, ' items'])]
-              )]
-            );
+            return h("el-popover", {
+              "attrs": {
+                "trigger": "hover",
+                "placement": "top"
+              }
+            }, [h("ul", {
+              "class": "order_items_list table_col_list"
+            }, [items]), h("div", {
+              "slot": "reference"
+            }, [h("strong", [total.length, " items"])])]);
           }
         }, {
           prop: 'amount',
@@ -216,29 +196,30 @@ exports.default = {
           formatter: function (row, column, cellValue) {
             var _this2 = this;
 
-            return h('div', [h(
-              'el-button',
-              {
-                on: {
-                  'click': function click() {
-                    return _this2.createInvoice(row, true);
-                  }
-                },
-                attrs: { type: 'success', size: 'mini' },
-                'class': 'action_btn' },
-              ['Create Pro-Forma']
-            ), h(
-              'el-button',
-              {
-                on: {
-                  'click': function click() {
-                    return _this2.createInvoice(row);
-                  }
-                },
-                attrs: { type: 'success', size: 'mini', plain: true },
-                'class': 'action_btn' },
-              ['Create Invoice']
-            )]);
+            return h("div", [h("el-button", {
+              "on": {
+                "click": function click() {
+                  return _this2.createInvoice(row, true);
+                }
+              },
+              "attrs": {
+                "type": "success",
+                "size": "mini"
+              },
+              "class": "action_btn"
+            }, ["Create Pro-Forma"]), h("el-button", {
+              "on": {
+                "click": function click() {
+                  return _this2.createInvoice(row);
+                }
+              },
+              "attrs": {
+                "type": "success",
+                "size": "mini",
+                "plain": true
+              },
+              "class": "action_btn"
+            }, ["Create Invoice"])]);
           }.bind(this),
           align: 'left',
           resizable: true
@@ -246,42 +227,41 @@ exports.default = {
       }
     };
   },
-
-
-  computed: {},
-
+  computed: {//
+  },
   watch: {},
-
   mounted: function mounted() {
     console.log('Estimates.vue mounted.');
   },
-
-
   methods: {
     createInvoice: function createInvoice(val) {
       var _this3 = this;
 
       var proForma = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
       var status = window.ecommerceConfig.orders.statuses;
+
       if (proForma) {
         val.status = status.STATUS_PROFORMA;
       } else {
         val.status = status.STATUS_AWAITING_PAYMENT;
       }
-      _apiService2.default.persist('put', {
+
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('put', {
         path: 'orders/' + val.id,
         object: val
       }).then(function (data) {
-        _this3.$router.push({ name: 'orders.view', params: { orderId: '' + val.id } });
-      }).catch(function () {
-        // this.loading = false;
+        _this3.$router.push({
+          name: 'orders.view',
+          params: {
+            orderId: "".concat(val.id)
+          }
+        });
+      })["catch"](function () {// this.loading = false;
         // this.errors = error;
       });
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -328,7 +308,7 @@ var render = function() {
             return [
               _c(
                 "el-popover",
-                { attrs: { trigger: "hover", placement: "top" } },
+                { attrs: { trigger: "click", placement: "top" } },
                 [
                   _c(
                     "router-link",
@@ -360,7 +340,7 @@ var render = function() {
                           "mailto:" +
                           props.row.customer.email +
                           "?subject=Order Ref " +
-                          props.row.ref_number +
+                          props.row.ref +
                           "&body=Hello " +
                           props.row.customer.first_name +
                           ","
@@ -409,7 +389,7 @@ var render = function() {
                       attrs: { size: "mini", type: "danger" },
                       on: {
                         click: function($event) {
-                          props.delete(props.row)
+                          return props.delete(props.row)
                         }
                       }
                     },
@@ -510,7 +490,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-74b8879f\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/estimates/Estimates.vue")
 /* template functional */
@@ -530,6 +510,7 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/admin-spa/pages/estimates/Estimates.vue"
+
 
 /* hot reload */
 if (false) {(function () {

@@ -1,14 +1,10 @@
 webpackJsonp([18],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/Products.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/Products.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -36,20 +32,16 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     DataTable: function DataTable() {
       return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
     }
   },
-
   data: function data() {
     var _this = this;
 
     var h = this.$createElement;
-
     return {
       productsCreateForm: {},
       tableOptions: {
@@ -76,9 +68,9 @@ exports.default = {
           align: 'left',
           formatter: function formatter(row, column, cellValue) {
             if (!row.variant) {
-              return h('strong', [row.name]);
+              return h("strong", [row.name]);
             } else {
-              return h('span', [h('strong', [row.variant.name]), ' / ', row.name]);
+              return h("span", [h("strong", [row.variant.name]), " / ", row.name]);
             }
           },
           resizable: true
@@ -99,7 +91,9 @@ exports.default = {
           resizable: true,
           formatter: function formatter(row, collumn, cellValue) {
             if (cellValue) {
-              return h('i', { 'class': 'el-icon-check' });
+              return h("i", {
+                "class": "el-icon-check"
+              });
             }
           }
         }, {
@@ -110,7 +104,9 @@ exports.default = {
           resizable: true,
           formatter: function formatter(row, collumn, cellValue) {
             if (cellValue) {
-              return h('i', { 'class': 'el-icon-check' });
+              return h("i", {
+                "class": "el-icon-check"
+              });
             }
           }
         }, {
@@ -121,7 +117,9 @@ exports.default = {
           resizable: true,
           formatter: function formatter(row, collumn, cellValue) {
             if (cellValue) {
-              return h('i', { 'class': 'el-icon-check' });
+              return h("i", {
+                "class": "el-icon-check"
+              });
             }
           }
         }, {
@@ -136,7 +134,11 @@ exports.default = {
           label: 'Live',
           align: 'left',
           formatter: function formatter(row, column, cellValue) {
-            return row.live_at.live ? h('i', { 'class': 'el-icon-check' }) : h('i', { 'class': 'el-icon-close' });
+            return row.live_at.live ? h("i", {
+              "class": "el-icon-check"
+            }) : h("i", {
+              "class": "el-icon-close"
+            });
           },
           resizable: true
         }],
@@ -153,18 +155,15 @@ exports.default = {
       }
     };
   },
-
-
   watch: {
     productsCreateForm: function productsCreateForm(value) {
       this.$emit('input', this.internalValue);
     }
   },
-
   mounted: function mounted() {
     console.log('Products.vue Mounted.');
   }
-};
+});
 
 /***/ }),
 
@@ -283,7 +282,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/Products.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/Products.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-155cae07\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/products/Products.vue")
 /* template functional */

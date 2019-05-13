@@ -1,14 +1,10 @@
-webpackJsonp([42],{
+webpackJsonp([43],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FormFieldComponent.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FormFieldComponent.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -331,15 +327,63 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var groupBy = __webpack_require__("./node_modules/lodash.groupby/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FormFieldComponent',
-
-  components: {},
-
+  components: {// FormFieldComponent: () => import(/* webpackChunkName: "form-field-component" */'components/FormFieldComponent')
+  },
   props: {
     form: {
       type: Object,
@@ -354,7 +398,6 @@ exports.default = {
       required: true
     }
   },
-
   data: function data() {
     return {
       fieldOptions: [{
@@ -372,21 +415,24 @@ exports.default = {
       }, {
         label: 'Select',
         value: 'select'
+      }, {
+        label: 'Dynamic Order Data',
+        value: 'dynamic'
       }],
       showRulesModal: false,
       showOptionsModal: false
     };
   },
-
-
   computed: {
     needsOptions: function needsOptions() {
       if (this.model.type === 'radio') {
         return true;
       }
+
       if (this.model.type === 'select') {
         return true;
       }
+
       return false;
     },
     getDynamicOptions: function getDynamicOptions() {
@@ -407,6 +453,7 @@ exports.default = {
       var _this = this;
 
       var options = [];
+
       if (this.model.rules.show_if_att) {
         this.form.sections.data.forEach(function (section) {
           section.fields.data.forEach(function (field) {
@@ -416,29 +463,34 @@ exports.default = {
           });
         });
       }
+
       return options;
     }
   },
-
   watch: {},
-
   mounted: function mounted() {
     console.log('FormFieldComponent.vue Mounted');
   },
-
-
   methods: {
     deleteField: function deleteField(field) {
       this.section.fields.data.splice(this.section.fields.data.indexOf(field), 1);
     },
     addOption: function addOption() {
-      this.model.options.push({});
+      if (this.model.type === 'dynamic') {
+        this.model.options.push({
+          options: [],
+          rules: {},
+          type: ''
+        });
+      } else {
+        this.model.options.push({});
+      }
     },
     deleteOption: function deleteOption(option, options) {
       options.splice(options.indexOf(option), 1);
     }
   }
-};
+});
 
 /***/ }),
 
@@ -450,7 +502,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -2882,7 +2934,38 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-col",
-                { attrs: { lg: 12, xl: 6 } },
+                { attrs: { lg: 12, xl: 4 } },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Key", size: "small", prop: "key" } },
+                    [
+                      _c("el-input", {
+                        model: {
+                          value: _vm.model.key,
+                          callback: function($$v) {
+                            _vm.$set(_vm.model, "key", $$v)
+                          },
+                          expression: "model.key"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { attrs: { gutter: 20 } },
+            [
+              _c(
+                "el-col",
+                { attrs: { lg: 24, xl: 6 } },
                 [
                   _c(
                     "el-form-item",
@@ -2936,7 +3019,8 @@ var render = function() {
                             key: option.value,
                             attrs: { label: option.label, value: option.value }
                           })
-                        })
+                        }),
+                        1
                       )
                     ],
                     1
@@ -3097,6 +3181,41 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
+              _vm.model.type === "dynamic"
+                ? _c(
+                    "el-col",
+                    { attrs: { lg: 4, xl: 2 } },
+                    [
+                      _c(
+                        "el-form-item",
+                        {
+                          attrs: { label: "", size: "small", prop: "options" }
+                        },
+                        [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: {
+                                plain: "",
+                                size: "mini",
+                                type: "primary"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.showOptionsModal = true
+                                }
+                              }
+                            },
+                            [_vm._v("Show Fields")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "el-col",
                 { attrs: { lg: 4, xl: 2 } },
@@ -3111,7 +3230,7 @@ var render = function() {
                           attrs: { size: "mini", type: "danger" },
                           on: {
                             click: function($event) {
-                              _vm.deleteField(_vm.model)
+                              return _vm.deleteField(_vm.model)
                             }
                           }
                         },
@@ -3251,9 +3370,11 @@ var render = function() {
                                       value: op.field_id
                                     }
                                   })
-                                })
+                                }),
+                                1
                               )
-                            })
+                            }),
+                            1
                           )
                         ],
                         1
@@ -3283,7 +3404,8 @@ var render = function() {
                                 key: key,
                                 attrs: { label: op, value: op }
                               })
-                            })
+                            }),
+                            1
                           )
                         ],
                         1
@@ -3313,7 +3435,41 @@ var render = function() {
                                 key: value.value,
                                 attrs: { label: value.name, value: value.value }
                               })
-                            })
+                            }),
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.model.type === "dynamic"
+                ? _c(
+                    "el-row",
+                    { attrs: { type: "flex" } },
+                    [
+                      _c(
+                        "el-col",
+                        { attrs: { span: 24 } },
+                        [
+                          _c(
+                            "el-form-item",
+                            { attrs: { label: "Loop Key", prop: "loop_key" } },
+                            [
+                              _c("el-input", {
+                                model: {
+                                  value: _vm.model.rules.loop_key,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.model.rules, "loop_key", $$v)
+                                  },
+                                  expression: "model.rules.loop_key"
+                                }
+                              })
+                            ],
+                            1
                           )
                         ],
                         1
@@ -3367,17 +3523,60 @@ var render = function() {
               }
             },
             [
-              _vm._l(_vm.model.options, function(option) {
-                return _c(
-                  "el-row",
-                  {
-                    key: option.id,
-                    staticClass: "form_field_row",
-                    attrs: { gutter: 20 }
-                  },
-                  [
-                    _vm.model.options
-                      ? _c(
+              _vm.model.type === "dynamic"
+                ? _vm._l(_vm.model.options, function(field, key) {
+                    return _c("form-field-component", {
+                      key: key,
+                      attrs: {
+                        model: field,
+                        section: _vm.section,
+                        form: _vm.form
+                      }
+                    })
+                  })
+                : _vm._l(_vm.model.options, function(option) {
+                    return _c(
+                      "el-row",
+                      {
+                        key: option.id,
+                        staticClass: "form_field_row",
+                        attrs: { gutter: 20 }
+                      },
+                      [
+                        _vm.model.options
+                          ? _c(
+                              "el-col",
+                              { attrs: { lg: 12, xl: 4 } },
+                              [
+                                _c(
+                                  "el-form-item",
+                                  {
+                                    attrs: {
+                                      label: "Label",
+                                      size: "small",
+                                      prop: "label"
+                                    }
+                                  },
+                                  [
+                                    _c("el-input", {
+                                      attrs: { autofocus: true },
+                                      model: {
+                                        value: option.name,
+                                        callback: function($$v) {
+                                          _vm.$set(option, "name", $$v)
+                                        },
+                                        expression: "option.name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
                           "el-col",
                           { attrs: { lg: 12, xl: 4 } },
                           [
@@ -3385,20 +3584,20 @@ var render = function() {
                               "el-form-item",
                               {
                                 attrs: {
-                                  label: "Label",
+                                  label: "Value",
                                   size: "small",
-                                  prop: "label"
+                                  prop: "value"
                                 }
                               },
                               [
                                 _c("el-input", {
                                   attrs: { autofocus: true },
                                   model: {
-                                    value: option.name,
+                                    value: option.value,
                                     callback: function($$v) {
-                                      _vm.$set(option, "name", $$v)
+                                      _vm.$set(option, "value", $$v)
                                     },
-                                    expression: "option.name"
+                                    expression: "option.value"
                                   }
                                 })
                               ],
@@ -3406,73 +3605,119 @@ var render = function() {
                             )
                           ],
                           1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "el-col",
-                      { attrs: { lg: 12, xl: 4 } },
-                      [
+                        ),
+                        _vm._v(" "),
+                        _vm.form.effects_price
+                          ? _c(
+                              "el-col",
+                              { attrs: { lg: 12, xl: 4 } },
+                              [
+                                _c(
+                                  "el-form-item",
+                                  {
+                                    attrs: {
+                                      label: "Price Mutator",
+                                      size: "small",
+                                      prop: "price_mutator"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "el-select",
+                                      {
+                                        attrs: { placeholder: "" },
+                                        model: {
+                                          value: option.price_mutator,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              option,
+                                              "price_mutator",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "option.price_mutator"
+                                        }
+                                      },
+                                      [
+                                        _c("el-option", {
+                                          attrs: { value: "+" }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("el-option", {
+                                          attrs: { value: "-" }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.form.effects_price
+                          ? _c(
+                              "el-col",
+                              { attrs: { lg: 12, xl: 4 } },
+                              [
+                                _c(
+                                  "el-form-item",
+                                  {
+                                    attrs: {
+                                      label: "Price Value",
+                                      size: "small",
+                                      prop: "price_value"
+                                    }
+                                  },
+                                  [
+                                    _c("el-input", {
+                                      attrs: { type: "number" },
+                                      model: {
+                                        value: option.price_value,
+                                        callback: function($$v) {
+                                          _vm.$set(option, "price_value", $$v)
+                                        },
+                                        expression: "option.price_value"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
                         _c(
-                          "el-form-item",
-                          {
-                            attrs: {
-                              label: "Value",
-                              size: "small",
-                              prop: "value"
-                            }
-                          },
-                          [
-                            _c("el-input", {
-                              attrs: { autofocus: true },
-                              model: {
-                                value: option.value,
-                                callback: function($$v) {
-                                  _vm.$set(option, "value", $$v)
-                                },
-                                expression: "option.value"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm.form.effects_price
-                      ? _c(
                           "el-col",
-                          { attrs: { lg: 12, xl: 4 } },
+                          { attrs: { lg: 4, xl: 2 } },
                           [
                             _c(
                               "el-form-item",
                               {
                                 attrs: {
-                                  label: "Price Mutator",
+                                  label: "",
                                   size: "small",
-                                  prop: "price_mutator"
+                                  prop: "delete"
                                 }
                               },
                               [
                                 _c(
-                                  "el-select",
+                                  "el-button",
                                   {
-                                    attrs: { placeholder: "" },
-                                    model: {
-                                      value: option.price_mutator,
-                                      callback: function($$v) {
-                                        _vm.$set(option, "price_mutator", $$v)
-                                      },
-                                      expression: "option.price_mutator"
+                                    attrs: { size: "mini", type: "danger" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteOption(
+                                          option,
+                                          _vm.model.options
+                                        )
+                                      }
                                     }
                                   },
-                                  [
-                                    _c("el-option", { attrs: { value: "+" } }),
-                                    _vm._v(" "),
-                                    _c("el-option", { attrs: { value: "-" } })
-                                  ],
-                                  1
+                                  [_vm._v("Delete")]
                                 )
                               ],
                               1
@@ -3480,73 +3725,10 @@ var render = function() {
                           ],
                           1
                         )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.form.effects_price
-                      ? _c(
-                          "el-col",
-                          { attrs: { lg: 12, xl: 4 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                attrs: {
-                                  label: "Price Value",
-                                  size: "small",
-                                  prop: "price_value"
-                                }
-                              },
-                              [
-                                _c("el-input", {
-                                  attrs: { type: "number" },
-                                  model: {
-                                    value: option.price_value,
-                                    callback: function($$v) {
-                                      _vm.$set(option, "price_value", $$v)
-                                    },
-                                    expression: "option.price_value"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "el-col",
-                      { attrs: { lg: 4, xl: 2 } },
-                      [
-                        _c(
-                          "el-form-item",
-                          {
-                            attrs: { label: "", size: "small", prop: "delete" }
-                          },
-                          [
-                            _c(
-                              "el-button",
-                              {
-                                attrs: { size: "mini", type: "danger" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.deleteOption(option, _vm.model.options)
-                                  }
-                                }
-                              },
-                              [_vm._v("Delete")]
-                            )
-                          ],
-                          1
-                        )
                       ],
                       1
                     )
-                  ],
-                  1
-                )
-              }),
+                  }),
               _vm._v(" "),
               _c(
                 "el-button",
@@ -3559,7 +3741,13 @@ var render = function() {
                   },
                   on: { click: _vm.addOption }
                 },
-                [_vm._v("Add Option")]
+                [
+                  _vm._v(
+                    _vm._s(
+                      _vm.model.type === "dynamic" ? "Add Field" : "Add Option"
+                    )
+                  )
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -3642,7 +3830,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FormFieldComponent.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FormFieldComponent.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c52ebb7a\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/FormFieldComponent.vue")
 /* template functional */

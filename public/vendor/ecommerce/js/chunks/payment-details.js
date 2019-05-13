@@ -1,25 +1,12 @@
-webpackJsonp([48],{
+webpackJsonp([50],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/PaymentDetails.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/PaymentDetails.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _order = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
-
-var _order2 = _interopRequireDefault(_order);
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_utils_order__ = __webpack_require__("./resources/assets/admin-spa/utils/order.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
 //
 //
 //
@@ -119,16 +106,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
-exports.default = {
 
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PaymentDetails',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
   },
-
   props: {
     payments: {
       type: Array,
@@ -137,49 +122,44 @@ exports.default = {
     editable: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return true;
       }
     }
   },
-
   data: function data() {
     return {
       errors: {}
     };
   },
-
-
   computed: {
     totalPaid: function totalPaid() {
-      return _order2.default.paymentTotal(this.payments);
+      return __WEBPACK_IMPORTED_MODULE_0_utils_order__["a" /* default */].paymentTotal(this.payments);
     }
   },
-
   watch: {},
-
   mounted: function mounted() {
     console.log('PaymentDetails.vue mounted!');
   },
-
-
   methods: {
     markPaymentRefunded: function markPaymentRefunded(payment) {
       var _this = this;
 
       payment.payment_refunded = true;
-      _apiService2.default.persist('put', {
+      __WEBPACK_IMPORTED_MODULE_1_services_api_service__["a" /* default */].persist('put', {
         path: 'payments/' + payment.id,
         object: payment
       }).then(function (data) {
         payment = data.data;
+
         _this.$message({
           type: 'success',
           message: 'Payment updated successfully.'
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         payment.payment_refunded = false;
         _this.errors = error;
+
         _this.$message({
           type: 'error',
           message: 'There was an error updating the payment.'
@@ -187,8 +167,7 @@ exports.default = {
       });
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -271,66 +250,73 @@ var render = function() {
           _vm.editable
             ? _c("el-table-column", {
                 attrs: { prop: "actions", label: "Actions" },
-                scopedSlots: _vm._u([
-                  {
-                    key: "default",
-                    fn: function(props) {
-                      return [
-                        props.row.link
-                          ? _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href: props.row.link,
-                                  target: "_blank"
-                                }
-                              },
-                              [
-                                _c(
-                                  "el-button",
-                                  {
-                                    staticClass: "action_btn left",
-                                    attrs: {
-                                      type: "primary",
-                                      size: "mini",
-                                      plain: ""
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.markPaymentRefunded(props.row)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("View Details")]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        !props.row.refunded
-                          ? _c(
-                              "el-button",
-                              {
-                                staticClass: "action_btn",
-                                attrs: {
-                                  type: "danger",
-                                  size: "mini",
-                                  plain: ""
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.markPaymentRefunded(props.row)
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          props.row.link
+                            ? _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: props.row.link,
+                                    target: "_blank"
                                   }
-                                }
-                              },
-                              [_vm._v("Mark Refunded")]
-                            )
-                          : _vm._e()
-                      ]
+                                },
+                                [
+                                  _c(
+                                    "el-button",
+                                    {
+                                      staticClass: "action_btn left",
+                                      attrs: {
+                                        type: "primary",
+                                        size: "mini",
+                                        plain: ""
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.markPaymentRefunded(
+                                            props.row
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("View Details")]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !props.row.refunded
+                            ? _c(
+                                "el-button",
+                                {
+                                  staticClass: "action_btn",
+                                  attrs: {
+                                    type: "danger",
+                                    size: "mini",
+                                    plain: ""
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.markPaymentRefunded(props.row)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Mark Refunded")]
+                              )
+                            : _vm._e()
+                        ]
+                      }
                     }
-                  }
-                ])
+                  ],
+                  null,
+                  false,
+                  3435884555
+                )
               })
             : _vm._e()
         ],
@@ -436,7 +422,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/PaymentDetails.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/PaymentDetails.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-168dffd0\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/PaymentDetails.vue")
 /* template functional */

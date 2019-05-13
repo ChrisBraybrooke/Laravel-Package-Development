@@ -1,154 +1,143 @@
-webpackJsonp([38],{
+webpackJsonp([37],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleriesComponent.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleriesComponent.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var findIndex = __webpack_require__("./node_modules/lodash.findindex/index.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var findIndex = __webpack_require__("./node_modules/lodash.findindex/index.js");
 
 var head = __webpack_require__("./node_modules/lodash.head/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'GalleriesComponent',
-
   components: {
     GalleryComponent: function GalleryComponent() {
-      return __webpack_require__.e/* import() */(41).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleryComponent.vue"));
+      return __webpack_require__.e/* import() */(42).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleryComponent.vue"));
     },
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
     }
   },
-
   props: {
     selectable: {
       type: Number,
       required: false,
-      default: function _default() {}
+      "default": function _default() {}
     },
     inModal: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     }
   },
-
   data: function data() {
     return {
       galleries: [],
@@ -166,18 +155,12 @@ exports.default = {
       selectedFiles: {}
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('GalleriesCompnenent.vue: Mounted');
     this.getGalleries();
   },
-
-
   methods: {
     setCurrentGallery: function setCurrentGallery() {
       var getFiles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
@@ -189,12 +172,12 @@ exports.default = {
 
       if (gallery) {
         this.currentTab = gallery.id.toString();
+
         if (getFiles) {
           this.getFiles(gallery);
         }
       }
     },
-
 
     /**
            * Get the galleries from the server.
@@ -203,13 +186,13 @@ exports.default = {
            */
     getGalleries: function getGalleries() {
       this.loading = true;
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'galleries'
       }).then(function (data) {
         this.galleries = data.data;
         this.loading = false;
         this.setCurrentGallery(true);
-      }.bind(this)).catch(function () {
+      }.bind(this))["catch"](function () {
         this.loading = false;
       }.bind(this));
     },
@@ -220,11 +203,13 @@ exports.default = {
       if (!gallery) {
         gallery = this.getGalleryFromTabIndex(this.currentTab);
       }
+
       if (gallery) {
         this.loading = true;
-        this.$set(this.showGallery, gallery.id, { show: false });
-
-        _apiService2.default.get({
+        this.$set(this.showGallery, gallery.id, {
+          show: false
+        });
+        __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
           path: 'galleries/' + gallery.id + '/media',
           params: {
             limit: 24,
@@ -235,12 +220,12 @@ exports.default = {
           this.errors = {};
           this.$set(this.gallerySelectable, gallery.id, this.selectable);
           this.$set(this.files, gallery.id, data.data);
-
           var galleryIndex = this.getGalleriesArrayIndex(gallery.id);
           this.galleries[galleryIndex].meta = data.meta;
-
-          this.$set(this.showGallery, gallery.id, { show: true });
-        }.bind(this)).catch(function (error) {
+          this.$set(this.showGallery, gallery.id, {
+            show: true
+          });
+        }.bind(this))["catch"](function (error) {
           this.errors = error;
           this.loading = false;
         }.bind(this));
@@ -254,10 +239,15 @@ exports.default = {
       var _this = this;
 
       this.loading = true;
-      this.createGalleryRules = { name: [{ required: true, message: 'Gallery name is required' }] };
+      this.createGalleryRules = {
+        name: [{
+          required: true,
+          message: 'Gallery name is required'
+        }]
+      };
       this.$refs.createGallery.validate(function (valid) {
         if (valid) {
-          _apiService2.default.persist('post', {
+          __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('post', {
             path: 'galleries',
             object: _this.createGalleryForm
           }).then(function (data) {
@@ -267,7 +257,7 @@ exports.default = {
             this.loading = false;
             this.addGalleryPopoverVisible = false;
             this.$refs.createGalleryName.resetField();
-          }.bind(_this)).catch(function () {
+          }.bind(_this))["catch"](function () {
             this.loading = false;
           }.bind(_this));
         }
@@ -275,16 +265,15 @@ exports.default = {
     },
     deleteGallery: function deleteGallery(tabIndex) {
       this.loading = true;
-
       var gallery = this.getGalleryFromTabIndex(tabIndex);
 
       if (gallery) {
-        _apiService2.default.delete({
+        __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */]["delete"]({
           path: 'galleries/' + gallery.id
         }).then(function () {
           this.galleries.splice(this.galleries.indexOf(gallery), 1);
           this.loading = false;
-        }.bind(this)).catch(function () {
+        }.bind(this))["catch"](function () {
           this.loading = false;
         }.bind(this));
       } else {
@@ -334,15 +323,17 @@ exports.default = {
       });
       var galleryIndex = this.getGalleriesArrayIndex(data.gallery);
       console.log(galleryIndex);
+
       if (galleryIndex !== null) {
         this.galleries[galleryIndex].meta.total = this.galleries[galleryIndex].meta.total + 1;
       }
+
       this.files[data.gallery][file].id = data.data.response.data.id;
       this.files[data.gallery][file].url = data.data.response.data.url;
       this.errors = {};
     },
     handleFileUploadError: function handleFileUploadError(data) {
-      this.errors = _apiService2.default.errorAdapter(data.error);
+      this.errors = __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].errorAdapter(data.error);
       setTimeout(function () {
         this.files[data.gallery].splice(this.files[data.gallery].indexOf(data.file), 1);
         this.errors = {};
@@ -352,12 +343,10 @@ exports.default = {
       this.selectedFiles = data.selectedFiles;
       this.$emit('fileUnHighlighted', data);
     },
-    handleMediaSearch: function handleMediaSearch(data) {
-      // this.getFiles({ id: data.galllery }, data.search);
+    handleMediaSearch: function handleMediaSearch(data) {// this.getFiles({ id: data.galllery }, data.search);
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -2871,7 +2860,7 @@ var render = function() {
                     },
                     keyup: function($event) {
                       if (
-                        !("button" in $event) &&
+                        !$event.type.indexOf("key") &&
                         _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
                       ) {
                         return null
@@ -3056,7 +3045,8 @@ var render = function() {
             ],
             1
           )
-        })
+        }),
+        1
       )
     ],
     1
@@ -3140,7 +3130,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleriesComponent.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/GalleriesComponent.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-290517a9\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/GalleriesComponent.vue")
 /* template functional */

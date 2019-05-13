@@ -1,31 +1,102 @@
 webpackJsonp([34],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ProductPageLayout',
-
   components: {
     PageLayout: function PageLayout() {
-      return __webpack_require__.e/* import() */(44).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/PageLayout.vue"));
+      return __webpack_require__.e/* import() */(45).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/pages/PageLayout.vue"));
     }
   },
-
   props: {
     productId: {
       type: String,
@@ -38,40 +109,39 @@ exports.default = {
     form: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     formLoaded: {
       type: Function,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return function (data) {};
       }
     },
     formRules: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     requestWith: {
       type: Array,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     requestIncludes: {
       type: Array,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     }
   },
-
   data: function data() {
     return {
       productForm: this.form,
@@ -79,24 +149,15 @@ exports.default = {
       loading: false
     };
   },
-
-
-  computed: {
-    //
+  computed: {//
   },
-
-  watch: {
-    //
+  watch: {//
   },
-
   mounted: function mounted() {
     console.log('ProductPageLayout.vue mounted');
     this.getProduct();
   },
-
-
   methods: {
-
     /**
            * Get the product information from the server.
            *
@@ -105,23 +166,21 @@ exports.default = {
     getProduct: function getProduct() {
       this.productErrors = {};
       this.loading = true;
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'products/' + this.productId,
         params: {
-          with: this.requestWith.concat(['variant']),
+          "with": this.requestWith.concat(['variant']),
           include: this.requestIncludes
         }
       }).then(function (data) {
         this.loading = false;
         this.productForm = data.data;
         this.formLoaded(data.data);
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.productErrors = error;
       }.bind(this));
     },
-
 
     /**
            * Validate the form and submit to the server.
@@ -133,12 +192,11 @@ exports.default = {
 
       this.productErrors = {};
       this.loading = true;
-      this.productForm.with = this.requestWith.concat(['variant']);
+      this.productForm["with"] = this.requestWith.concat(['variant']);
       this.productForm.include = this.requestIncludes;
-
       this.$refs[formName].validate(function (valid) {
         if (valid) {
-          _apiService2.default.persist('put', {
+          __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('put', {
             path: 'products/' + _this.productId,
             object: _this.productForm
           }).then(function (data) {
@@ -149,7 +207,7 @@ exports.default = {
               type: 'success',
               showClose: true
             });
-          }.bind(_this)).catch(function (error) {
+          }.bind(_this))["catch"](function (error) {
             this.loading = false;
             this.productErrors = error;
           }.bind(_this));
@@ -160,90 +218,7 @@ exports.default = {
       });
     }
   }
-
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+});
 
 /***/ }),
 
@@ -407,7 +382,7 @@ var render = function() {
                                   },
                                   on: {
                                     click: function($event) {
-                                      _vm.submitForm("productForm")
+                                      return _vm.submitForm("productForm")
                                     }
                                   }
                                 },
@@ -484,7 +459,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-537d6856\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/products/ProductPageLayout.vue")
 /* template functional */

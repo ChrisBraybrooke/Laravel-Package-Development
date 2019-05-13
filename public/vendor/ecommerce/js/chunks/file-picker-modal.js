@@ -1,14 +1,10 @@
 webpackJsonp([33],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FilePickerModal.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FilePickerModal.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -93,32 +89,29 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
 var chunk = __webpack_require__("./node_modules/lodash.chunk/index.js");
+
 var forEach = __webpack_require__("./node_modules/lodash.foreach/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilePickerComponent',
-
   components: {
     GalleriesComponent: function GalleriesComponent() {
-      return __webpack_require__.e/* import() */(38).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleriesComponent.vue"));
+      return __webpack_require__.e/* import() */(37).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/GalleriesComponent.vue"));
     }
   },
-
   props: {
     openOnMount: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     },
     selectable: {
       type: Number,
       required: false,
-      default: function _default() {}
+      "default": function _default() {}
     },
     name: {
       type: String,
@@ -127,58 +120,53 @@ exports.default = {
     visible: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     },
     showPreview: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return true;
       }
     },
     showBtn: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     },
     currentFiles: {
       type: [Array, Object],
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     pickerId: {
       type: [Number, String],
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return null;
       }
     }
   },
-
   data: function data() {
     return {
       dialogVisible: false,
       files: []
     };
   },
-
-
   computed: {
     fileSelected: function fileSelected() {
       return Object.keys(this.files).length >= 1;
     },
-
     fileChunks: function fileChunks() {
       return chunk(this.files, 4);
     }
   },
-
   watch: {
     dialogVisible: function dialogVisible(value) {
       if (!value) {
@@ -187,23 +175,18 @@ exports.default = {
         this.$emit('opened:modal', value);
       }
     },
-
     visible: function visible(value) {
       this.dialogVisible = value;
     }
   },
-
   mounted: function mounted() {
     console.log('FilePickerModal.vue mounted.');
-
     this.syncFiles();
 
     if (this.openOnMount) {
       this.openModal();
     }
   },
-
-
   methods: {
     syncFiles: function syncFiles() {
       if (this.currentFiles) {
@@ -233,7 +216,11 @@ exports.default = {
     handleClose: function handleClose() {
       this.files = [];
       this.closeModal();
-      this.$emit('modalClosed', { files: this.files, id: this.pickerId });
+      this.$emit('modalClosed', {
+        files: this.files,
+        id: this.pickerId
+      });
+
       if (this.currentFiles) {
         forEach(this.currentFiles, function (file) {
           this.files.push(file);
@@ -243,7 +230,10 @@ exports.default = {
     handleFileChoose: function handleFileChoose() {
       this.dialogVisible = false;
       this.$emit('update:files', this.files);
-      this.$emit('filesChosen', { files: this.files, id: this.pickerId });
+      this.$emit('filesChosen', {
+        files: this.files,
+        id: this.pickerId
+      });
     },
     handleFileHighlighted: function handleFileHighlighted(data) {
       this.files = data.selectedFiles;
@@ -255,11 +245,13 @@ exports.default = {
     deleteFile: function deleteFile(file) {
       this.files.splice(this.files.indexOf(file), 1);
       this.$emit('update:files', this.files);
-      this.$emit('filesUnChosen', { files: this.files, id: this.pickerId });
+      this.$emit('filesUnChosen', {
+        files: this.files,
+        id: this.pickerId
+      });
     }
   }
-
-};
+});
 
 /***/ }),
 
@@ -902,7 +894,7 @@ var render = function() {
                                     attrs: { type: "primary", size: "mini" },
                                     on: {
                                       click: function($event) {
-                                        _vm.hideDeletePopover(file)
+                                        return _vm.hideDeletePopover(file)
                                       }
                                     }
                                   },
@@ -915,7 +907,7 @@ var render = function() {
                                     attrs: { type: "primary", size: "mini" },
                                     on: {
                                       click: function($event) {
-                                        _vm.deleteFile(file)
+                                        return _vm.deleteFile(file)
                                       }
                                     }
                                   },
@@ -931,7 +923,7 @@ var render = function() {
                               attrs: { slot: "reference", id: "delete" },
                               on: {
                                 click: function($event) {
-                                  _vm.handleIconClick("delete", file)
+                                  return _vm.handleIconClick("delete", file)
                                 }
                               },
                               slot: "reference"
@@ -952,7 +944,8 @@ var render = function() {
                     })
                   ])
                 ])
-              })
+              }),
+              1
             )
           })
         : _vm._e()
@@ -1009,7 +1002,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FilePickerModal.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/FilePickerModal.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-54e28f17\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/FilePickerModal.vue")
 /* template functional */

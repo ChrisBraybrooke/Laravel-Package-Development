@@ -1,349 +1,499 @@
-webpackJsonp([10],{
+webpackJsonp([11],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/config/Config.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/config/Config.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_services_api_service__ = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var _apiService = __webpack_require__("./resources/assets/admin-spa/services/api-service.js");
-
-var _apiService2 = _interopRequireDefault(_apiService);
-
-var _vuex = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var upperFirst = __webpack_require__("./node_modules/lodash.upperfirst/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Config',
-
   components: {
     Errors: function Errors() {
       return __webpack_require__.e/* import() */(31/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/Errors.vue"));
@@ -352,7 +502,6 @@ exports.default = {
       return __webpack_require__.e/* import() */(33/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/FilePickerModal.vue"));
     }
   },
-
   data: function data() {
     return {
       loading: false,
@@ -366,33 +515,27 @@ exports.default = {
       currentTab: 'general'
     };
   },
-
-
-  computed: {
-    //
+  computed: {//
   },
-
-  watch: {
-    //
+  watch: {//
   },
-
   mounted: function mounted() {
     console.log('Config.vue mounted');
     this.getSettings();
     this.getCollections();
     this.getUsers();
   },
-
-
-  methods: _extends({}, (0, _vuex.mapActions)(['setShopData']), {
+  methods: _objectSpread({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapActions"])(['setShopData']), {
     p: function p(path) {
       var segments = path.split('.');
       return function () {
         var obj = this;
+
         for (var i = 0; i < segments.length; i++) {
           if (!obj) return;
           obj = obj[segments[i]];
         }
+
         return obj;
       };
     },
@@ -402,40 +545,40 @@ exports.default = {
     getSettings: function getSettings() {
       this.loading = true;
       this.settingsErrors = {};
-
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'settings'
       }).then(function (data) {
         this.loading = false;
         this.settings = data.data;
         this.setShopData(data.shop_data);
         this.shopData = data.shop_data;
+
         if (!this.settings['Admin Notifications']) {
           this.settings['Admin Notifications'] = [];
         }
 
         this.getFeaturedProductCollectionTypes();
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.settingsErrors = error;
       }.bind(this));
     },
     getCollections: function getCollections() {
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'collections'
       }).then(function (data) {
         this.collections = data.data;
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.settingsErrors = error;
       }.bind(this));
     },
     getFeaturedProductCollectionTypes: function getFeaturedProductCollectionTypes() {
       if (this.settings['Home Featured Product Collection']) {
-        _apiService2.default.get({
+        __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
           path: 'collections/' + this.settings['Home Featured Product Collection'] + '/types'
         }).then(function (data) {
           this.featured_product_types = data.data;
-        }.bind(this)).catch(function (error) {
+        }.bind(this))["catch"](function (error) {
           this.settingsErrors = error;
         }.bind(this));
       } else {
@@ -443,22 +586,21 @@ exports.default = {
       }
     },
     getUsers: function getUsers() {
-      _apiService2.default.get({
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].get({
         path: 'users',
         params: {
           withRole: 'admin'
         }
       }).then(function (data) {
         this.users = data.data;
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.settingsErrors = error;
       }.bind(this));
     },
     submitForm: function submitForm(formName) {
       this.loading = true;
       this.settingsErrors = {};
-
-      _apiService2.default.persist('post', {
+      __WEBPACK_IMPORTED_MODULE_0_services_api_service__["a" /* default */].persist('post', {
         path: 'settings',
         object: {
           settings: this.settings
@@ -466,7 +608,7 @@ exports.default = {
       }).then(function (data) {
         this.loading = false;
         this.settings = data.data;
-      }.bind(this)).catch(function (error) {
+      }.bind(this))["catch"](function (error) {
         this.loading = false;
         this.settingsErrors = error;
       }.bind(this));
@@ -483,8 +625,7 @@ exports.default = {
       this.$set(this.settings, data.id, data.files);
     }
   })
-
-};
+});
 
 /***/ }),
 
@@ -869,12 +1010,12 @@ var render = function() {
                   nativeOn: {
                     keyup: function($event) {
                       if (
-                        !("button" in $event) &&
+                        !$event.type.indexOf("key") &&
                         _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
                       ) {
                         return null
                       }
-                      _vm.submitForm("settingsForm")
+                      return _vm.submitForm("settingsForm")
                     }
                   }
                 },
@@ -1110,7 +1251,8 @@ var render = function() {
                                                         }
                                                       })
                                                     : _vm._e()
-                                                })
+                                                }),
+                                                1
                                               )
                                             ],
                                             1
@@ -1507,6 +1649,518 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "el-tab-pane",
+                            { attrs: { label: "Pricing", name: "pricing" } },
+                            [
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c("el-col", { attrs: { md: 12 } }, [
+                                    _c("h5", [_vm._v("VAT")])
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "VAT Included",
+                                                prop: "VAT Included",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-switch", {
+                                                attrs: {
+                                                  "active-text": "VAT Included",
+                                                  "inactive-text": "VAT Extra"
+                                                },
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "VAT Included"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "VAT Included",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['VAT Included']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "VAT Amount",
+                                                prop: "VAT Amount",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input-number", {
+                                                attrs: {
+                                                  precision: 2,
+                                                  step: 0.1,
+                                                  max: 1,
+                                                  min: 0
+                                                },
+                                                model: {
+                                                  value:
+                                                    _vm.settings["VAT Amount"],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "VAT Amount",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['VAT Amount']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-tab-pane",
+                            { attrs: { label: "Order PDFs", name: "pdfs" } },
+                            [
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c("el-col", { attrs: { md: 12 } }, [
+                                    _c("h5", [_vm._v("Address")])
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 16, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Name",
+                                                prop: "Company Name",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Name"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Name",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Name']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 16, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Address",
+                                                prop: "Company Address",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Address"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Address",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Address']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c("el-col", { attrs: { md: 12 } }, [
+                                    _c("h5", [_vm._v("Bank Details")])
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Bank",
+                                                prop: "Company Bank",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Bank"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Bank",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Bank']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Bank Sort Code",
+                                                prop: "Company Bank Sort Code",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Bank Sort Code"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Bank Sort Code",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Bank Sort Code']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Bank AC Number",
+                                                prop: "Company Bank AC Number",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Bank AC Number"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Bank AC Number",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Bank AC Number']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c("el-col", { attrs: { md: 12 } }, [
+                                    _c("h5", [_vm._v("Other")])
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company No",
+                                                prop: "Company No",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings["Company No"],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company No",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company No']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 8 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Company Vat No",
+                                                prop: "Company Vat No",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                model: {
+                                                  value:
+                                                    _vm.settings[
+                                                      "Company Vat No"
+                                                    ],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Company Vat No",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Company Vat No']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 20 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { md: { span: 16, offset: 4 } } },
+                                    [
+                                      _vm.settings
+                                        ? _c(
+                                            "el-form-item",
+                                            {
+                                              attrs: {
+                                                label: "Footer Text",
+                                                prop: "Footer Text",
+                                                size: "small"
+                                              }
+                                            },
+                                            [
+                                              _c("el-input", {
+                                                attrs: { type: "textarea" },
+                                                model: {
+                                                  value:
+                                                    _vm.settings["Footer Text"],
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.settings,
+                                                      "Footer Text",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "settings['Footer Text']"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-tab-pane",
                             {
                               attrs: {
                                 label: "Site Images",
@@ -1569,7 +2223,8 @@ var render = function() {
                                     ],
                                     1
                                   )
-                                })
+                                }),
+                                0
                               )
                             ],
                             1
@@ -1637,7 +2292,8 @@ var render = function() {
                                                         }
                                                       })
                                                     }
-                                                  )
+                                                  ),
+                                                  1
                                                 )
                                               ],
                                               1
@@ -1647,7 +2303,8 @@ var render = function() {
                                       1
                                     )
                                   }
-                                )
+                                ),
+                                0
                               )
                             ],
                             1
@@ -1682,7 +2339,7 @@ var render = function() {
                                   },
                                   on: {
                                     click: function($event) {
-                                      _vm.submitForm("settingsForm")
+                                      return _vm.submitForm("settingsForm")
                                     }
                                   }
                                 },
@@ -1759,7 +2416,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/config/Config.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/config/Config.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-72f7a707\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/config/Config.vue")
 /* template functional */

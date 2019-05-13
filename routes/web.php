@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('pdf', function () {
+        return ChromePDF::loadView('pdf')
+            ->a4(true)
+            ->inline();
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

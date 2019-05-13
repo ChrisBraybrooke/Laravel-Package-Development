@@ -1,14 +1,10 @@
-webpackJsonp([37],{
+webpackJsonp([41],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/AddressForm.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/AddressForm.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -126,13 +122,46 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
-exports.default = {
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddressForm',
-
   components: {},
-
   props: {
     form: {
       type: Object,
@@ -141,65 +170,57 @@ exports.default = {
     type: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return '';
       }
     },
     span: {
       type: Number,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return 8;
       }
     },
     offset: {
       type: Number,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return 4;
       }
     },
     required: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return true;
       }
     },
     prop: {
       type: String,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return '';
       }
     },
     prefixProp: {
       type: Boolean,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return false;
       }
     }
   },
-
   data: function data() {
     return {
       loading: false
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('AddressForm.vue Mounted');
   },
-
-
   methods: {
-
     /**
            * Format the input label name based on the type of address
            *
@@ -213,13 +234,14 @@ exports.default = {
         if (prop) {
           return this.type + '_' + name;
         }
+
         return this.capitalize(this.type) + ' ' + name;
       } else {
         return name;
       }
     }
   }
-};
+});
 
 /***/ }),
 
@@ -231,7 +253,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -258,6 +280,106 @@ var render = function() {
       ]
     },
     [
+      _c(
+        "el-row",
+        { attrs: { gutter: 20 } },
+        [
+          _c(
+            "el-col",
+            { attrs: { md: { span: _vm.span, offset: _vm.offset } } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: _vm.getFormatedLabel("Address Name"),
+                    prop: _vm.prop ? _vm.prop + ".name" : "name",
+                    size: "small"
+                  }
+                },
+                [
+                  _vm.prop && _vm.prefixProp
+                    ? _c("el-input", {
+                        attrs: { autofocus: true, "auto-complete": "off" },
+                        model: {
+                          value: _vm.form[_vm.prop].name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form[_vm.prop], "name", $$v)
+                          },
+                          expression: "form[prop].name"
+                        }
+                      })
+                    : _c("el-input", {
+                        attrs: { autofocus: true, "auto-complete": "off" },
+                        model: {
+                          value: _vm.form[_vm.getFormatedLabel("name", true)],
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form,
+                              _vm.getFormatedLabel("name", true),
+                              $$v
+                            )
+                          },
+                          expression: "form[getFormatedLabel('name', true)]"
+                        }
+                      })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-col",
+            { attrs: { md: _vm.span } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: _vm.getFormatedLabel("Address Company"),
+                    prop: _vm.prop ? _vm.prop + ".company" : "company",
+                    size: "small"
+                  }
+                },
+                [
+                  _vm.prop && _vm.prefixProp
+                    ? _c("el-input", {
+                        attrs: { autofocus: true, "auto-complete": "off" },
+                        model: {
+                          value: _vm.form[_vm.prop].company,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form[_vm.prop], "company", $$v)
+                          },
+                          expression: "form[prop].company"
+                        }
+                      })
+                    : _c("el-input", {
+                        attrs: { autofocus: true, "auto-complete": "off" },
+                        model: {
+                          value:
+                            _vm.form[_vm.getFormatedLabel("company", true)],
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.form,
+                              _vm.getFormatedLabel("company", true),
+                              $$v
+                            )
+                          },
+                          expression: "form[getFormatedLabel('company', true)]"
+                        }
+                      })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c(
         "el-row",
         { attrs: { gutter: 20 } },
@@ -609,7 +731,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/AddressForm.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/components/AddressForm.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1b78b468\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/components/AddressForm.vue")
 /* template functional */

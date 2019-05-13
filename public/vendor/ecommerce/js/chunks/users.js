@@ -1,14 +1,10 @@
 webpackJsonp([9],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/users/Users.vue":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/users/Users.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -64,27 +60,59 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
 var upperFirst = __webpack_require__("./node_modules/lodash.upperfirst/index.js");
 
-exports.default = {
-
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Users',
-
   components: {
     DataTable: function DataTable() {
       return __webpack_require__.e/* import() */(32/* duplicate */).then(__webpack_require__.bind(null, "./resources/assets/admin-spa/components/DataTable.vue"));
     }
   },
-
   data: function data() {
     return {
       usersCreateForm: {},
       createFormRules: {
-        first_name: [{ required: true, message: 'The first name is required', trigger: 'blur' }, { min: 3, max: 200, message: 'The first name length should be more than 3 characters', trigger: 'blur' }],
-        last_name: [{ required: true, message: 'The last name is required', trigger: 'blur' }, { min: 3, max: 200, message: 'The last name length should be more than 3 characters', trigger: 'blur' }],
-        email: [{ required: true, message: 'The email is required', trigger: 'blur' }, { min: 3, max: 200, message: 'The email length should be more than 3 characters', trigger: 'blur' }],
-        password: [{ required: true, message: 'The password is required', trigger: 'blur' }, { min: 3, max: 200, message: 'The password length should be more than 3 characters', trigger: 'blur' }]
+        first_name: [{
+          required: true,
+          message: 'The first name is required',
+          trigger: 'blur'
+        }, {
+          min: 3,
+          max: 200,
+          message: 'The first name length should be more than 3 characters',
+          trigger: 'blur'
+        }],
+        last_name: [{
+          required: true,
+          message: 'The last name is required',
+          trigger: 'blur'
+        }, {
+          min: 3,
+          max: 200,
+          message: 'The last name length should be more than 3 characters',
+          trigger: 'blur'
+        }],
+        email: [{
+          required: true,
+          message: 'The email is required',
+          trigger: 'blur'
+        }, {
+          min: 3,
+          max: 200,
+          message: 'The email length should be more than 3 characters',
+          trigger: 'blur'
+        }],
+        password: [{
+          required: true,
+          message: 'The password is required',
+          trigger: 'blur'
+        }, {
+          min: 3,
+          max: 200,
+          message: 'The password length should be more than 3 characters',
+          trigger: 'blur'
+        }]
       },
       tableOptions: {
         border: true,
@@ -126,7 +154,6 @@ exports.default = {
             cellValue.forEach(function (role) {
               roles.push(upperFirst(role.name));
             });
-
             return roles.join(', ');
           }
         }, {
@@ -149,20 +176,13 @@ exports.default = {
       }
     };
   },
-
-
   computed: {},
-
   watch: {},
-
   mounted: function mounted() {
     console.log('Users.vue mounted.');
   },
-
-
   methods: {}
-
-};
+});
 
 /***/ }),
 
@@ -638,7 +658,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/users/Users.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"@babel/preset-env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"]},\"forceAllTransforms\":true}]],\"plugins\":[\"@babel/plugin-proposal-object-rest-spread\",[\"@babel/plugin-transform-runtime\",{\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/admin-spa/pages/users/Users.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1c6f4259\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/admin-spa/pages/users/Users.vue")
 /* template functional */
